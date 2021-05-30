@@ -1,6 +1,10 @@
 import { Dimensions } from "react-native";
 const { width, height } = Dimensions.get("window");
-
+export const SIZES = {
+    h1: height / 17,
+    width,
+    height,
+};
 export const COLORS = {
     // base colors
     primary: "#53B175", // orange
@@ -17,4 +21,6 @@ export const COLORS = {
     transparent: "transparent",
     darkgray: "#898C95",
 };
-const appTheme = { COLORS, width, height };
+const appTheme = { COLORS, SIZES };
+
+export default appTheme;

@@ -2,13 +2,12 @@ import { StatusBar } from "expo-status-bar";
 import React from "react";
 import { Image, StyleSheet, Text, View } from "react-native";
 import { images } from "./app/constants";
+import Onboarding from "./app/Screens/Onboarding";
 
 export default function App() {
     return (
         <View style={styles.container}>
-            <Text>Open up App.js to start working on your --app!</Text>
-            <StatusBar style="auto" />
-            <Image source={images.fruitsBag} />
+            <Onboarding />
         </View>
     );
 }

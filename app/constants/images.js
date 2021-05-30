@@ -6,6 +6,7 @@ const LocationImage = require("../../assets/photos/LocationImage.png");
 const Onboarding = require("../../assets/photos/Onboarding.png");
 const topBlur = require("../../assets/photos/topBlur.png");
 const topIcon = require("../../assets/photos/topIcon.png");
+const WhiteCarrot = require("../../assets/photos/WhiteCarrot.png");
 
 export default {
     accepted,
@@ -16,4 +17,5 @@ export default {
     Onboarding,
     topBlur,
     topIcon,
+    WhiteCarrot,
 };
