@@ -1,14 +1,21 @@
 import { StatusBar } from "expo-status-bar";
 import React from "react";
 import { Image, StyleSheet, Text, View } from "react-native";
+import { SafeAreaProvider } from "react-native-safe-area-context";
+import { NavigationContainer } from "@react-navigation/native";
+import { createStackNavigator } from "@react-navigation/stack";
 import { images } from "./app/constants";
 import Onboarding from "./app/Screens/Onboarding";
 
+const Stack = createStackNavigator();
+
 export default function App() {
     return (
-        <View style={styles.container}>
-            <Onboarding />
-        </View>
+        <NavigationContainer>
+            <Stack.Navigator screenOptions={{ headerShown: false }}>
+                <Stack.Screen name="Home" component={Onboarding} />
+            </Stack.Navigator>
+        </NavigationContainer>
     );
 }
 
