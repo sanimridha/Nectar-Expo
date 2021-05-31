@@ -5,16 +5,23 @@ import { SafeAreaProvider } from "react-native-safe-area-context";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import { images } from "./app/constants";
-import Onboarding from "./app/Screens/Onboarding";
-import SigninScreen from "./app/Screens/SigninScreen";
+import CustomButton from "./app/components/CustomButton";
+import { Onboarding, SigninScreen, SigninWithPhoneNumber } from "./app/Screens";
 
 const Stack = createStackNavigator();
 
 export default function App() {
     return (
         <NavigationContainer>
-            <Stack.Navigator screenOptions={{ headerShown: false }}>
+            <Stack.Navigator
+                initialRouteName={"Home"}
+                screenOptions={{ headerShown: false }}
+            >
                 <Stack.Screen name="Home" component={SigninScreen} />
+                <Stack.Screen
+                    name="SigninWithPhoneNumber"
+                    component={SigninWithPhoneNumber}
+                />
             </Stack.Navigator>
         </NavigationContainer>
     );
