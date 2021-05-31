@@ -2,6 +2,8 @@ import { Dimensions } from "react-native";
 const { width, height } = Dimensions.get("window");
 export const SIZES = {
     h1: height / 17,
+    h2: height / 25,
+    h3: height / 32,
     width,
     height,
 };

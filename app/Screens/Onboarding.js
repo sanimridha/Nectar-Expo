@@ -18,7 +18,7 @@ import {
 import { COLORS, images, SIZES, themes } from "../constants";
 import { LinearGradient } from "expo-linear-gradient";
 
-const Onboarding = () => {
+const Onboarding = ({ navigation }) => {
     // console.log(themes.height);
     return (
         <ImageBackground
@@ -36,7 +36,7 @@ const Onboarding = () => {
                     }}
                 >
                     <LinearGradient
-                        colors={["#00000000", "#000E1727", "#000E1727"]}
+                        colors={["#00000000", "#000E1727", "#000000"]}
                         style={styles.button}
                     >
                         <View style={{ alignItems: "center" }}>
@@ -88,6 +88,9 @@ const Onboarding = () => {
                         </View>
                         <View style={{ alignItems: "center" }}>
                             <TouchableOpacity
+                                onPress={() => {
+                                    navigation.navigate("SigninScreen");
+                                }}
                                 activeOpacity={0.5}
                                 style={{
                                     height: SIZES.height / 13,
