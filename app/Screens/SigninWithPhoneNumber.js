@@ -1,5 +1,6 @@
 import React from "react";
 import {
+    Button,
     Image,
     ImageBackground,
     StyleSheet,
@@ -14,6 +15,13 @@ import { COLORS, images, SIZES } from "../constants";
 import { Entypo } from "@expo/vector-icons";
 
 const SigninWithPhoneNumber = ({ navigation }) => {
+    const textInputRef = React.useRef();
+
+    const focusOnInput = e => {
+        textInputRef.current.focus(e);
+    };
+
+    navigation.addListener("focus", focusOnInput);
     return (
         <View style={{ flex: 1, backgroundColor: "#FDFDFD" }}>
             <ImageBackground
@@ -82,6 +90,7 @@ const SigninWithPhoneNumber = ({ navigation }) => {
                             />
 
                             <TextInput
+                                ref={textInputRef}
                                 style={{ flex: 1, fontSize: 20 }}
                                 keyboardType={"numeric"}
                                 defaultValue="+880"
@@ -90,9 +99,7 @@ const SigninWithPhoneNumber = ({ navigation }) => {
                     </View>
                 </SafeAreaView>
             </ImageBackground>
-            {/* <View style={{ backgroundColor: "#FAFBFB", flex: 1, bottom: 5 }}>
-                <Text>SigninWithPhoneNumber</Text>
-            </View> */}
+
             <View style={{ position: "absolute", bottom: 0, right: 0 }}>
                 <TouchableOpacity
                     activeOpacity={0.5}
@@ -107,26 +114,11 @@ const SigninWithPhoneNumber = ({ navigation }) => {
                         justifyContent: "center",
                         alignItems: "center",
                         margin: "2%",
-                        // shadow
-                        // shadowColor: "#000",
-                        // shadowOffset: { width: 2, height: 2 },
-                        // shadowOpacity: 0.25,
-                        // shadowRadius: 3.84,
-                        // elevation: 3,
                     }}
                 >
                     <Entypo name="chevron-right" size={28} color="white" />
                 </TouchableOpacity>
             </View>
-            {/* <View
-                style={{
-                    width: "100%",
-                    height: "25%",
-                    backgroundColor: "green",
-                    // position: "relative",
-                    bottom: 0,
-                }}
-            ></View> */}
         </View>
     );
 };
