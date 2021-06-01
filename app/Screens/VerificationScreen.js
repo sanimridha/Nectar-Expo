@@ -15,15 +15,13 @@ import { Entypo } from "@expo/vector-icons";
 
 const VerificationScreen = ({ navigation }) => {
     const [state, setstate] = useState(null);
-    const [textInputRef, settextInputRef] = useState(React.useRef()); //this state for auto focusing
+    const textInputRef = React.useRef();
 
-    useEffect(() => {
-        //this Hook for auto focusing
-        const focusOnInput = e => {
-            settextInputRef(textInputRef.current.focus(e));
-        };
-        navigation.addListener("focus", focusOnInput);
-    }, []);
+    const focusOnInput = e => {
+        textInputRef.current.focus(e);
+    };
+
+    navigation.addListener("focus", focusOnInput);
 
     return (
         <View style={{ flex: 1, backgroundColor: "#FDFDFD" }}>
