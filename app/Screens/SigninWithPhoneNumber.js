@@ -57,6 +57,7 @@ const SigninWithPhoneNumber = ({ navigation }) => {
                             width: "90%",
                             justifyContent: "center",
                             alignSelf: "center",
+                            marginTop: "2%",
                         }}
                     >
                         <View
@@ -92,6 +93,40 @@ const SigninWithPhoneNumber = ({ navigation }) => {
             {/* <View style={{ backgroundColor: "#FAFBFB", flex: 1, bottom: 5 }}>
                 <Text>SigninWithPhoneNumber</Text>
             </View> */}
+            <View style={{ position: "absolute", bottom: 0, right: 0 }}>
+                <TouchableOpacity
+                    activeOpacity={0.5}
+                    onPress={() => {
+                        navigation.navigate("VerificationScreen");
+                    }}
+                    style={{
+                        height: 60,
+                        width: 60,
+                        borderRadius: 30,
+                        backgroundColor: COLORS.primary,
+                        justifyContent: "center",
+                        alignItems: "center",
+                        margin: "2%",
+                        // shadow
+                        // shadowColor: "#000",
+                        // shadowOffset: { width: 2, height: 2 },
+                        // shadowOpacity: 0.25,
+                        // shadowRadius: 3.84,
+                        // elevation: 3,
+                    }}
+                >
+                    <Entypo name="chevron-right" size={28} color="white" />
+                </TouchableOpacity>
+            </View>
+            {/* <View
+                style={{
+                    width: "100%",
+                    height: "25%",
+                    backgroundColor: "green",
+                    // position: "relative",
+                    bottom: 0,
+                }}
+            ></View> */}
         </View>
     );
 };
