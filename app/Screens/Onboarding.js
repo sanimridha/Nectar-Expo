@@ -37,7 +37,6 @@ const Onboarding = ({ navigation }) => {
                 >
                     <LinearGradient
                         colors={["#00000000", "#000E1727", "#000000"]}
-                        style={styles.button}
                     >
                         <View style={{ alignItems: "center" }}>
                             <Image
