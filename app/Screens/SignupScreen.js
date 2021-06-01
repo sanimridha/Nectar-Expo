@@ -226,7 +226,7 @@ const SignupScreen = ({ navigation }) => {
                                                 }}
                                             >
                                                 {" "}
-                                                Signup
+                                                Signin
                                             </Text>
                                         </TouchableOpacity>
                                     </View>
