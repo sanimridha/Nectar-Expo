@@ -6,7 +6,12 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import { images } from "./app/constants";
 import CustomButton from "./app/components/CustomButton";
-import { Onboarding, SigninScreen, SigninWithPhoneNumber } from "./app/Screens";
+import {
+    Onboarding,
+    SigninScreen,
+    SigninWithPhoneNumber,
+    VerificationScreen,
+} from "./app/Screens";
 
 const Stack = createStackNavigator();
 
@@ -19,6 +24,10 @@ export default function App() {
             >
                 <Stack.Screen name="Home" component={Onboarding} />
                 <Stack.Screen name="SigninScreen" component={SigninScreen} />
+                <Stack.Screen
+                    name="VerificationScreen"
+                    component={VerificationScreen}
+                />
                 <Stack.Screen
                     name="SigninWithPhoneNumber"
                     component={SigninWithPhoneNumber}
