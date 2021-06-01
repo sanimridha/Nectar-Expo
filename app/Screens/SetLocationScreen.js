@@ -96,7 +96,8 @@ const SetLocationScreen = ({ navigation }) => {
                             justifyContent: "center",
                             alignItems: "center",
                             // height: SIZES.height,
-                            // width: SIZES.width,
+                            width: SIZES.width,
+
                             // position: "absolute",
                             // bottom: 0,
                         }}
