@@ -7,10 +7,12 @@ import { createStackNavigator } from "@react-navigation/stack";
 import { images } from "./app/constants";
 import CustomButton from "./app/components/CustomButton";
 import {
+    LoginScreen,
     Onboarding,
     SetLocationScreen,
     SigninScreen,
     SigninWithPhoneNumber,
+    SignupScreen,
     VerificationScreen,
 } from "./app/Screens";
 
@@ -25,6 +27,8 @@ export default function App() {
             >
                 <Stack.Screen name="Home" component={Onboarding} />
                 <Stack.Screen name="SigninScreen" component={SigninScreen} />
+                <Stack.Screen name="LoginScreen" component={LoginScreen} />
+                <Stack.Screen name="SignupScreen" component={SignupScreen} />
                 <Stack.Screen
                     name="SetLocationScreen"
                     component={SetLocationScreen}
