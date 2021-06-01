@@ -8,6 +8,7 @@ import { images } from "./app/constants";
 import CustomButton from "./app/components/CustomButton";
 import {
     Onboarding,
+    SetLocationScreen,
     SigninScreen,
     SigninWithPhoneNumber,
     VerificationScreen,
@@ -24,6 +25,10 @@ export default function App() {
             >
                 <Stack.Screen name="Home" component={Onboarding} />
                 <Stack.Screen name="SigninScreen" component={SigninScreen} />
+                <Stack.Screen
+                    name="SetLocationScreen"
+                    component={SetLocationScreen}
+                />
                 <Stack.Screen
                     name="VerificationScreen"
                     component={VerificationScreen}

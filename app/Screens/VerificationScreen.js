@@ -99,7 +99,7 @@ const VerificationScreen = ({ navigation }) => {
                 <TouchableOpacity
                     activeOpacity={0.5}
                     onPress={() => {
-                        navigation.navigate("VerificationScreen");
+                        navigation.navigate("SetLocationScreen");
                     }}
                     style={{
                         height: 60,
@@ -109,26 +109,11 @@ const VerificationScreen = ({ navigation }) => {
                         justifyContent: "center",
                         alignItems: "center",
                         margin: "2%",
-                        // shadow
-                        // shadowColor: "#000",
-                        // shadowOffset: { width: 2, height: 2 },
-                        // shadowOpacity: 0.25,
-                        // shadowRadius: 3.84,
-                        // elevation: 3,
                     }}
                 >
                     <Entypo name="chevron-right" size={28} color="white" />
                 </TouchableOpacity>
             </View>
-            {/* <View
-                style={{
-                    width: "100%",
-                    height: "25%",
-                    backgroundColor: "green",
-                    // position: "relative",
-                    bottom: 0,
-                }}
-            ></View> */}
         </View>
     );
 };
