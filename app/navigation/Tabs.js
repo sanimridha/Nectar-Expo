@@ -13,7 +13,7 @@ import {
     FavouriteScreen,
     HomeScreen,
 } from "../Screens";
-import { COLORS, images } from "../constants";
+import { COLORS, images, SIZES } from "../constants";
 
 const Tab = createBottomTabNavigator();
 
@@ -35,7 +35,7 @@ const Tabs = () => {
                 component={HomeScreen}
                 options={{
                     tabBarIcon: ({ focused }) => (
-                        <View>
+                        <View style={{ width: 50 }}>
                             <Image
                                 source={images.Shop}
                                 resizeMode="contain"
@@ -71,7 +71,7 @@ const Tabs = () => {
                 component={ExploreScreen}
                 options={{
                     tabBarIcon: ({ focused }) => (
-                        <View>
+                        <View style={{ width: 50 }}>
                             <Image
                                 source={images.Explore}
                                 resizeMode="contain"
@@ -107,7 +107,7 @@ const Tabs = () => {
                 component={CartScreen}
                 options={{
                     tabBarIcon: ({ focused }) => (
-                        <View>
+                        <View style={{ width: 50 }}>
                             <Image
                                 source={images.Cart}
                                 resizeMode="contain"
@@ -143,7 +143,11 @@ const Tabs = () => {
                 component={FavouriteScreen}
                 options={{
                     tabBarIcon: ({ focused }) => (
-                        <View>
+                        <View
+                            style={{
+                                width: 55,
+                            }}
+                        >
                             <Feather
                                 name="heart"
                                 size={20}
@@ -178,7 +182,7 @@ const Tabs = () => {
                 component={AccountScreen}
                 options={{
                     tabBarIcon: ({ focused }) => (
-                        <View>
+                        <View style={{ width: 50 }}>
                             <Image
                                 source={images.Person}
                                 resizeMode="contain"
