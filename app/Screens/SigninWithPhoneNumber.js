@@ -3,6 +3,7 @@ import {
     Button,
     Image,
     ImageBackground,
+    ScrollView,
     StyleSheet,
     Text,
     TextInput,
