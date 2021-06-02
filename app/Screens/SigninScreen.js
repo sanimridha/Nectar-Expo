@@ -1,5 +1,12 @@
 import React, { useRef, useState } from "react";
-import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import {
+    Image,
+    ScrollView,
+    StyleSheet,
+    Text,
+    TouchableOpacity,
+    View,
+} from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { COLORS, images, SIZES } from "../constants";
 import { CustomButton } from "../components";
@@ -8,7 +15,7 @@ const SigninScreen = ({ navigation }) => {
     const [phoneNumber, setPhoneNumber] = useState(false);
     const phoneRef = useRef(undefined);
     return (
-        <View style={{ backgroundColor: "#FCFCFC", flex: 2 }}>
+        <ScrollView style={{ backgroundColor: "#FCFCFC", flex: 1 }}>
             <Image
                 source={images.fruitsBag}
                 // resizeMode={"contain"}
@@ -102,7 +109,7 @@ const SigninScreen = ({ navigation }) => {
                     />
                 </View>
             </SafeAreaView>
-        </View>
+        </ScrollView>
     );
 };
 
