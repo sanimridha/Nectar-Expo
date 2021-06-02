@@ -8,6 +8,10 @@ const topBlur = require("../../assets/photos/topBlur.png");
 const topIcon = require("../../assets/photos/topIcon.png");
 const WhiteCarrot = require("../../assets/photos/WhiteCarrot.png");
 const bd = require("../../assets/photos/bd.png");
+const Explore = require("../../assets/photos/Explore.png");
+const Cart = require("../../assets/photos/Cart.png");
+const Shop = require("../../assets/photos/Shop.png");
+const Person = require("../../assets/photos/Person.png");
 
 export default {
     accepted,
@@ -20,4 +24,8 @@ export default {
     topIcon,
     WhiteCarrot,
     bd,
+    Explore,
+    Cart,
+    Shop,
+    Person,
 };

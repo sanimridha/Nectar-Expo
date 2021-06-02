@@ -15,6 +15,7 @@ import {
     SignupScreen,
     VerificationScreen,
 } from "./app/Screens";
+import Tabs from "./app/navigation/Tabs";
 
 const Stack = createStackNavigator();
 
@@ -25,7 +26,7 @@ export default function App() {
                 initialRouteName={"Home"}
                 screenOptions={{ headerShown: false }}
             >
-                <Stack.Screen name="Home" component={Onboarding} />
+                <Stack.Screen name="Home" component={Tabs} />
                 <Stack.Screen name="SigninScreen" component={SigninScreen} />
                 <Stack.Screen name="LoginScreen" component={LoginScreen} />
                 <Stack.Screen name="SignupScreen" component={SignupScreen} />
