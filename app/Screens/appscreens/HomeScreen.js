@@ -17,7 +17,7 @@ import { COLORS, images, SIZES } from "../../constants";
 import { Ionicons } from "@expo/vector-icons";
 import { Entypo } from "@expo/vector-icons";
 
-const HomeScreen = () => {
+const HomeScreen = ({ navigation }) => {
     const headerContent = () => {
         return (
             <View
@@ -230,6 +230,12 @@ const HomeScreen = () => {
                                         COLORS.primary2,
                                         true
                                     )}
+                                    onPress={() => {
+                                        navigation.navigate(
+                                            "ProductDetails",
+                                            item
+                                        );
+                                    }}
                                 >
                                     <View>
                                         <View
@@ -433,6 +439,12 @@ const HomeScreen = () => {
                                         COLORS.primary2,
                                         true
                                     )}
+                                    onPress={() => {
+                                        navigation.navigate(
+                                            "ProductDetails",
+                                            item
+                                        );
+                                    }}
                                 >
                                     <View>
                                         <View
@@ -728,6 +740,12 @@ const HomeScreen = () => {
                                         COLORS.primary2,
                                         true
                                     )}
+                                    onPress={() => {
+                                        navigation.navigate(
+                                            "ProductDetails",
+                                            item
+                                        );
+                                    }}
                                 >
                                     <View>
                                         <View
