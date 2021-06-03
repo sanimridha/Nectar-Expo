@@ -16,6 +16,7 @@ import {
     VerificationScreen,
 } from "./app/Screens";
 import Tabs from "./app/navigation/Tabs";
+import TouchableNative from "./app/components/TouchableNative";
 
 const Stack = createStackNavigator();
 

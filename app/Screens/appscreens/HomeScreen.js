@@ -8,6 +8,7 @@ import {
     Text,
     TextInput,
     TouchableHighlight,
+    TouchableNativeFeedback,
     TouchableOpacity,
     View,
 } from "react-native";
@@ -182,22 +183,28 @@ const HomeScreen = () => {
                     <Text style={{ fontSize: SIZES.h3, fontWeight: "700" }}>
                         Exclusive Offer
                     </Text>
-                    <TouchableHighlight
-                        underlayColor="#000E1727"
+                    <TouchableNativeFeedback
+                        // underlayColor="#000E1727"
+                        background={TouchableNativeFeedback.Ripple(
+                            COLORS.primary2,
+                            true
+                        )}
                         onPress={() => {
                             console.log("hello sani");
                         }}
                     >
-                        <Text
-                            style={{
-                                fontSize: 15,
-                                fontWeight: "bold",
-                                color: COLORS.primary,
-                            }}
-                        >
-                            See all
-                        </Text>
-                    </TouchableHighlight>
+                        <View>
+                            <Text
+                                style={{
+                                    fontSize: 15,
+                                    fontWeight: "bold",
+                                    color: COLORS.primary,
+                                }}
+                            >
+                                See all
+                            </Text>
+                        </View>
+                    </TouchableNativeFeedback>
                 </View>
                 <ScrollView
                     horizontal
@@ -209,81 +216,115 @@ const HomeScreen = () => {
                             <View
                                 key={key}
                                 style={{
-                                    borderWidth: 0.4,
-                                    height: 200,
-                                    width: 150,
                                     borderRadius: 20,
                                     borderColor: COLORS.darkgray,
+                                    height: 200,
+                                    width: 150,
+                                    borderWidth: 0.4,
                                     marginRight: 20,
                                     marginTop: 20,
                                 }}
                             >
-                                <View
-                                    style={{
-                                        justifyContent: "center",
-                                        alignSelf: "center",
-                                    }}
+                                <TouchableNativeFeedback
+                                    background={TouchableNativeFeedback.Ripple(
+                                        COLORS.primary2,
+                                        true
+                                    )}
                                 >
-                                    <Image
-                                        source={item.image}
-                                        resizeMode={"center"}
-                                        style={{
-                                            height: 90,
-                                            width: 100,
-                                            borderRadius: 20,
-                                        }}
-                                    />
-                                </View>
-                                <View style={{ padding: "4%" }}>
-                                    <Text
-                                        style={{
-                                            fontWeight: "bold",
-                                            fontSize: 16,
-                                        }}
-                                    >
-                                        {item.name}
-                                    </Text>
-                                    <Text style={{ color: COLORS.secondary }}>
-                                        {item.quantity}
-                                    </Text>
-                                </View>
-                                <View
-                                    style={{
-                                        padding: "4%",
-                                        flexDirection: "row",
-                                        justifyContent: "space-between",
-                                        alignItems: "center",
-                                    }}
-                                >
-                                    <Text
-                                        style={{
-                                            fontSize: 18,
-                                            fontWeight: "bold",
-                                        }}
-                                    >
-                                        {item.price}
-                                    </Text>
-                                    <TouchableOpacity
-                                        activeOpacity={0.5}
-                                        onPress={() => {
-                                            console.log(item.name + " pressed");
-                                        }}
-                                        style={{
-                                            backgroundColor: COLORS.primary,
-                                            height: 40,
-                                            width: 40,
-                                            borderRadius: 15,
-                                            justifyContent: "center",
-                                            alignItems: "center",
-                                        }}
-                                    >
-                                        <Entypo
-                                            name="plus"
-                                            size={24}
-                                            color="white"
-                                        />
-                                    </TouchableOpacity>
-                                </View>
+                                    <View>
+                                        <View
+                                            style={{
+                                                justifyContent: "center",
+                                                alignSelf: "center",
+                                            }}
+                                        >
+                                            <Image
+                                                source={item.image}
+                                                resizeMode={"center"}
+                                                style={{
+                                                    height: 90,
+                                                    width: 100,
+                                                    borderRadius: 20,
+                                                }}
+                                            />
+                                        </View>
+                                        <View style={{ padding: "4%" }}>
+                                            <Text
+                                                style={{
+                                                    fontWeight: "bold",
+                                                    fontSize: 16,
+                                                }}
+                                            >
+                                                {item.name}
+                                            </Text>
+                                            <Text
+                                                style={{
+                                                    color: COLORS.secondary,
+                                                }}
+                                            >
+                                                {item.quantity}
+                                            </Text>
+                                        </View>
+                                        <View
+                                            style={{
+                                                padding: "4%",
+                                                flexDirection: "row",
+                                                justifyContent: "space-between",
+                                                alignItems: "center",
+                                            }}
+                                        >
+                                            <Text
+                                                style={{
+                                                    fontSize: 18,
+                                                    fontWeight: "bold",
+                                                }}
+                                            >
+                                                {item.price}
+                                            </Text>
+                                            <View
+                                                // activeOpacity={0.5}
+                                                // onPress={() => {
+                                                //     console.log(
+                                                //         item.name + " pressed"
+                                                //     );
+                                                // }}
+                                                style={{
+                                                    backgroundColor:
+                                                        COLORS.primary,
+                                                    height: 40,
+                                                    width: 40,
+                                                    borderRadius: 15,
+                                                    justifyContent: "center",
+                                                    alignItems: "center",
+                                                }}
+                                            >
+                                                <TouchableNativeFeedback
+                                                    background={TouchableNativeFeedback.Ripple(
+                                                        "white",
+                                                        true
+                                                    )}
+                                                >
+                                                    <View
+                                                        style={{
+                                                            height: "100%",
+                                                            width: "100%",
+                                                            justifyContent:
+                                                                "center",
+                                                            alignItems:
+                                                                "center",
+                                                        }}
+                                                    >
+                                                        <Entypo
+                                                            name="plus"
+                                                            size={24}
+                                                            color="white"
+                                                        />
+                                                    </View>
+                                                </TouchableNativeFeedback>
+                                            </View>
+                                        </View>
+                                    </View>
+                                </TouchableNativeFeedback>
                             </View>
                         );
                     })}

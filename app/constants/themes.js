@@ -9,7 +9,8 @@ export const SIZES = {
 };
 export const COLORS = {
     // base colors
-    primary: "#53B175", // orange
+    primary: "#53B175", // green
+    primary2: "#BAE0C8", // green
     secondary: "#7C7C7C", // gray
 
     // colors
