@@ -17,6 +17,7 @@ import {
 } from "./app/Screens";
 import Tabs from "./app/navigation/Tabs";
 import TouchableNative from "./app/components/TouchableNative";
+import ProductDetails from "./app/Screens/appscreens/ProductDetails";
 
 const Stack = createStackNavigator();
 
@@ -31,6 +32,10 @@ export default function App() {
                 <Stack.Screen name="SigninScreen" component={SigninScreen} />
                 <Stack.Screen name="LoginScreen" component={LoginScreen} />
                 <Stack.Screen name="SignupScreen" component={SignupScreen} />
+                <Stack.Screen
+                    name="ProductDetails"
+                    component={ProductDetails}
+                />
                 <Stack.Screen
                     name="SetLocationScreen"
                     component={SetLocationScreen}

@@ -3,9 +3,7 @@ import { StyleSheet, Text, TouchableNativeFeedback, View } from "react-native";
 
 const TouchableNative = () => {
     return (
-        <View
-            style={{ flex: 1, justifyContent: "center", alignItems: "center" }}
-        >
+        <View>
             <TouchableNativeFeedback
                 background={TouchableNativeFeedback.Ripple("#fff", false)}
             ></TouchableNativeFeedback>
