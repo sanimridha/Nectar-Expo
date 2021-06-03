@@ -583,12 +583,32 @@ const HomeScreen = () => {
                 rating: 5,
             },
         ];
-        const GroceriesItems =[
+        const GroceriesItems = [
             {
-                id:1,
-                image:
-            }
-        ]
+                id: 1,
+                name: "Pulses",
+                image: images.Pulses,
+                color: "#ffe6cc",
+            },
+            {
+                id: 2,
+                name: "Rice",
+                image: images.Rice,
+                color: "#E5F3EA",
+            },
+            {
+                id: 3,
+                name: "Pulses",
+                image: images.Pulses,
+                color: "#ffb3b3",
+            },
+            {
+                id: 4,
+                name: "Rice",
+                image: images.Rice,
+                color: "#ffe6cc",
+            },
+        ];
         return (
             <View style={{ padding: "4%" }}>
                 <View
@@ -624,6 +644,66 @@ const HomeScreen = () => {
                         </View>
                     </TouchableNativeFeedback>
                 </View>
+                <ScrollView
+                    horizontal
+                    // pagingEnabled
+                    showsHorizontalScrollIndicator={false}
+                >
+                    {GroceriesItems.map((item, key) => {
+                        return (
+                            <View
+                                key={key}
+                                style={{
+                                    borderRadius: 20,
+                                    // borderColor: COLORS.darkgray,
+                                    backgroundColor: item.color,
+                                    height: 100,
+                                    width: 250,
+                                    // borderWidth: 0.4,
+                                    marginRight: 20,
+                                    marginTop: 20,
+                                }}
+                            >
+                                <TouchableNativeFeedback
+                                    background={TouchableNativeFeedback.Ripple(
+                                        COLORS.primary2,
+                                        true
+                                    )}
+                                >
+                                    <View
+                                        style={{
+                                            justifyContent: "center",
+                                            // flexDirection: "row",
+                                            overflow: "hidden",
+                                        }}
+                                    >
+                                        <View style={{ flexDirection: "row" }}>
+                                            <Image
+                                                source={item.image}
+                                                resizeMode={"center"}
+                                                style={{
+                                                    height: 100,
+                                                    width: 100,
+                                                    // backgroundColor: "red",
+                                                    // borderRadius: 20,
+                                                }}
+                                            />
+                                            <Text
+                                                style={{
+                                                    fontSize: 20,
+                                                    fontWeight: "bold",
+                                                    alignSelf: "center",
+                                                }}
+                                            >
+                                                {item.name}
+                                            </Text>
+                                        </View>
+                                    </View>
+                                </TouchableNativeFeedback>
+                            </View>
+                        );
+                    })}
+                </ScrollView>
                 <ScrollView
                     horizontal
                     // pagingEnabled
