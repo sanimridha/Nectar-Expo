@@ -1,14 +1,29 @@
 import React from "react";
-import { StyleSheet, Text, View } from "react-native";
+import { Share, View, Button } from "react-native";
 
-const CartScreen = () => {
+export default function ShareExample() {
+    const onShare = async () => {
+        try {
+            const result = await Share.share({
+                message:
+                    "React Native | A framework for building native apps using React",
+            });
+            if (result.action === Share.sharedAction) {
+                if (result.activityType) {
+                    // shared with activity type of result.activityType
+                } else {
+                    // shared
+                }
+            } else if (result.action === Share.dismissedAction) {
+                // dismissed
+            }
+        } catch (error) {
+            alert(error.message);
+        }
+    };
     return (
-        <View>
-            <Text>CartScreen</Text>
+        <View style={{ marginTop: 50 }}>
+            <Button onPress={onShare} title="Share" />
         </View>
     );
-};
-
-export default CartScreen;
-
-const styles = StyleSheet.create({});
+}
