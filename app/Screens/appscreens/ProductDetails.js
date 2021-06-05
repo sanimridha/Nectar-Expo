@@ -194,7 +194,7 @@ const ProductDetails = ({ route, navigation }) => {
                         >
                             <TouchableNativeFeedback
                                 background={TouchableNativeFeedback.Ripple(
-                                    COLORS.darkgray,
+                                    COLORS.dark,
                                     true
                                 )}
                             >
