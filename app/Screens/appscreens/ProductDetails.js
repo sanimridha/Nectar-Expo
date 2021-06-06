@@ -17,6 +17,7 @@ import { COLORS, images, SIZES } from "../../constants";
 import { Entypo } from "@expo/vector-icons";
 import TouchableNative from "../../components/TouchableNative";
 import { Feather } from "@expo/vector-icons";
+import { CustomButton } from "../../components";
 
 const ProductDetails = ({ route, navigation }) => {
     const [count, setCount] = useState(1);
@@ -161,6 +162,7 @@ const ProductDetails = ({ route, navigation }) => {
                                         color={COLORS.secondary}
                                         style={{
                                             alignSelf: "center",
+                                            backgroundColor: "red",
                                         }}
                                     />
                                 </View>
@@ -288,7 +290,7 @@ const ProductDetails = ({ route, navigation }) => {
                                 alignItems: "center",
                             }}
                         >
-                            <Text style={{ fontSize: 15, fontWeight: "700" }}>
+                            <Text style={{ fontSize: 16, fontWeight: "700" }}>
                                 Product Detail
                             </Text>
                             <TouchableNativeFeedback
@@ -314,7 +316,7 @@ const ProductDetails = ({ route, navigation }) => {
                                     <Feather
                                         name={arrow}
                                         size={24}
-                                        color={COLORS.secondary}
+                                        color={"black"}
                                         style={{
                                             alignSelf: "center",
                                         }}
@@ -341,9 +343,184 @@ const ProductDetails = ({ route, navigation }) => {
                                 }}
                             ></View>
                         </View>
+                        <TouchableNativeFeedback
+                            background={TouchableNativeFeedback.Ripple(
+                                COLORS.lightGray5
+                            )}
+                        >
+                            <View>
+                                <View
+                                    style={{
+                                        paddingTop: 10,
+                                        flexDirection: "row",
+                                        justifyContent: "space-between",
+                                        alignItems: "center",
+                                    }}
+                                >
+                                    <Text
+                                        style={{
+                                            fontSize: 16,
+                                            fontWeight: "700",
+                                        }}
+                                    >
+                                        Nutritions
+                                    </Text>
+                                    <View
+                                        style={{
+                                            flexDirection: "row",
+                                            justifyContent: "space-between",
+                                        }}
+                                    >
+                                        <View
+                                            style={{
+                                                backgroundColor: "#d9d9d9",
+                                                borderRadius: 5,
+                                                justifyContent: "center",
+                                                alignItems: "center",
+                                                marginRight: 10,
+                                            }}
+                                        >
+                                            <Text
+                                                style={{
+                                                    fontSize: 11,
+                                                    padding: 3,
+                                                    fontWeight: "700",
+                                                    color: COLORS.secondary,
+                                                }}
+                                            >
+                                                {nutritions}
+                                            </Text>
+                                        </View>
+
+                                        <View
+                                            style={{
+                                                justifyContent: "center",
+                                                alignItems: "center",
+                                            }}
+                                        >
+                                            <Feather
+                                                name={"chevron-right"}
+                                                size={24}
+                                                color={"black"}
+                                                style={{
+                                                    alignSelf: "center",
+                                                }}
+                                            />
+                                        </View>
+                                    </View>
+                                </View>
+                                <View
+                                    style={{
+                                        borderBottomWidth: 0.6,
+                                        width: "100%",
+                                        borderBottomColor: COLORS.lightGray5,
+                                        paddingTop: 10,
+                                    }}
+                                ></View>
+                            </View>
+                        </TouchableNativeFeedback>
                     </View>
+                    <TouchableNativeFeedback
+                        background={TouchableNativeFeedback.Ripple(
+                            COLORS.lightGray5
+                        )}
+                    >
+                        <View>
+                            <View
+                                style={{
+                                    paddingTop: 10,
+                                    flexDirection: "row",
+                                    justifyContent: "space-between",
+                                    alignItems: "center",
+                                }}
+                            >
+                                <Text
+                                    style={{
+                                        fontSize: 16,
+                                        fontWeight: "700",
+                                    }}
+                                >
+                                    Review
+                                </Text>
+                                <View
+                                    style={{
+                                        flexDirection: "row",
+                                        justifyContent: "space-between",
+                                    }}
+                                >
+                                    <View
+                                        style={{
+                                            backgroundColor: "#d9d9d9",
+                                            borderRadius: 5,
+                                            justifyContent: "center",
+                                            alignItems: "center",
+                                            marginRight: 10,
+                                        }}
+                                    >
+                                        <Text
+                                            style={{
+                                                fontSize: 11,
+                                                padding: 3,
+                                                fontWeight: "700",
+                                                color: COLORS.secondary,
+                                            }}
+                                        >
+                                            {nutritions}
+                                        </Text>
+                                    </View>
+
+                                    <View
+                                        style={{
+                                            justifyContent: "center",
+                                            alignItems: "center",
+                                        }}
+                                    >
+                                        <Feather
+                                            name={"chevron-right"}
+                                            size={24}
+                                            color={"black"}
+                                            style={{
+                                                alignSelf: "center",
+                                            }}
+                                        />
+                                    </View>
+                                </View>
+                            </View>
+                            <View
+                                style={{
+                                    borderBottomWidth: 0.6,
+                                    width: "100%",
+                                    borderBottomColor: COLORS.lightGray5,
+                                    paddingTop: 10,
+                                }}
+                            ></View>
+                        </View>
+                    </TouchableNativeFeedback>
                 </View>
+                <View style={{ height: 5000 }}></View>
             </ScrollView>
+        );
+    };
+    const Bottom = () => {
+        return (
+            <View
+                style={{
+                    justifyContent: "center",
+                    alignItems: "center",
+                    backgroundColor: "transparent",
+                    position: "absolute",
+                    bottom: 5,
+                    width: SIZES.width,
+                }}
+            >
+                <CustomButton
+                    onPress={() => {
+                        navigation.navigate("Cart");
+                    }}
+                    btnTitle={"Add To Basket"}
+                    color={COLORS.primary}
+                />
+            </View>
         );
     };
 
@@ -356,6 +533,7 @@ const ProductDetails = ({ route, navigation }) => {
         >
             {headerContent()}
             {Content()}
+            {Bottom()}
         </View>
     );
 };
