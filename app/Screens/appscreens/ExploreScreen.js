@@ -1,39 +1,80 @@
 import React from "react";
-import { StyleSheet, Text, TouchableNativeFeedback, View } from "react-native";
-import TouchableNative from "../../components/TouchableNative";
+import {
+    Image,
+    ScrollView,
+    StatusBar,
+    StyleSheet,
+    Text,
+    TextInput,
+    TouchableNativeFeedback,
+    View,
+} from "react-native";
+import CustomScreen from "../../components/CustomScreen";
+import { COLORS, images, SIZES } from "../../constants";
+import { Ionicons } from "@expo/vector-icons";
+import { Entypo } from "@expo/vector-icons";
 
 const ExploreScreen = () => {
+    const headerContent = () => {
+        return (
+            <View
+                style={{
+                    marginTop: StatusBar.currentHeight,
+                    backgroundColor: COLORS.white,
+                    justifyContent: "center",
+                    alignItems: "center",
+                    padding: "4%",
+                }}
+            >
+                <View>
+                    <Text
+                        style={{
+                            fontSize: 20,
+                            fontWeight: "700",
+                            color: "#4C4F4D",
+                        }}
+                    >
+                        Find Product
+                    </Text>
+                </View>
+                <View
+                    style={{
+                        flexDirection: "row",
+                        justifyContent: "center",
+                        alignItems: "center",
+                        marginTop: "5%",
+                        backgroundColor: COLORS.lightGray3,
+                        height: 45,
+                        borderRadius: 10,
+                    }}
+                >
+                    <Ionicons
+                        name="search"
+                        size={22}
+                        style={{
+                            paddingLeft: "5%",
+                            paddingRight: "2%",
+                            color: COLORS.black,
+                        }}
+                    />
+
+                    <TextInput
+                        style={{ flex: 1, fontSize: 16 }}
+                        placeholder={"Search Store"}
+                        placeholderTextColor={COLORS.secondary}
+                    />
+                </View>
+            </View>
+        );
+    };
     return (
         <View
             style={{
                 flex: 1,
-                justifyContent: "center",
-                alignItems: "center",
+                backgroundColor: "white",
             }}
         >
-            <TouchableNativeFeedback
-                background={TouchableNativeFeedback.Ripple("#fff", false)}
-            >
-                <View
-                    style={{
-                        height: 50,
-                        width: 100,
-                        backgroundColor: "black",
-                        alignItems: "center",
-                        justifyContent: "center",
-                    }}
-                >
-                    <Text
-                        style={{
-                            fontSize: 16,
-                            color: "white",
-                            fontWeight: "bold",
-                        }}
-                    >
-                        Button
-                    </Text>
-                </View>
-            </TouchableNativeFeedback>
+            {headerContent()}
         </View>
     );
 };
