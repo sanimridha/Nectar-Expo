@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
     Image,
     StatusBar,
@@ -18,6 +18,7 @@ import TouchableNative from "../../components/TouchableNative";
 import { Feather } from "@expo/vector-icons";
 
 const ProductDetails = ({ route, navigation }) => {
+    const [count, setCount] = useState(1);
     const onShare = async () => {
         try {
             const result = await Share.share({
@@ -197,6 +198,11 @@ const ProductDetails = ({ route, navigation }) => {
                                     COLORS.dark,
                                     true
                                 )}
+                                onPress={() => {
+                                    if (count != 1) {
+                                        setCount(count - 1);
+                                    }
+                                }}
                             >
                                 <View style={{ paddingLeft: "5%" }}>
                                     <Text
@@ -224,7 +230,7 @@ const ProductDetails = ({ route, navigation }) => {
                                 <Text
                                     style={{ fontSize: 18, fontWeight: "700" }}
                                 >
-                                    1
+                                    {count}
                                 </Text>
                             </View>
                             <TouchableNativeFeedback
@@ -232,6 +238,9 @@ const ProductDetails = ({ route, navigation }) => {
                                     COLORS.primary,
                                     true
                                 )}
+                                onPress={() => {
+                                    setCount(count + 1);
+                                }}
                             >
                                 <View style={{ left: 25 }}>
                                     <Text
