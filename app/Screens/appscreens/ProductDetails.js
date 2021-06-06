@@ -17,12 +17,14 @@ import { COLORS, images, SIZES } from "../../constants";
 import { Entypo } from "@expo/vector-icons";
 import TouchableNative from "../../components/TouchableNative";
 import { Feather } from "@expo/vector-icons";
+import { FontAwesome } from "@expo/vector-icons";
 import { CustomButton } from "../../components";
 
 const ProductDetails = ({ route, navigation }) => {
     const [count, setCount] = useState(1);
     const [arrowNumber, setArrowNumber] = useState(1);
     const [arrow, setArrow] = useState("chevron-left");
+    const [loved, setLoved] = useState("heart-o");
     const onShare = async () => {
         try {
             const result = await Share.share({
@@ -110,7 +112,7 @@ const ProductDetails = ({ route, navigation }) => {
     };
     const Content = () => {
         return (
-            <ScrollView>
+            <ScrollView style={{}}>
                 <View
                     style={{
                         backgroundColor: COLORS.lightGray3,
@@ -149,6 +151,14 @@ const ProductDetails = ({ route, navigation }) => {
                                     COLORS.primary2,
                                     true
                                 )}
+                                onPress={() => {
+                                    if (loved == "heart-o") {
+                                        setLoved("heart");
+                                    }
+                                    if (loved == "heart") {
+                                        setLoved("heart-o");
+                                    }
+                                }}
                             >
                                 <View
                                     style={{
@@ -156,14 +166,15 @@ const ProductDetails = ({ route, navigation }) => {
                                         alignItems: "center",
                                     }}
                                 >
-                                    <Feather
-                                        name="heart"
+                                    <FontAwesome
+                                        name={loved}
                                         size={24}
-                                        color={COLORS.secondary}
-                                        style={{
-                                            alignSelf: "center",
-                                            backgroundColor: "red",
-                                        }}
+                                        color={
+                                            loved == "heart"
+                                                ? "red"
+                                                : COLORS.secondary
+                                        }
+                                        style={{ alignSelf: "center" }}
                                     />
                                 </View>
                             </TouchableNativeFeedback>
@@ -292,9 +303,9 @@ const ProductDetails = ({ route, navigation }) => {
                             <View>
                                 <View
                                     style={{
-                                        borderBottomWidth: 0.6,
+                                        borderBottomWidth: 1,
                                         width: "100%",
-                                        borderBottomColor: COLORS.lightGray5,
+                                        borderBottomColor: COLORS.lightGray3,
                                     }}
                                 ></View>
                                 <View
@@ -313,39 +324,39 @@ const ProductDetails = ({ route, navigation }) => {
                                     >
                                         Product Detail
                                     </Text>
-                                    <TouchableNativeFeedback>
-                                        <View
+
+                                    <View
+                                        style={{
+                                            justifyContent: "center",
+                                            alignItems: "center",
+                                        }}
+                                    >
+                                        <Feather
+                                            name={arrow}
+                                            size={24}
+                                            color={"black"}
                                             style={{
-                                                justifyContent: "center",
-                                                alignItems: "center",
+                                                alignSelf: "center",
                                             }}
-                                        >
-                                            <Feather
-                                                name={arrow}
-                                                size={24}
-                                                color={"black"}
-                                                style={{
-                                                    alignSelf: "center",
-                                                }}
-                                            />
-                                        </View>
-                                    </TouchableNativeFeedback>
+                                        />
+                                    </View>
                                 </View>
 
                                 <View>
                                     <Text
                                         style={{
                                             color: COLORS.secondary,
+                                            fontSize: 13,
                                         }}
                                     >
                                         {arrow == "chevron-down" && description}
                                     </Text>
                                     <View
                                         style={{
-                                            borderBottomWidth: 0.6,
+                                            borderBottomWidth: 1,
                                             width: "100%",
                                             borderBottomColor:
-                                                COLORS.lightGray5,
+                                                COLORS.lightGray3,
                                             paddingTop:
                                                 arrow == "chevron-down"
                                                     ? 10
@@ -423,9 +434,9 @@ const ProductDetails = ({ route, navigation }) => {
                                 </View>
                                 <View
                                     style={{
-                                        borderBottomWidth: 0.6,
+                                        borderBottomWidth: 1,
                                         width: "100%",
-                                        borderBottomColor: COLORS.lightGray5,
+                                        borderBottomColor: COLORS.lightGray3,
                                         paddingTop: 10,
                                     }}
                                 ></View>
@@ -462,7 +473,6 @@ const ProductDetails = ({ route, navigation }) => {
                                 >
                                     <View
                                         style={{
-                                            backgroundColor: "#d9d9d9",
                                             borderRadius: 5,
                                             justifyContent: "center",
                                             alignItems: "center",
@@ -471,13 +481,13 @@ const ProductDetails = ({ route, navigation }) => {
                                     >
                                         <Text
                                             style={{
-                                                fontSize: 11,
+                                                fontSize: 15,
                                                 padding: 3,
-                                                fontWeight: "700",
-                                                color: COLORS.secondary,
+                                                fontWeight: "bold",
+                                                color: "#ff8c00",
                                             }}
                                         >
-                                            {nutritions}
+                                            ★★★★★
                                         </Text>
                                     </View>
 
@@ -500,16 +510,16 @@ const ProductDetails = ({ route, navigation }) => {
                             </View>
                             <View
                                 style={{
-                                    borderBottomWidth: 0.6,
+                                    borderBottomWidth: 1,
                                     width: "100%",
-                                    borderBottomColor: COLORS.lightGray5,
+                                    borderBottomColor: COLORS.lightGray3,
                                     paddingTop: 10,
                                 }}
                             ></View>
                         </View>
                     </TouchableNativeFeedback>
                 </View>
-                <View style={{ height: 5000 }}></View>
+                <View style={{ height: 80 }}></View>
             </ScrollView>
         );
     };
