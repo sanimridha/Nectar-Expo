@@ -261,9 +261,10 @@ const ProductDetails = ({ route, navigation }) => {
                     </View>
                     <View
                         style={{
-                            height: 0.5,
+                            // height: 1,
+                            borderBottomWidth: 0.6,
                             width: "100%",
-                            backgroundColor: COLORS.secondary,
+                            borderBottomColor: COLORS.secondary,
                             marginTop: 10,
                         }}
                     ></View>
