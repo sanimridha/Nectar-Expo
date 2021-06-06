@@ -14,8 +14,9 @@ import { Feather } from "@expo/vector-icons";
 import { Entypo } from "@expo/vector-icons";
 import { Ionicons } from "@expo/vector-icons";
 import { AntDesign } from "@expo/vector-icons";
+import { MaterialIcons } from "@expo/vector-icons";
 
-const AccountScreen = () => {
+const AccountScreen = ({ navigation }) => {
     const renderBody = () => {
         return (
             <ScrollView>
@@ -463,6 +464,55 @@ const AccountScreen = () => {
                         ></View>
                     </View>
                 </TouchableNativeFeedback>
+                <View
+                    style={{
+                        backgroundColor: COLORS.lightGray3,
+                        height: 60,
+                        width: "90%",
+                        borderRadius: 20,
+                        justifyContent: "center",
+                        alignSelf: "center",
+                        marginTop: "10%",
+                        marginBottom: "10%",
+                    }}
+                >
+                    <TouchableNativeFeedback
+                        background={TouchableNativeFeedback.Ripple(
+                            "#ffb3b3",
+                            true
+                        )}
+                        onPress={() => {
+                            navigation.navigate("SigninScreen");
+                        }}
+                    >
+                        <View
+                            style={{
+                                flexDirection: "row",
+                                justifyContent: "center",
+                                alignItems: "center",
+                            }}
+                        >
+                            <View style={{ position: "absolute", left: 25 }}>
+                                <MaterialIcons
+                                    name="logout"
+                                    size={24}
+                                    color={COLORS.primary}
+                                />
+                            </View>
+                            <View style={{}}>
+                                <Text
+                                    style={{
+                                        fontSize: SIZES.width / 20,
+                                        fontWeight: "700",
+                                        color: COLORS.primary,
+                                    }}
+                                >
+                                    Log Out
+                                </Text>
+                            </View>
+                        </View>
+                    </TouchableNativeFeedback>
+                </View>
             </ScrollView>
         );
     };
