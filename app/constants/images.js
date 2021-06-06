@@ -22,6 +22,12 @@ const Cupsicum = require("../../assets/photos/Product/Cupsicum.png");
 const potato = require("../../assets/photos/Product/potato.png");
 const Rice = require("../../assets/photos/Product/Rice.png");
 const Pulses = require("../../assets/photos/Product/Pulses.png");
+const BakerySnacks = require("../../assets/photos/CategoryPhotos/BakerySnacks.png");
+const Beverages = require("../../assets/photos/CategoryPhotos/Beverages.png");
+const CookingOil = require("../../assets/photos/CategoryPhotos/CookingOil.png");
+const Eggs = require("../../assets/photos/CategoryPhotos/Eggs.png");
+const FrashFruits = require("../../assets/photos/CategoryPhotos/FrashFruits.png");
+const MeatandFish = require("../../assets/photos/CategoryPhotos/MeatandFish.png");
 
 export default {
     accepted,
@@ -48,4 +54,10 @@ export default {
     potato,
     Rice,
     Pulses,
+    BakerySnacks,
+    Beverages,
+    CookingOil,
+    Eggs,
+    FrashFruits,
+    MeatandFish,
 };
