@@ -10,6 +10,7 @@ import {
     Share,
     ScrollView,
     ColorPropType,
+    ViewPropTypes,
 } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import { COLORS, images, SIZES } from "../../constants";
@@ -19,6 +20,8 @@ import { Feather } from "@expo/vector-icons";
 
 const ProductDetails = ({ route, navigation }) => {
     const [count, setCount] = useState(1);
+    const [arrowNumber, setArrowNumber] = useState(1);
+    const [arrow, setArrow] = useState("chevron-left");
     const onShare = async () => {
         try {
             const result = await Share.share({
@@ -120,7 +123,7 @@ const ProductDetails = ({ route, navigation }) => {
                 >
                     <Image
                         source={image}
-                        resizeMode={"contain"}
+                        resizeMode={"stretch"}
                         fadeDuration={500}
                     />
                 </View>
@@ -273,10 +276,72 @@ const ProductDetails = ({ route, navigation }) => {
                             // height: 1,
                             borderBottomWidth: 0.6,
                             width: "100%",
-                            borderBottomColor: COLORS.secondary,
+                            borderBottomColor: COLORS.lightGray5,
                             marginTop: 10,
                         }}
                     ></View>
+                    <View style={{ paddingTop: 10 }}>
+                        <View
+                            style={{
+                                flexDirection: "row",
+                                justifyContent: "space-between",
+                                alignItems: "center",
+                            }}
+                        >
+                            <Text style={{ fontSize: 15, fontWeight: "700" }}>
+                                Product Detail
+                            </Text>
+                            <TouchableNativeFeedback
+                                background={TouchableNativeFeedback.Ripple(
+                                    COLORS.primary2,
+                                    true
+                                )}
+                                onPress={() => {
+                                    if (arrow == "chevron-left") {
+                                        setArrow("chevron-down");
+                                    }
+                                    if (arrow == "chevron-down") {
+                                        setArrow("chevron-left");
+                                    }
+                                }}
+                            >
+                                <View
+                                    style={{
+                                        justifyContent: "center",
+                                        alignItems: "center",
+                                    }}
+                                >
+                                    <Feather
+                                        name={arrow}
+                                        size={24}
+                                        color={COLORS.secondary}
+                                        style={{
+                                            alignSelf: "center",
+                                        }}
+                                    />
+                                </View>
+                            </TouchableNativeFeedback>
+                        </View>
+
+                        <View>
+                            <Text
+                                style={{
+                                    color: COLORS.secondary,
+                                }}
+                            >
+                                {arrow == "chevron-down" && description}
+                            </Text>
+                            <View
+                                style={{
+                                    borderBottomWidth: 0.6,
+                                    width: "100%",
+                                    borderBottomColor: COLORS.lightGray5,
+                                    paddingTop:
+                                        arrow == "chevron-down" ? 10 : null,
+                                }}
+                            ></View>
+                        </View>
+                    </View>
                 </View>
             </ScrollView>
         );
