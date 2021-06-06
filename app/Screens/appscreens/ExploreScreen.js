@@ -118,8 +118,8 @@ const ExploreScreen = () => {
                 id: 7,
                 image: images.FrashFruits,
                 name: "Frash Fruits & Vegetable",
-                color: "#EEF7F1",
-                borderColor: "#82C699",
+                color: "#ccddff",
+                borderColor: "#6699ff",
             },
             {
                 id: 8,
@@ -132,15 +132,15 @@ const ExploreScreen = () => {
                 id: 9,
                 image: images.MeatandFish,
                 name: "Meat & Fish",
-                color: "#EEF7F1",
-                borderColor: "#82C699",
+                color: "#e6fff9",
+                borderColor: "#80ffdf",
             },
             {
                 id: 10,
                 image: images.BakerySnacks,
                 name: "Bakery & Snacks",
-                color: "#EEF7F1",
-                borderColor: "#82C699",
+                color: "#ccccff",
+                borderColor: "#8080ff",
             },
         ];
         const renderItem = ({ item }) => {
