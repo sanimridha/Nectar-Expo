@@ -273,76 +273,88 @@ const ProductDetails = ({ route, navigation }) => {
                             </Text>
                         </View>
                     </View>
-                    <View
-                        style={{
-                            // height: 1,
-                            borderBottomWidth: 0.6,
-                            width: "100%",
-                            borderBottomColor: COLORS.lightGray5,
-                            marginTop: 10,
-                        }}
-                    ></View>
-                    <View style={{ paddingTop: 10 }}>
-                        <View
-                            style={{
-                                flexDirection: "row",
-                                justifyContent: "space-between",
-                                alignItems: "center",
+
+                    <View style={{ marginTop: 10 }}>
+                        <TouchableNativeFeedback
+                            background={TouchableNativeFeedback.Ripple(
+                                COLORS.lightGray5,
+                                false
+                            )}
+                            onPress={() => {
+                                if (arrow == "chevron-left") {
+                                    setArrow("chevron-down");
+                                }
+                                if (arrow == "chevron-down") {
+                                    setArrow("chevron-left");
+                                }
                             }}
                         >
-                            <Text style={{ fontSize: 16, fontWeight: "700" }}>
-                                Product Detail
-                            </Text>
-                            <TouchableNativeFeedback
-                                background={TouchableNativeFeedback.Ripple(
-                                    COLORS.primary2,
-                                    true
-                                )}
-                                onPress={() => {
-                                    if (arrow == "chevron-left") {
-                                        setArrow("chevron-down");
-                                    }
-                                    if (arrow == "chevron-down") {
-                                        setArrow("chevron-left");
-                                    }
-                                }}
-                            >
+                            <View>
                                 <View
                                     style={{
-                                        justifyContent: "center",
+                                        borderBottomWidth: 0.6,
+                                        width: "100%",
+                                        borderBottomColor: COLORS.lightGray5,
+                                    }}
+                                ></View>
+                                <View
+                                    style={{
+                                        flexDirection: "row",
+                                        justifyContent: "space-between",
                                         alignItems: "center",
+                                        paddingTop: 10,
                                     }}
                                 >
-                                    <Feather
-                                        name={arrow}
-                                        size={24}
-                                        color={"black"}
+                                    <Text
                                         style={{
-                                            alignSelf: "center",
+                                            fontSize: 16,
+                                            fontWeight: "700",
                                         }}
-                                    />
+                                    >
+                                        Product Detail
+                                    </Text>
+                                    <TouchableNativeFeedback>
+                                        <View
+                                            style={{
+                                                justifyContent: "center",
+                                                alignItems: "center",
+                                            }}
+                                        >
+                                            <Feather
+                                                name={arrow}
+                                                size={24}
+                                                color={"black"}
+                                                style={{
+                                                    alignSelf: "center",
+                                                }}
+                                            />
+                                        </View>
+                                    </TouchableNativeFeedback>
                                 </View>
-                            </TouchableNativeFeedback>
-                        </View>
 
-                        <View>
-                            <Text
-                                style={{
-                                    color: COLORS.secondary,
-                                }}
-                            >
-                                {arrow == "chevron-down" && description}
-                            </Text>
-                            <View
-                                style={{
-                                    borderBottomWidth: 0.6,
-                                    width: "100%",
-                                    borderBottomColor: COLORS.lightGray5,
-                                    paddingTop:
-                                        arrow == "chevron-down" ? 10 : null,
-                                }}
-                            ></View>
-                        </View>
+                                <View>
+                                    <Text
+                                        style={{
+                                            color: COLORS.secondary,
+                                        }}
+                                    >
+                                        {arrow == "chevron-down" && description}
+                                    </Text>
+                                    <View
+                                        style={{
+                                            borderBottomWidth: 0.6,
+                                            width: "100%",
+                                            borderBottomColor:
+                                                COLORS.lightGray5,
+                                            paddingTop:
+                                                arrow == "chevron-down"
+                                                    ? 10
+                                                    : null,
+                                        }}
+                                    ></View>
+                                </View>
+                            </View>
+                        </TouchableNativeFeedback>
                         <TouchableNativeFeedback
                             background={TouchableNativeFeedback.Ripple(
                                 COLORS.lightGray5
