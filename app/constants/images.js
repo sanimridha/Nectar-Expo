@@ -28,6 +28,7 @@ const CookingOil = require("../../assets/photos/CategoryPhotos/CookingOil.png");
 const Eggs = require("../../assets/photos/CategoryPhotos/Eggs.png");
 const FrashFruits = require("../../assets/photos/CategoryPhotos/FrashFruits.png");
 const MeatandFish = require("../../assets/photos/CategoryPhotos/MeatandFish.png");
+const user = require("../../assets/photos/user.png");
 
 export default {
     accepted,
@@ -60,4 +61,5 @@ export default {
     Eggs,
     FrashFruits,
     MeatandFish,
+    user,
 };
