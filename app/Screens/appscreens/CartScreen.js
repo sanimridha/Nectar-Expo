@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
     Image,
     ScrollView,
@@ -6,14 +6,18 @@ import {
     StyleSheet,
     Text,
     TouchableNativeFeedback,
+    TouchableOpacity,
     View,
+    Modal,
+    Alert,
 } from "react-native";
 import { COLORS, images, SIZES } from "../../constants";
 import { CustomButton } from "../../components";
-
+import { Ionicons } from "@expo/vector-icons";
 import { Entypo } from "@expo/vector-icons";
 
 const CartScreen = () => {
+    const [modalVisible, setModalVisible] = useState(false);
     const cartItems = [
         {
             id: 1,
@@ -79,6 +83,39 @@ const CartScreen = () => {
             price: 3.26,
         },
     ];
+    const renderModal = () => {
+        return (
+            <View style={{ flex: 1 }}>
+                <Modal
+                    animationType={"slide"}
+                    transparent={true}
+                    visible={modalVisible}
+                    onRequestClose={() => {
+                        Alert.alert("Checkout has been closed.");
+                    }}
+                >
+                    <View style={styles.centeredView}>
+                        <View style={styles.modalView}>
+                            <Text style={styles.modalText}>Hello World!</Text>
+
+                            <TouchableOpacity
+                                style={{
+                                    ...styles.openButton,
+                                    backgroundColor: "#2196F3",
+                                }}
+                                onPress={() => {
+                                    setModalVisible(!modalVisible);
+                                }}
+                            >
+                                <Text style={styles.textStyle}>Hide Modal</Text>
+                            </TouchableOpacity>
+                        </View>
+                    </View>
+                </Modal>
+            </View>
+        );
+    };
+
     const renderHeader = () => {
         return (
             <View
@@ -269,21 +306,53 @@ const CartScreen = () => {
                                             </View>
                                         </View>
                                     </View>
-                                    <View style={{ flexDirection: "row" }}>
-                                        <Text
+                                    <View
+                                        style={{
+                                            // height: "100%",
+                                            flexDirection: "column",
+                                        }}
+                                    >
+                                        <View
                                             style={{
-                                                fontSize: 16,
-                                                fontWeight: "700",
-                                                paddingRight: 5,
+                                                // height: 10,
+                                                // width: 30,
+                                                flex: 1,
+                                                justifyContent: "center",
+                                                alignSelf: "center",
                                             }}
                                         >
-                                            ${item.price}
-                                        </Text>
-                                        <Entypo
-                                            name="chevron-right"
-                                            size={24}
-                                            color="black"
-                                        />
+                                            <TouchableNativeFeedback
+                                                background={TouchableNativeFeedback.Ripple(
+                                                    COLORS.secondary,
+                                                    true
+                                                )}
+                                            >
+                                                <View
+                                                    style={{
+                                                        alignItems: "flex-end",
+                                                    }}
+                                                >
+                                                    <Ionicons
+                                                        name="ios-close"
+                                                        size={24}
+                                                        color={COLORS.secondary}
+                                                    />
+                                                </View>
+                                            </TouchableNativeFeedback>
+                                        </View>
+
+                                        <View style={{ marginTop: 30 }}>
+                                            <Text
+                                                style={{
+                                                    fontSize: 16,
+                                                    fontWeight: "700",
+                                                    paddingRight: 5,
+                                                    bottom: 10,
+                                                }}
+                                            >
+                                                ${item.price}
+                                            </Text>
+                                        </View>
                                     </View>
                                 </View>
                                 <View
@@ -308,10 +377,45 @@ const CartScreen = () => {
                         paddingBottom: "10%",
                     }}
                 >
-                    <CustomButton
-                        btnTitle={"Add all to Cart"}
-                        color={COLORS.primary}
-                    />
+                    <TouchableOpacity
+                        activeOpacity={0.5}
+                        style={{
+                            height: 60,
+                            width: "85%",
+                            backgroundColor: COLORS.primary,
+                            borderRadius: 15,
+                            justifyContent: "center",
+                            alignItems: "center",
+                            flexDirection: "row",
+                        }}
+                        onPress={() => {
+                            renderModal();
+                            setModalVisible(true);
+                        }}
+                    >
+                        <Text
+                            style={{
+                                fontSize: 20,
+                                fontWeight: "bold",
+                                color: COLORS.white,
+                            }}
+                        >
+                            Go to Checkout
+                        </Text>
+                        <View
+                            style={{
+                                backgroundColor: "#489E67",
+                                padding: 5,
+                                borderRadius: 8,
+                                position: "absolute",
+                                right: 15,
+                            }}
+                        >
+                            <Text style={{ color: COLORS.white, fontSize: 12 }}>
+                                $12.96
+                            </Text>
+                        </View>
+                    </TouchableOpacity>
                 </View>
             </ScrollView>
         );
@@ -327,4 +431,41 @@ const CartScreen = () => {
 
 export default CartScreen;
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+    centeredView: {
+        flex: 1,
+        justifyContent: "center",
+        alignItems: "center",
+        marginTop: 22,
+    },
+    modalView: {
+        margin: 20,
+        backgroundColor: "white",
+        borderRadius: 20,
+        padding: 35,
+        alignItems: "center",
+        shadowColor: "#000",
+        shadowOffset: {
+            width: 0,
+            height: 2,
+        },
+        shadowOpacity: 0.25,
+        shadowRadius: 3.84,
+        elevation: 5,
+    },
+    openButton: {
+        backgroundColor: "#F194FF",
+        borderRadius: 20,
+        padding: 10,
+        elevation: 2,
+    },
+    textStyle: {
+        color: "white",
+        fontWeight: "bold",
+        textAlign: "center",
+    },
+    modalText: {
+        marginBottom: 15,
+        textAlign: "center",
+    },
+});
