@@ -10,6 +10,7 @@ import AccountScreen from "./appscreens/AccountScreen";
 import CartScreen from "./appscreens/CartScreen";
 import ExploreScreen from "./appscreens/ExploreScreen";
 import FavouriteScreen from "./appscreens/FavouriteScreen";
+import FilterScreen from "./appscreens/FilterScreen";
 
 export {
     LoginScreen,
