@@ -94,33 +94,6 @@ const CartScreen = () => {
                     paddingTop: "4%",
                 }}
             >
-                <Modal
-                    animationType="slide"
-                    transparent={true}
-                    visible={modalVisible}
-                    onRequestClose={() => {
-                        Alert.alert("Modal has been closed.");
-                    }}
-                >
-                    <View style={styles.centeredView}>
-                        <View style={styles.modalView}>
-                            <Text style={styles.modalText}>Hello World!</Text>
-
-                            <TouchableOpacity
-                                style={{
-                                    ...styles.openButton,
-                                    backgroundColor: "#2196F3",
-                                }}
-                                onPress={() => {
-                                    setModalVisible(!modalVisible);
-                                }}
-                            >
-                                <Text style={styles.textStyle}>Hide Modal</Text>
-                            </TouchableOpacity>
-                        </View>
-                    </View>
-                </Modal>
-
                 <View>
                     <Text style={{ fontSize: 20, fontWeight: "700" }}>
                         My Cart
@@ -416,6 +389,32 @@ const CartScreen = () => {
 
     return (
         <View style={{ flex: 1, backgroundColor: "white" }}>
+            <Modal
+                animationType="slide"
+                transparent={true}
+                visible={modalVisible}
+                onRequestClose={() => {
+                    Alert.alert("Modal has been closed.");
+                }}
+            >
+                <View style={styles.centeredView}>
+                    <View style={styles.modalView}>
+                        <Text style={styles.modalText}>Hello World!</Text>
+
+                        <TouchableOpacity
+                            style={{
+                                ...styles.openButton,
+                                backgroundColor: "#2196F3",
+                            }}
+                            onPress={() => {
+                                setModalVisible(!modalVisible);
+                            }}
+                        >
+                            <Text style={styles.textStyle}>Hide Modal</Text>
+                        </TouchableOpacity>
+                    </View>
+                </View>
+            </Modal>
             {renderHeader()}
             {renderBody()}
         </View>
@@ -427,12 +426,14 @@ export default CartScreen;
 const styles = StyleSheet.create({
     centeredView: {
         flex: 1,
-        justifyContent: "center",
-        alignItems: "center",
+        justifyContent: "flex-end",
+        width: SIZES.width,
         marginTop: 22,
     },
     modalView: {
-        margin: 20,
+        height: "50%",
+        // width: SIZES.width,
+        // margin: 20,
         backgroundColor: "white",
         borderRadius: 20,
         padding: 35,
