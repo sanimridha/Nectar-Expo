@@ -18,7 +18,7 @@ const CustomButton = ({
             activeOpacity={0.5}
             style={{
                 marginTop: "5%",
-                height: SIZES.height / 13,
+                height: 60,
                 width: "85%",
                 backgroundColor: color,
                 justifyContent: "center",
@@ -37,7 +37,7 @@ const CustomButton = ({
             <View style={{ padding: 25 }}>
                 <Text
                     style={{
-                        fontSize: SIZES.width / 20,
+                        fontSize: 20,
                         fontWeight: "700",
                         color: COLORS.white,
                     }}

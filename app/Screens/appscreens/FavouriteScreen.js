@@ -10,6 +10,8 @@ import {
     View,
 } from "react-native";
 import { COLORS, images, SIZES } from "../../constants";
+import { CustomButton } from "../../components";
+
 import { Entypo } from "@expo/vector-icons";
 import { Feather } from "@expo/vector-icons";
 
@@ -107,89 +109,6 @@ const FavouriteScreen = () => {
         );
     };
     const renderBody = () => {
-        const renderItem = ({ item }) => {
-            return (
-                <View
-                    key={item.id}
-                    style={{
-                        width: SIZES.width,
-                    }}
-                >
-                    <TouchableNativeFeedback
-                        background={TouchableNativeFeedback.Ripple(
-                            COLORS.lightGray5,
-                            false
-                        )}
-                    >
-                        <View>
-                            <View
-                                style={{
-                                    padding: "7.5%",
-                                    flexDirection: "row",
-                                    justifyContent: "space-between",
-                                    alignItems: "center",
-                                }}
-                            >
-                                <View style={{ flexDirection: "row" }}>
-                                    <Image
-                                        source={item.image}
-                                        resizeMode={"contain"}
-                                        style={{ height: 50, width: 80 }}
-                                    />
-                                    <View
-                                        style={{
-                                            flexDirection: "column",
-                                            paddingLeft: 15,
-                                        }}
-                                    >
-                                        <Text
-                                            style={{
-                                                fontSize: 16,
-                                                fontWeight: "700",
-                                            }}
-                                        >
-                                            {item.name}
-                                        </Text>
-                                        <Text
-                                            style={{ color: COLORS.secondary }}
-                                        >
-                                            {item.quantity}
-                                        </Text>
-                                    </View>
-                                </View>
-                                <View style={{ flexDirection: "row" }}>
-                                    <Text
-                                        style={{
-                                            fontSize: 16,
-                                            fontWeight: "700",
-                                            paddingRight: 5,
-                                        }}
-                                    >
-                                        ${item.price}
-                                    </Text>
-                                    <Entypo
-                                        name="chevron-right"
-                                        size={24}
-                                        color="black"
-                                    />
-                                </View>
-                            </View>
-                            <View
-                                style={{
-                                    height: 1,
-                                    width: "90%",
-                                    backgroundColor: COLORS.lightGray3,
-                                    alignSelf: "center",
-                                    position: "absolute",
-                                    bottom: 0,
-                                }}
-                            ></View>
-                        </View>
-                    </TouchableNativeFeedback>
-                </View>
-            );
-        };
-
         return (
             <ScrollView style={{ flex: 1 }}>
                 {/* <FlatList data={favouriteItems} renderItem={renderItem} /> */}
@@ -282,11 +201,16 @@ const FavouriteScreen = () => {
                 })}
                 <View
                     style={{
-                        height: 50,
-                        backgroundColor: "red",
+                        paddingTop: "10%",
+                        justifyContent: "center",
+                        alignItems: "center",
+                        paddingBottom: "10%",
                     }}
                 >
-                    <Text>Add all to Cart</Text>
+                    <CustomButton
+                        btnTitle={"Add all to Cart"}
+                        color={COLORS.primary}
+                    />
                 </View>
             </ScrollView>
         );
