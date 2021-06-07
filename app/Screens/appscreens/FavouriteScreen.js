@@ -1,9 +1,84 @@
 import React from "react";
-import { ScrollView, StatusBar, StyleSheet, Text, View } from "react-native";
-import { COLORS, SIZES } from "../../constants";
+import {
+    FlatList,
+    Image,
+    ScrollView,
+    StatusBar,
+    StyleSheet,
+    Text,
+    TouchableNativeFeedback,
+    View,
+} from "react-native";
+import { COLORS, images, SIZES } from "../../constants";
+import { Entypo } from "@expo/vector-icons";
 import { Feather } from "@expo/vector-icons";
 
 const FavouriteScreen = () => {
+    const favouriteItems = [
+        {
+            id: 1,
+            name: "Banana",
+            image: images.banana,
+            quantity: "12kg, Price",
+            price: 3.26,
+        },
+        {
+            id: 2,
+            name: "Apple",
+            image: images.apple,
+            quantity: "2kg, Price",
+            price: 3.56,
+        },
+        {
+            id: 3,
+            name: "Meat",
+            image: images.MeatandFish,
+            quantity: "12kg, Price",
+            price: 12.26,
+        },
+        {
+            id: 4,
+            name: "capsicum",
+            image: images.Cupsicum,
+            quantity: "2kg, Price",
+            price: 5.26,
+        },
+        {
+            id: 5,
+            name: "Sprite Can",
+            image: images.Sprite,
+            quantity: "325ml, Price",
+            price: 1.26,
+        },
+        {
+            id: 6,
+            name: "Organic Ginger",
+            image: images.Eggs,
+            quantity: "12ps, Price",
+            price: 3.26,
+        },
+        {
+            id: 7,
+            name: "capsicum",
+            image: images.Cupsicum,
+            quantity: "2kg, Price",
+            price: 5.26,
+        },
+        {
+            id: 8,
+            name: "Sprite Can",
+            image: images.Sprite,
+            quantity: "325ml, Price",
+            price: 1.26,
+        },
+        {
+            id: 9,
+            name: "Organic Ginger",
+            image: images.Eggs,
+            quantity: "12ps, Price",
+            price: 3.26,
+        },
+    ];
     const renderHeader = () => {
         return (
             <View
@@ -24,7 +99,7 @@ const FavouriteScreen = () => {
                     style={{
                         marginTop: 15,
                         height: 1,
-                        backgroundColor: COLORS.lightGray5,
+                        backgroundColor: COLORS.lightGray3,
                         width: SIZES.width,
                     }}
                 ></View>
@@ -32,9 +107,187 @@ const FavouriteScreen = () => {
         );
     };
     const renderBody = () => {
+        const renderItem = ({ item }) => {
+            return (
+                <View
+                    key={item.id}
+                    style={{
+                        width: SIZES.width,
+                    }}
+                >
+                    <TouchableNativeFeedback
+                        background={TouchableNativeFeedback.Ripple(
+                            COLORS.lightGray5,
+                            false
+                        )}
+                    >
+                        <View>
+                            <View
+                                style={{
+                                    padding: "7.5%",
+                                    flexDirection: "row",
+                                    justifyContent: "space-between",
+                                    alignItems: "center",
+                                }}
+                            >
+                                <View style={{ flexDirection: "row" }}>
+                                    <Image
+                                        source={item.image}
+                                        resizeMode={"contain"}
+                                        style={{ height: 50, width: 80 }}
+                                    />
+                                    <View
+                                        style={{
+                                            flexDirection: "column",
+                                            paddingLeft: 15,
+                                        }}
+                                    >
+                                        <Text
+                                            style={{
+                                                fontSize: 16,
+                                                fontWeight: "700",
+                                            }}
+                                        >
+                                            {item.name}
+                                        </Text>
+                                        <Text
+                                            style={{ color: COLORS.secondary }}
+                                        >
+                                            {item.quantity}
+                                        </Text>
+                                    </View>
+                                </View>
+                                <View style={{ flexDirection: "row" }}>
+                                    <Text
+                                        style={{
+                                            fontSize: 16,
+                                            fontWeight: "700",
+                                            paddingRight: 5,
+                                        }}
+                                    >
+                                        ${item.price}
+                                    </Text>
+                                    <Entypo
+                                        name="chevron-right"
+                                        size={24}
+                                        color="black"
+                                    />
+                                </View>
+                            </View>
+                            <View
+                                style={{
+                                    height: 1,
+                                    width: "90%",
+                                    backgroundColor: COLORS.lightGray3,
+                                    alignSelf: "center",
+                                    position: "absolute",
+                                    bottom: 0,
+                                }}
+                            ></View>
+                        </View>
+                    </TouchableNativeFeedback>
+                </View>
+            );
+        };
+
         return (
-            <ScrollView>
-                <View style={{ height: 5000 }}></View>
+            <ScrollView style={{ flex: 1 }}>
+                {/* <FlatList data={favouriteItems} renderItem={renderItem} /> */}
+                {favouriteItems.map((item, key) => {
+                    return (
+                        <View
+                            key={key}
+                            style={{
+                                width: SIZES.width,
+                            }}
+                        >
+                            <TouchableNativeFeedback
+                                background={TouchableNativeFeedback.Ripple(
+                                    COLORS.lightGray5,
+                                    false
+                                )}
+                            >
+                                <View>
+                                    <View
+                                        style={{
+                                            padding: "7.5%",
+                                            flexDirection: "row",
+                                            justifyContent: "space-between",
+                                            alignItems: "center",
+                                        }}
+                                    >
+                                        <View style={{ flexDirection: "row" }}>
+                                            <Image
+                                                source={item.image}
+                                                resizeMode={"contain"}
+                                                style={{
+                                                    height: 50,
+                                                    width: 80,
+                                                }}
+                                            />
+                                            <View
+                                                style={{
+                                                    flexDirection: "column",
+                                                    paddingLeft: 15,
+                                                }}
+                                            >
+                                                <Text
+                                                    style={{
+                                                        fontSize: 16,
+                                                        fontWeight: "700",
+                                                    }}
+                                                >
+                                                    {item.name}
+                                                </Text>
+                                                <Text
+                                                    style={{
+                                                        color: COLORS.secondary,
+                                                    }}
+                                                >
+                                                    {item.quantity}
+                                                </Text>
+                                            </View>
+                                        </View>
+                                        <View style={{ flexDirection: "row" }}>
+                                            <Text
+                                                style={{
+                                                    fontSize: 16,
+                                                    fontWeight: "700",
+                                                    paddingRight: 5,
+                                                }}
+                                            >
+                                                ${item.price}
+                                            </Text>
+                                            <Entypo
+                                                name="chevron-right"
+                                                size={24}
+                                                color="black"
+                                            />
+                                        </View>
+                                    </View>
+                                    <View
+                                        style={{
+                                            height: 1,
+                                            width: "90%",
+                                            backgroundColor: COLORS.lightGray3,
+                                            alignSelf: "center",
+                                            position: "absolute",
+                                            bottom: 0,
+                                        }}
+                                    ></View>
+                                </View>
+                            </TouchableNativeFeedback>
+                        </View>
+                    );
+                })}
+                <View
+                    style={{
+                        height: 50,
+                        backgroundColor: "red",
+                    }}
+                >
+                    <Text>Add all to Cart</Text>
+                </View>
             </ScrollView>
         );
     };
@@ -69,8 +322,8 @@ const FavouriteScreen = () => {
     return (
         <View style={{ flex: 1, backgroundColor: COLORS.white }}>
             {renderHeader()}
-            {/* {renderBody()} */}
-            {NoItemFound()}
+            {renderBody()}
+            {/* {NoItemFound()} */}
         </View>
     );
 };

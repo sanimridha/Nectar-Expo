@@ -19,6 +19,7 @@ const apple = require("../../assets/photos/Product/apple.png");
 const banana = require("../../assets/photos/Product/banana.png");
 const Beef = require("../../assets/photos/Product/Beef.png");
 const Cupsicum = require("../../assets/photos/Product/Cupsicum.png");
+const Sprite = require("../../assets/photos/Sprite.png");
 const potato = require("../../assets/photos/Product/potato.png");
 const Rice = require("../../assets/photos/Product/Rice.png");
 const Pulses = require("../../assets/photos/Product/Pulses.png");
@@ -48,6 +49,7 @@ export default {
     banner,
     banner2,
     banner3,
+    Sprite,
     apple,
     banana,
     Beef,
