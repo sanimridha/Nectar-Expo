@@ -15,7 +15,7 @@ import { CustomButton } from "../../components";
 import { Entypo } from "@expo/vector-icons";
 import { Feather } from "@expo/vector-icons";
 
-const FavouriteScreen = () => {
+const FavouriteScreen = ({ navigation }) => {
     const favouriteItems = [
         {
             id: 1,
@@ -208,6 +208,9 @@ const FavouriteScreen = () => {
                     }}
                 >
                     <CustomButton
+                        onPress={() => {
+                            navigation.navigate("Cart");
+                        }}
                         btnTitle={"Add all to Cart"}
                         color={COLORS.primary}
                     />
