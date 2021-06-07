@@ -83,15 +83,23 @@ const CartScreen = () => {
             price: 3.26,
         },
     ];
-    const renderModal = () => {
+    const renderHeader = () => {
         return (
-            <View style={{ flex: 1 }}>
+            <View
+                style={{
+                    marginTop: StatusBar.currentHeight,
+                    backgroundColor: COLORS.white,
+                    justifyContent: "center",
+                    alignItems: "center",
+                    paddingTop: "4%",
+                }}
+            >
                 <Modal
-                    animationType={"slide"}
+                    animationType="slide"
                     transparent={true}
                     visible={modalVisible}
                     onRequestClose={() => {
-                        Alert.alert("Checkout has been closed.");
+                        Alert.alert("Modal has been closed.");
                     }}
                 >
                     <View style={styles.centeredView}>
@@ -112,21 +120,7 @@ const CartScreen = () => {
                         </View>
                     </View>
                 </Modal>
-            </View>
-        );
-    };
 
-    const renderHeader = () => {
-        return (
-            <View
-                style={{
-                    marginTop: StatusBar.currentHeight,
-                    backgroundColor: COLORS.white,
-                    justifyContent: "center",
-                    alignItems: "center",
-                    paddingTop: "4%",
-                }}
-            >
                 <View>
                     <Text style={{ fontSize: 20, fontWeight: "700" }}>
                         My Cart
@@ -389,7 +383,6 @@ const CartScreen = () => {
                             flexDirection: "row",
                         }}
                         onPress={() => {
-                            renderModal();
                             setModalVisible(true);
                         }}
                     >
