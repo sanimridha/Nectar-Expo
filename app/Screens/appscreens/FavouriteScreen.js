@@ -94,7 +94,7 @@ const FavouriteScreen = () => {
             >
                 <View>
                     <Text style={{ fontSize: 20, fontWeight: "700" }}>
-                        Favoruite
+                        Favourite
                     </Text>
                 </View>
                 <View
