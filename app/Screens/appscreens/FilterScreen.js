@@ -14,7 +14,7 @@ import { COLORS, SIZES } from "../../constants";
 import { CustomButton } from "../../components";
 import { Ionicons } from "@expo/vector-icons";
 
-const FilterScreen = () => {
+const FilterScreen = ({ navigation }) => {
     const [modalVisible, setModalVisible] = useState(true);
     const [isSelected, setSelection] = useState(false);
     const renderHeader = () => {
@@ -72,6 +72,7 @@ const FilterScreen = () => {
                                         true
                                     )}
                                     onPress={() => {
+                                        navigation.goBack();
                                         setModalVisible(!modalVisible);
                                     }}
                                 >
