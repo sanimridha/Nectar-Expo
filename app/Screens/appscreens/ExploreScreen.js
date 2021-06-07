@@ -17,7 +17,7 @@ import { Ionicons } from "@expo/vector-icons";
 import { Entypo } from "@expo/vector-icons";
 import useColorScheme from "react-native/Libraries/Utilities/useColorScheme";
 
-const ExploreScreen = () => {
+const ExploreScreen = ({ navigation }) => {
     const headerContent = () => {
         return (
             <View
@@ -166,6 +166,9 @@ const ExploreScreen = () => {
                             COLORS.primary2,
                             true
                         )}
+                        onPress={() => {
+                            navigation.navigate("FilterScreen");
+                        }}
                     >
                         <View
                             style={{
