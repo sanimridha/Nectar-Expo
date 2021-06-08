@@ -167,7 +167,7 @@ const ExploreScreen = ({ navigation }) => {
                             true
                         )}
                         onPress={() => {
-                            navigation.navigate("FilterScreen");
+                            navigation.navigate("CategoryDetailScreen");
                         }}
                     >
                         <View
