@@ -167,7 +167,7 @@ const ExploreScreen = ({ navigation }) => {
                             true
                         )}
                         onPress={() => {
-                            navigation.navigate("CategoryDetailScreen");
+                            navigation.navigate("CategoryDetailScreen", item);
                         }}
                     >
                         <View
