@@ -11,6 +11,7 @@ const CustomButton = ({
     iconColor,
     btnTitle,
     onPress,
+    txtColor,
 }) => {
     return (
         <TouchableOpacity
@@ -39,7 +40,7 @@ const CustomButton = ({
                     style={{
                         fontSize: 20,
                         fontWeight: "700",
-                        color: COLORS.white,
+                        color: txtColor ? txtColor : COLORS.white,
                     }}
                 >
                     {btnTitle}

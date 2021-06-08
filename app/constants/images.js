@@ -31,6 +31,9 @@ const FrashFruits = require("../../assets/photos/CategoryPhotos/FrashFruits.png"
 const MeatandFish = require("../../assets/photos/CategoryPhotos/MeatandFish.png");
 const user = require("../../assets/photos/user.png");
 const card = require("../../assets/photos/card.png");
+const fullBackground = require("../../assets/photos/fullBackground.jpg");
+const success = require("../../assets/photos/success.png");
+const OrderFaild = require("../../assets/photos/OrderFaild.png");
 
 export default {
     accepted,
@@ -66,4 +69,7 @@ export default {
     MeatandFish,
     user,
     card,
+    fullBackground,
+    success,
+    OrderFaild,
 };

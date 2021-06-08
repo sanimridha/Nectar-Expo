@@ -10,6 +10,7 @@ import {
     View,
     Modal,
     Alert,
+    ImageBackground,
 } from "react-native";
 import { COLORS, images, SIZES } from "../../constants";
 import { CustomButton } from "../../components";
@@ -19,6 +20,7 @@ import { Colors } from "react-native/Libraries/NewAppScreen";
 
 const CartScreen = () => {
     const [modalVisible, setModalVisible] = useState(false);
+    const [succesModalVisible, setsuccesModalVisible] = useState(false);
     const cartItems = [
         {
             id: 1,
@@ -700,11 +702,115 @@ const CartScreen = () => {
                                 }}
                             >
                                 <CustomButton
+                                    onPress={() => {
+                                        setsuccesModalVisible(true);
+                                    }}
                                     btnTitle={"Place Order"}
                                     color={COLORS.primary}
                                 />
                             </View>
                         </ScrollView>
+                    </View>
+                </View>
+            </Modal>
+            <Modal
+                animationType={"fade"}
+                transparent={true}
+                visible={succesModalVisible}
+                onRequestClose={() => {
+                    Alert.alert("Modal has been closed.");
+                }}
+            >
+                <View style={{ flex: 1, backgroundColor: "red" }}>
+                    <View style={{ height: SIZES.height }}>
+                        <ImageBackground
+                            source={images.fullBackground}
+                            resizeMode={"cover"}
+                            style={{
+                                height: SIZES.height,
+                                width: SIZES.width,
+                            }}
+                        >
+                            <View
+                                style={{
+                                    flex: 1,
+                                    // justifyContent: "center",
+                                    alignItems: "center",
+                                    flexDirection: "column",
+                                    justifyContent: "space-between",
+                                }}
+                            >
+                                <Image
+                                    fadeDuration={200}
+                                    source={images.success}
+                                    resizeMode={"center"}
+                                    style={{
+                                        height: 300,
+                                        width: "100%",
+                                        // backgroundColor: "red",
+                                        // position: "absolute",
+                                        // top: 20,
+                                        right: 15,
+                                    }}
+                                />
+                                <View
+                                    style={{
+                                        width: "70%",
+                                        marginTop: 20,
+                                        justifyContent: "center",
+                                    }}
+                                >
+                                    <Text
+                                        style={{
+                                            fontSize: 25,
+                                            fontWeight: "bold",
+                                            textAlign: "center",
+                                        }}
+                                    >
+                                        Your order has been accepted
+                                    </Text>
+                                    <Text
+                                        style={{
+                                            fontSize: 14,
+                                            color: COLORS.secondary,
+                                            // fontWeight: "bold",
+                                            textAlign: "center",
+                                            padding: "4%",
+                                        }}
+                                    >
+                                        Your items has been placcd and is on
+                                        it’s way to being processed{" "}
+                                    </Text>
+                                </View>
+                                <View
+                                    style={{
+                                        width: SIZES.width,
+                                        alignItems: "center",
+                                        paddingBottom: 20,
+                                    }}
+                                >
+                                    <CustomButton
+                                        btnTitle={"Track Order"}
+                                        color={COLORS.primary}
+                                    />
+                                    <TouchableOpacity
+                                        style={{ marginTop: "4%", height: 30 }}
+                                        onPress={() => {
+                                            setsuccesModalVisible(false);
+                                        }}
+                                    >
+                                        <Text
+                                            style={{
+                                                fontSize: 20,
+                                                fontWeight: "bold",
+                                            }}
+                                        >
+                                            Back to home
+                                        </Text>
+                                    </TouchableOpacity>
+                                </View>
+                            </View>
+                        </ImageBackground>
                     </View>
                 </View>
             </Modal>
