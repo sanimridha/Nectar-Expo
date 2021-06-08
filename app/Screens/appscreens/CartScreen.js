@@ -15,6 +15,7 @@ import { COLORS, images, SIZES } from "../../constants";
 import { CustomButton } from "../../components";
 import { Ionicons } from "@expo/vector-icons";
 import { Entypo } from "@expo/vector-icons";
+import { Colors } from "react-native/Libraries/NewAppScreen";
 
 const CartScreen = () => {
     const [modalVisible, setModalVisible] = useState(false);
@@ -88,7 +89,7 @@ const CartScreen = () => {
             <View
                 style={{
                     marginTop: StatusBar.currentHeight,
-                    backgroundColor: COLORS.white,
+                    backgroundColor: modalVisible ? COLORS.lightGray3 : "white",
                     justifyContent: "center",
                     alignItems: "center",
                     paddingTop: "4%",
@@ -112,7 +113,12 @@ const CartScreen = () => {
     };
     const renderBody = () => {
         return (
-            <ScrollView style={{ flex: 1 }}>
+            <ScrollView
+                style={{
+                    flex: 1,
+                    backgroundColor: modalVisible ? COLORS.lightGray3 : "white",
+                }}
+            >
                 {cartItems.map((item, key) => {
                     return (
                         <View
@@ -388,7 +394,12 @@ const CartScreen = () => {
     };
 
     return (
-        <View style={{ flex: 1, backgroundColor: "white" }}>
+        <View
+            style={{
+                flex: 1,
+                backgroundColor: modalVisible ? COLORS.lightGray3 : "white",
+            }}
+        >
             <Modal
                 animationType="slide"
                 transparent={true}
@@ -399,19 +410,301 @@ const CartScreen = () => {
             >
                 <View style={styles.centeredView}>
                     <View style={styles.modalView}>
-                        <Text style={styles.modalText}>Hello World!</Text>
-
-                        <TouchableOpacity
+                        <View
                             style={{
-                                ...styles.openButton,
-                                backgroundColor: "#2196F3",
-                            }}
-                            onPress={() => {
-                                setModalVisible(!modalVisible);
+                                flexDirection: "row",
+                                alignItems: "center",
+                                justifyContent: "space-between",
+                                padding: "4%",
                             }}
                         >
-                            <Text style={styles.textStyle}>Hide Modal</Text>
-                        </TouchableOpacity>
+                            <Text style={{ fontSize: 25, fontWeight: "600" }}>
+                                Checkout
+                            </Text>
+                            <TouchableNativeFeedback
+                                background={TouchableNativeFeedback.Ripple(
+                                    COLORS.lightGray5,
+                                    true
+                                )}
+                                onPress={() => {
+                                    setModalVisible(false);
+                                }}
+                            >
+                                <View>
+                                    <Ionicons
+                                        name="close"
+                                        size={30}
+                                        color="black"
+                                    />
+                                </View>
+                            </TouchableNativeFeedback>
+                        </View>
+                        <View
+                            style={{
+                                height: 1,
+                                width: SIZES.width,
+                                backgroundColor: COLORS.lightGray3,
+                            }}
+                        ></View>
+                        {/*---------------- options ------------------ */}
+                        <ScrollView>
+                            <TouchableNativeFeedback
+                                background={TouchableNativeFeedback.Ripple(
+                                    COLORS.lightGray5
+                                )}
+                            >
+                                <View>
+                                    <View
+                                        style={{
+                                            // marginTop: 10,
+                                            flexDirection: "row",
+                                            justifyContent: "space-between",
+                                            padding: "4%",
+                                        }}
+                                    >
+                                        <View
+                                            style={{
+                                                flexDirection: "row",
+                                            }}
+                                        >
+                                            <Text
+                                                style={{
+                                                    fontSize: 15,
+                                                    fontWeight: "700",
+                                                    color: COLORS.secondary,
+                                                    // paddingLeft: 30,
+                                                }}
+                                            >
+                                                Delivery
+                                            </Text>
+                                        </View>
+                                        <View
+                                            style={{
+                                                flexDirection: "row",
+                                            }}
+                                        >
+                                            <Text style={{ fontSize: 15 }}>
+                                                Select Method
+                                            </Text>
+                                            <Entypo
+                                                name="chevron-right"
+                                                size={24}
+                                                color="black"
+                                            />
+                                        </View>
+                                    </View>
+                                    <View
+                                        style={{
+                                            height: 1,
+                                            backgroundColor: COLORS.lightGray3,
+                                            width: SIZES.width,
+                                        }}
+                                    ></View>
+                                </View>
+                            </TouchableNativeFeedback>
+                            <TouchableNativeFeedback
+                                background={TouchableNativeFeedback.Ripple(
+                                    COLORS.lightGray5
+                                )}
+                            >
+                                <View>
+                                    <View
+                                        style={{
+                                            // marginTop: 10,
+                                            flexDirection: "row",
+                                            justifyContent: "space-between",
+                                            padding: "4%",
+                                        }}
+                                    >
+                                        <View
+                                            style={{
+                                                flexDirection: "row",
+                                            }}
+                                        >
+                                            <Text
+                                                style={{
+                                                    fontSize: 15,
+                                                    fontWeight: "700",
+                                                    color: COLORS.secondary,
+                                                    // paddingLeft: 30,
+                                                }}
+                                            >
+                                                Payment
+                                            </Text>
+                                        </View>
+                                        <View
+                                            style={{
+                                                flexDirection: "row",
+                                                alignItems: "center",
+                                            }}
+                                        >
+                                            <Image
+                                                source={images.card}
+                                                // resizeMode={"stretch"}
+                                                style={{
+                                                    height: 20,
+                                                    width: 30,
+                                                }}
+                                            />
+                                            <Entypo
+                                                name="chevron-right"
+                                                size={24}
+                                                color="black"
+                                            />
+                                        </View>
+                                    </View>
+                                    <View
+                                        style={{
+                                            height: 1,
+                                            backgroundColor: COLORS.lightGray3,
+                                            width: SIZES.width,
+                                        }}
+                                    ></View>
+                                </View>
+                            </TouchableNativeFeedback>
+                            <TouchableNativeFeedback
+                                background={TouchableNativeFeedback.Ripple(
+                                    COLORS.lightGray5
+                                )}
+                            >
+                                <View>
+                                    <View
+                                        style={{
+                                            // marginTop: 10,
+                                            flexDirection: "row",
+                                            justifyContent: "space-between",
+                                            padding: "4%",
+                                        }}
+                                    >
+                                        <View
+                                            style={{
+                                                flexDirection: "row",
+                                            }}
+                                        >
+                                            <Text
+                                                style={{
+                                                    fontSize: 15,
+                                                    fontWeight: "700",
+                                                    color: COLORS.secondary,
+                                                    // paddingLeft: 30,
+                                                }}
+                                            >
+                                                Promo Code
+                                            </Text>
+                                        </View>
+                                        <View
+                                            style={{
+                                                flexDirection: "row",
+                                            }}
+                                        >
+                                            <Text style={{ fontSize: 15 }}>
+                                                Pick discount
+                                            </Text>
+                                            <Entypo
+                                                name="chevron-right"
+                                                size={24}
+                                                color="black"
+                                            />
+                                        </View>
+                                    </View>
+                                    <View
+                                        style={{
+                                            height: 1,
+                                            backgroundColor: COLORS.lightGray3,
+                                            width: SIZES.width,
+                                        }}
+                                    ></View>
+                                </View>
+                            </TouchableNativeFeedback>
+                            <TouchableNativeFeedback
+                                background={TouchableNativeFeedback.Ripple(
+                                    COLORS.lightGray5
+                                )}
+                            >
+                                <View>
+                                    <View
+                                        style={{
+                                            // marginTop: 10,
+                                            flexDirection: "row",
+                                            justifyContent: "space-between",
+                                            padding: "4%",
+                                        }}
+                                    >
+                                        <View
+                                            style={{
+                                                flexDirection: "row",
+                                            }}
+                                        >
+                                            <Text
+                                                style={{
+                                                    fontSize: 15,
+                                                    fontWeight: "700",
+                                                    color: COLORS.secondary,
+                                                    // paddingLeft: 30,
+                                                }}
+                                            >
+                                                Total Cost
+                                            </Text>
+                                        </View>
+                                        <View
+                                            style={{
+                                                flexDirection: "row",
+                                            }}
+                                        >
+                                            <Text
+                                                style={{
+                                                    fontSize: 16,
+                                                    fontWeight: "bold",
+                                                }}
+                                            >
+                                                $13.97
+                                            </Text>
+                                            <Entypo
+                                                name="chevron-right"
+                                                size={24}
+                                                color="black"
+                                            />
+                                        </View>
+                                    </View>
+                                    <View
+                                        style={{
+                                            height: 1,
+                                            backgroundColor: COLORS.lightGray3,
+                                            width: SIZES.width,
+                                        }}
+                                    ></View>
+                                </View>
+                            </TouchableNativeFeedback>
+                            <Text
+                                style={{
+                                    color: COLORS.secondary,
+                                    padding: "4%",
+                                    textAlign: "center",
+                                }}
+                            >
+                                By placing an order you agree to our{" "}
+                                <Text style={{ color: COLORS.primary }}>
+                                    Terms{" "}
+                                    <Text style={{ color: COLORS.secondary }}>
+                                        and{" "}
+                                    </Text>
+                                    Conditions
+                                </Text>
+                            </Text>
+                            <View
+                                style={{
+                                    width: SIZES.width,
+                                    justifyContent: "center",
+                                    alignItems: "center",
+                                    paddingBottom: "5%",
+                                }}
+                            >
+                                <CustomButton
+                                    btnTitle={"Place Order"}
+                                    color={COLORS.primary}
+                                />
+                            </View>
+                        </ScrollView>
                     </View>
                 </View>
             </Modal>
@@ -431,13 +724,12 @@ const styles = StyleSheet.create({
         marginTop: 22,
     },
     modalView: {
-        height: "50%",
-        // width: SIZES.width,
-        // margin: 20,
-        backgroundColor: "white",
-        borderRadius: 20,
-        padding: 35,
-        alignItems: "center",
+        height: "60%",
+        backgroundColor: COLORS.white,
+        borderTopLeftRadius: 20,
+        borderTopRightRadius: 20,
+        // padding: "5%",
+        // alignItems: "center",
         shadowColor: "#000",
         shadowOffset: {
             width: 0,
@@ -446,20 +738,5 @@ const styles = StyleSheet.create({
         shadowOpacity: 0.25,
         shadowRadius: 3.84,
         elevation: 5,
-    },
-    openButton: {
-        backgroundColor: "#F194FF",
-        borderRadius: 20,
-        padding: 10,
-        elevation: 2,
-    },
-    textStyle: {
-        color: "white",
-        fontWeight: "bold",
-        textAlign: "center",
-    },
-    modalText: {
-        marginBottom: 15,
-        textAlign: "center",
     },
 });

@@ -30,6 +30,7 @@ const Eggs = require("../../assets/photos/CategoryPhotos/Eggs.png");
 const FrashFruits = require("../../assets/photos/CategoryPhotos/FrashFruits.png");
 const MeatandFish = require("../../assets/photos/CategoryPhotos/MeatandFish.png");
 const user = require("../../assets/photos/user.png");
+const card = require("../../assets/photos/card.png");
 
 export default {
     accepted,
@@ -64,4 +65,5 @@ export default {
     FrashFruits,
     MeatandFish,
     user,
+    card,
 };
