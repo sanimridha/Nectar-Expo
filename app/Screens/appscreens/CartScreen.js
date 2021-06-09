@@ -19,7 +19,7 @@ import { Ionicons } from "@expo/vector-icons";
 import { Entypo } from "@expo/vector-icons";
 import { Colors } from "react-native/Libraries/NewAppScreen";
 
-const CartScreen = () => {
+const CartScreen = ({ navigation }) => {
     const [modalVisible, setModalVisible] = useState(false);
     const [succesModalVisible, setsuccesModalVisible] = useState(false);
     const [faildModalVisible, setFaildModalVisible] = useState(false);
@@ -706,6 +706,7 @@ const CartScreen = () => {
                                 <CustomButton
                                     onPress={() => {
                                         setsuccesModalVisible(true);
+                                        setModalVisible(false);
                                     }}
                                     btnTitle={"Place Order"}
                                     color={COLORS.primary}
@@ -794,6 +795,7 @@ const CartScreen = () => {
                                     <CustomButton
                                         onPress={() => {
                                             setFaildModalVisible(true);
+                                            setsuccesModalVisible(false);
                                         }}
                                         btnTitle={"Track Order"}
                                         color={COLORS.primary}
@@ -932,6 +934,13 @@ const CartScreen = () => {
                                 />
                                 <TouchableOpacity
                                     style={{ marginTop: "3%", height: 30 }}
+                                    activeOpacity={0.5}
+                                    onPress={() => {
+                                        navigation.navigate("Home");
+                                        setFaildModalVisible(
+                                            !faildModalVisible
+                                        );
+                                    }}
                                 >
                                     <Text
                                         style={{
