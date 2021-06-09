@@ -11,6 +11,7 @@ import {
     Modal,
     Alert,
     ImageBackground,
+    TouchableHighlight,
 } from "react-native";
 import { COLORS, images, SIZES } from "../../constants";
 import { CustomButton } from "../../components";
@@ -21,6 +22,7 @@ import { Colors } from "react-native/Libraries/NewAppScreen";
 const CartScreen = () => {
     const [modalVisible, setModalVisible] = useState(false);
     const [succesModalVisible, setsuccesModalVisible] = useState(false);
+    const [faildModalVisible, setFaildModalVisible] = useState(false);
     const cartItems = [
         {
             id: 1,
@@ -721,7 +723,7 @@ const CartScreen = () => {
                     Alert.alert("Modal has been closed.");
                 }}
             >
-                <View style={{ flex: 1, backgroundColor: "red" }}>
+                <View style={{ flex: 1 }}>
                     <View style={{ height: SIZES.height }}>
                         <ImageBackground
                             source={images.fullBackground}
@@ -790,6 +792,9 @@ const CartScreen = () => {
                                     }}
                                 >
                                     <CustomButton
+                                        onPress={() => {
+                                            setFaildModalVisible(true);
+                                        }}
                                         btnTitle={"Track Order"}
                                         color={COLORS.primary}
                                     />
@@ -811,6 +816,134 @@ const CartScreen = () => {
                                 </View>
                             </View>
                         </ImageBackground>
+                    </View>
+                </View>
+            </Modal>
+            <Modal
+                animationType="slide"
+                transparent={true}
+                visible={faildModalVisible}
+                onRequestClose={() => {
+                    Alert.alert("Modal has been closed.");
+                }}
+            >
+                <View
+                    style={{
+                        flex: 1,
+                        justifyContent: "center",
+                        alignItems: "center",
+                        marginTop: 22,
+                    }}
+                >
+                    <View
+                        style={{
+                            margin: 20,
+                            width: "90%",
+                            // height: "80%",
+                            backgroundColor: "white",
+                            borderRadius: 20,
+                            padding: "4%",
+                            // alignItems: "center",
+                            shadowColor: "#000",
+                            shadowOffset: {
+                                width: 0,
+                                height: 2,
+                            },
+                            shadowOpacity: 0.25,
+                            shadowRadius: 3.84,
+                            elevation: 5,
+                        }}
+                    >
+                        <View style={{ height: 50, width: 30 }}>
+                            <TouchableNativeFeedback
+                                background={TouchableNativeFeedback.Ripple(
+                                    COLORS.lightGray5,
+                                    true
+                                )}
+                                onPress={() => {
+                                    setFaildModalVisible(false);
+                                }}
+                            >
+                                <View>
+                                    <Ionicons
+                                        name="close"
+                                        size={30}
+                                        color="black"
+                                    />
+                                </View>
+                            </TouchableNativeFeedback>
+                        </View>
+                        <View
+                            style={{
+                                alignItems: "center",
+                                justifyContent: "space-between",
+                            }}
+                        >
+                            <View
+                                style={{
+                                    height: "50%",
+                                    width: "100%",
+                                    alignItems: "center",
+                                }}
+                            >
+                                <Image
+                                    source={images.OrderFaild}
+                                    resizeMode={"contain"}
+                                    style={{ height: 200, width: "90%" }}
+                                />
+                            </View>
+                            <View style={{}}>
+                                <Text
+                                    style={{
+                                        fontSize: 28,
+                                        fontWeight: "600",
+                                        fontStyle: "normal",
+                                        letterSpacing: 0,
+                                        textAlign: "center",
+                                        color: "#181725",
+                                    }}
+                                >
+                                    Oops! Order Failed
+                                </Text>
+                                <Text
+                                    style={{
+                                        fontSize: 16,
+                                        fontWeight: "500",
+                                        fontStyle: "normal",
+                                        lineHeight: 21,
+                                        letterSpacing: 0,
+                                        textAlign: "center",
+                                        color: COLORS.secondary,
+                                    }}
+                                >
+                                    Something went tembly wrong.
+                                </Text>
+                            </View>
+                            <View
+                                style={{
+                                    alignItems: "center",
+                                    width: SIZES.width - 30,
+                                    justifyContent: "flex-end",
+                                }}
+                            >
+                                <CustomButton
+                                    btnTitle={"Please try again"}
+                                    color={COLORS.primary}
+                                />
+                                <TouchableOpacity
+                                    style={{ marginTop: "3%", height: 30 }}
+                                >
+                                    <Text
+                                        style={{
+                                            fontSize: 20,
+                                            fontWeight: "bold",
+                                        }}
+                                    >
+                                        Back to home
+                                    </Text>
+                                </TouchableOpacity>
+                            </View>
+                        </View>
                     </View>
                 </View>
             </Modal>
