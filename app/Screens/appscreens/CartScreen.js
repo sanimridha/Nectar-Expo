@@ -11,13 +11,11 @@ import {
     Modal,
     Alert,
     ImageBackground,
-    TouchableHighlight,
 } from "react-native";
 import { COLORS, images, SIZES } from "../../constants";
 import { CustomButton } from "../../components";
 import { Ionicons } from "@expo/vector-icons";
 import { Entypo } from "@expo/vector-icons";
-import { Colors } from "react-native/Libraries/NewAppScreen";
 
 const CartScreen = ({ navigation }) => {
     const [modalVisible, setModalVisible] = useState(false);
