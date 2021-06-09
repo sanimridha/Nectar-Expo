@@ -10,11 +10,14 @@ import {
     View,
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
+import { Picker } from "@react-native-picker/picker";
+
 import { COLORS, images, SIZES } from "../constants";
 import { Entypo } from "@expo/vector-icons";
 import { CustomButton } from "../components";
 
 const SetLocationScreen = ({ navigation }) => {
+    const [selectedArea, setSelectedArea] = useState("Mohammadpur");
     return (
         <View style={{ flex: 1, backgroundColor: "#FDFDFD" }}>
             <ImageBackground
@@ -90,7 +93,97 @@ const SetLocationScreen = ({ navigation }) => {
                         </View>
                     </View>
                     {/* section for location picker */}
-                    <View style={{ height: 20, backgroundColor: "red" }}></View>
+                    <View style={{ padding: "4%", paddingTop: 90 }}>
+                        <Text style={{ fontSize: 15, color: COLORS.secondary }}>
+                            Your Zone
+                        </Text>
+                        <Picker
+                            selectedValue={selectedArea}
+                            onValueChange={(itemValue, itemIndex) =>
+                                setSelectedArea(itemValue)
+                            }
+                            style={{
+                                width: "100%",
+                                height: 40,
+                            }}
+                        >
+                            <Picker.Item label="Mohammadpur" value="java" />
+                            <Picker.Item label="Dhanmondi" value="js" />
+                            <Picker.Item label="Adabor" value="js" />
+                            <Picker.Item label="Farmgate" value="js" />
+                            <Picker.Item label="Kawranbazar" value="js" />
+                            <Picker.Item label="Uttara" value="js" />
+                            <Picker.Item label="Badda" value="js" />
+                            <Picker.Item label="Gulshan" value="js" />
+                            <Picker.Item label="Banasree" value="js" />
+                            <Picker.Item label="Rampura" value="js" />
+                            <Picker.Item label="Mohammadpur" value="java" />
+                            <Picker.Item label="Dhanmondi" value="js" />
+                            <Picker.Item label="Adabor" value="js" />
+                            <Picker.Item label="Farmgate" value="js" />
+                            <Picker.Item label="Kawranbazar" value="js" />
+                            <Picker.Item label="Uttara" value="js" />
+                            <Picker.Item label="Badda" value="js" />
+                            <Picker.Item label="Gulshan" value="js" />
+                            <Picker.Item label="Banasree" value="js" />
+                            <Picker.Item label="Rampura" value="js" />
+                        </Picker>
+                        <View
+                            style={{
+                                height: 1,
+                                borderWidth: 1,
+                                borderColor: COLORS.lightGray3,
+                            }}
+                        ></View>
+                        <Text
+                            style={{
+                                fontSize: 15,
+                                color: COLORS.secondary,
+                                paddingTop: "10%",
+                            }}
+                        >
+                            Your Area
+                        </Text>
+                        <Picker
+                            selectedValue={selectedArea}
+                            onValueChange={(itemValue, itemIndex) =>
+                                setSelectedArea(itemValue)
+                            }
+                            style={{
+                                width: "100%",
+                                height: 40,
+                            }}
+                        >
+                            <Picker.Item label="Mohammadpur" value="java" />
+                            <Picker.Item label="Dhanmondi" value="js" />
+                            <Picker.Item label="Adabor" value="js" />
+                            <Picker.Item label="Farmgate" value="js" />
+                            <Picker.Item label="Kawranbazar" value="js" />
+                            <Picker.Item label="Uttara" value="js" />
+                            <Picker.Item label="Badda" value="js" />
+                            <Picker.Item label="Gulshan" value="js" />
+                            <Picker.Item label="Banasree" value="js" />
+                            <Picker.Item label="Rampura" value="js" />
+                            <Picker.Item label="Mohammadpur" value="java" />
+                            <Picker.Item label="Dhanmondi" value="js" />
+                            <Picker.Item label="Adabor" value="js" />
+                            <Picker.Item label="Farmgate" value="js" />
+                            <Picker.Item label="Kawranbazar" value="js" />
+                            <Picker.Item label="Uttara" value="js" />
+                            <Picker.Item label="Badda" value="js" />
+                            <Picker.Item label="Gulshan" value="js" />
+                            <Picker.Item label="Banasree" value="js" />
+                            <Picker.Item label="Rampura" value="js" />
+                        </Picker>
+                        <View
+                            style={{
+                                height: 1,
+                                borderWidth: 1,
+                                borderColor: COLORS.lightGray3,
+                            }}
+                        ></View>
+                    </View>
+
                     <View
                         style={{
                             justifyContent: "center",
