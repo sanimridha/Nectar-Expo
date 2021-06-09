@@ -140,7 +140,7 @@ const LoginScreen = ({ navigation }) => {
                                     >
                                         <CustomButton
                                             onPress={() => {
-                                                navigation.navigate("Home");
+                                                navigation.navigate("Tabs");
                                             }}
                                             color={COLORS.primary}
                                             btnTitle={"Log In"}

@@ -15,55 +15,14 @@ import {
     SignupScreen,
     VerificationScreen,
 } from "./app/Screens";
-import Tabs from "./app/navigation/Tabs";
 import ProductDetails from "./app/Screens/appscreens/ProductDetails";
 import FilterScreen from "./app/Screens/appscreens/FilterScreen";
 import CategoryDetailScreen from "./app/Screens/appscreens/CategoryDetailScreen";
-
-const Stack = createStackNavigator();
+import Tabs from "./app/navigation/Tabs";
+import Providers from "./app/navigation";
 
 export default function App() {
-    return (
-        <NavigationContainer>
-            <Stack.Navigator
-                initialRouteName={"Home"}
-                screenOptions={{ headerShown: false }}
-            >
-                <Stack.Screen name="Home" component={Tabs} />
-                <Stack.Screen name="SigninScreen" component={SigninScreen} />
-                <Stack.Screen name="LoginScreen" component={LoginScreen} />
-                <Stack.Screen name="SignupScreen" component={SignupScreen} />
-                <Stack.Screen name="FilterScreen" component={FilterScreen} />
-                <Stack.Screen
-                    name="CategoryDetailScreen"
-                    component={CategoryDetailScreen}
-                />
-                <Stack.Screen
-                    name="ProductDetails"
-                    component={ProductDetails}
-                />
-                <Stack.Screen
-                    name="SetLocationScreen"
-                    component={SetLocationScreen}
-                />
-                <Stack.Screen
-                    name="VerificationScreen"
-                    component={VerificationScreen}
-                />
-                <Stack.Screen
-                    name="SigninWithPhoneNumber"
-                    component={SigninWithPhoneNumber}
-                />
-            </Stack.Navigator>
-        </NavigationContainer>
-    );
+    return <Providers />;
 }
 
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        backgroundColor: "#fff",
-        alignItems: "center",
-        justifyContent: "center",
-    },
-});
+const styles = StyleSheet.create({});

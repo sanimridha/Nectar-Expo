@@ -29,6 +29,7 @@ const Tabs = () => {
                     // height: 60,
                 },
             }}
+            initialRouteName={"Home"}
         >
             <Tab.Screen
                 name="Home"

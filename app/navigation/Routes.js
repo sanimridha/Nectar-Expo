@@ -1,11 +1,13 @@
 import React from "react";
+import { NavigationContainer } from "@react-navigation/native";
 import { StyleSheet, Text, View } from "react-native";
+import AuthStack from "./AuthStack";
 
 const Routes = () => {
     return (
-        <View>
-            <Text>Routes</Text>
-        </View>
+        <NavigationContainer>
+            <AuthStack />
+        </NavigationContainer>
     );
 };
 
