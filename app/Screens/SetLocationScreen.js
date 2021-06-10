@@ -139,7 +139,7 @@ const SetLocationScreen = ({ navigation }) => {
                             style={{
                                 fontSize: 15,
                                 color: COLORS.secondary,
-                                paddingTop: "10%",
+                                paddingTop: "10kn%",
                             }}
                         >
                             Your Area
