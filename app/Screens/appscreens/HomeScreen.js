@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
     FlatList,
     Image,
@@ -18,6 +18,21 @@ import { Ionicons } from "@expo/vector-icons";
 import { Entypo } from "@expo/vector-icons";
 
 const HomeScreen = ({ navigation }) => {
+    let cartList = [];
+    // const [cartList, setcartList] = useState([]);
+    // const addToCartList = item => {
+    //     let currentTime = new Date().getTime();
+
+    //     let data = item;
+    //     console.log(item);
+    //     let passingData = {
+    //         uniqueID: currentTime,
+    //         ...data,
+    //     };
+    //     setcartList(passingData);
+    //     console.log(cartList);
+    // };
+
     const headerContent = () => {
         return (
             <View
@@ -303,6 +318,9 @@ const HomeScreen = ({ navigation }) => {
                                                         "white",
                                                         true
                                                     )}
+                                                    onPress={() => {
+                                                        // addToCartList(item);
+                                                    }}
                                                 >
                                                     <View
                                                         style={{
@@ -518,6 +536,54 @@ const HomeScreen = ({ navigation }) => {
                                                         "white",
                                                         true
                                                     )}
+                                                    onPress={() => {
+                                                        {
+                                                            // addToCartList(item);
+                                                            let currentTime =
+                                                                new Date().getTime();
+                                                            let newArray = [];
+                                                            let data = item;
+                                                            console.log(item);
+                                                            let passingData = {
+                                                                uniqueID:
+                                                                    currentTime,
+                                                                ...data,
+                                                            };
+                                                            cartList.push(
+                                                                passingData
+                                                            );
+                                                            console.log(
+                                                                "cartList"
+                                                            );
+                                                            console.log(
+                                                                cartList
+                                                            );
+
+                                                            // setcartList("kkal");
+                                                            // newArray.push(
+                                                            //     passingData
+                                                            // );
+                                                            // console.log(
+                                                            //     typeof newArray
+                                                            // );
+                                                            // console.log(
+                                                            //     newArray
+                                                            // );
+                                                            // console.log(
+                                                            //     "show cart data"
+                                                            // );
+                                                            // console.log(
+                                                            //     typeof cartList
+                                                            // );
+                                                            // console.log(
+                                                            //     cartList
+                                                            // );
+                                                            navigation.navigate(
+                                                                "Cart",
+                                                                cartList
+                                                            );
+                                                        }
+                                                    }}
                                                 >
                                                     <View
                                                         style={{
@@ -813,6 +879,11 @@ const HomeScreen = ({ navigation }) => {
                                                         "white",
                                                         true
                                                     )}
+                                                    onPress={() => {
+                                                        {
+                                                            // addToCartList(item);
+                                                        }
+                                                    }}
                                                 >
                                                     <View
                                                         style={{

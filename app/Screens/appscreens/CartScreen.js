@@ -93,7 +93,7 @@ const CartScreen = ({ navigation }) => {
                     marginTop: StatusBar.currentHeight,
                     backgroundColor:
                         modalVisible || succesModalVisible || faildModalVisible
-                            ? "rgba(0, 0, 0, 0.1)"
+                            ? "rgba(0, 0, 0, 0.5)"
                             : "white",
                     opacity:
                         modalVisible || succesModalVisible || faildModalVisible
@@ -127,7 +127,7 @@ const CartScreen = ({ navigation }) => {
                     flex: 1,
                     backgroundColor:
                         modalVisible || succesModalVisible || faildModalVisible
-                            ? "rgba(0, 0, 0, 0.1)"
+                            ? "rgba(0, 0, 0, 0.5)"
                             : "white",
                     opacity:
                         modalVisible || succesModalVisible || faildModalVisible
