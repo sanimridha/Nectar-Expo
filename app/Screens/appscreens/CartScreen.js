@@ -91,7 +91,14 @@ const CartScreen = ({ navigation }) => {
             <View
                 style={{
                     marginTop: StatusBar.currentHeight,
-                    backgroundColor: modalVisible ? COLORS.lightGray3 : "white",
+                    backgroundColor:
+                        modalVisible || succesModalVisible || faildModalVisible
+                            ? "rgba(0, 0, 0, 0.1)"
+                            : "white",
+                    opacity:
+                        modalVisible || succesModalVisible || faildModalVisible
+                            ? 0.3
+                            : 1,
                     justifyContent: "center",
                     alignItems: "center",
                     paddingTop: "4%",
@@ -118,7 +125,14 @@ const CartScreen = ({ navigation }) => {
             <ScrollView
                 style={{
                     flex: 1,
-                    backgroundColor: modalVisible ? COLORS.lightGray3 : "white",
+                    backgroundColor:
+                        modalVisible || succesModalVisible || faildModalVisible
+                            ? "rgba(0, 0, 0, 0.1)"
+                            : "white",
+                    opacity:
+                        modalVisible || succesModalVisible || faildModalVisible
+                            ? 0.3
+                            : 1,
                 }}
             >
                 {cartItems.map((item, key) => {
