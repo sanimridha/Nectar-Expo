@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
     Image,
     ScrollView,
@@ -16,11 +16,21 @@ import { COLORS, images, SIZES } from "../../constants";
 import { CustomButton } from "../../components";
 import { Ionicons } from "@expo/vector-icons";
 import { Entypo } from "@expo/vector-icons";
+import CartList from "../../../Storage/CartList";
+
+let cartItem = CartList.cartList;
+// let cartArray = [cartItem];
 
 const CartScreen = ({ navigation }) => {
     const [modalVisible, setModalVisible] = useState(false);
     const [succesModalVisible, setsuccesModalVisible] = useState(false);
     const [faildModalVisible, setFaildModalVisible] = useState(false);
+    const [array, setArray] = useState(cartItem);
+    useEffect(() => {
+        setArray(array);
+        console.log("array from cart screen!!!!");
+        console.log(array);
+    }, [array]);
     const cartItems = [
         {
             id: 1,
@@ -135,7 +145,7 @@ const CartScreen = ({ navigation }) => {
                             : 1,
                 }}
             >
-                {cartItems.map((item, key) => {
+                {array.map((item, key) => {
                     return (
                         <View
                             key={key}
@@ -315,6 +325,18 @@ const CartScreen = ({ navigation }) => {
                                                     COLORS.secondary,
                                                     true
                                                 )}
+                                                onPress={() => {
+                                                    console.log(
+                                                        item.uniqueID.toString()
+                                                    );
+                                                    const result = array.filter(
+                                                        cartItem =>
+                                                            cartItem.uniqueID !==
+                                                            item.uniqueID
+                                                    );
+
+                                                    setArray(result);
+                                                }}
                                             >
                                                 <View
                                                     style={{

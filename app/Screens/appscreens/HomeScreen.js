@@ -16,23 +16,9 @@ import CustomScreen from "../../components/CustomScreen";
 import { COLORS, images, SIZES } from "../../constants";
 import { Ionicons } from "@expo/vector-icons";
 import { Entypo } from "@expo/vector-icons";
+import CartList from "../../../Storage/CartList";
 
 const HomeScreen = ({ navigation }) => {
-    let cartList = [];
-    // const [cartList, setcartList] = useState([]);
-    // const addToCartList = item => {
-    //     let currentTime = new Date().getTime();
-
-    //     let data = item;
-    //     console.log(item);
-    //     let passingData = {
-    //         uniqueID: currentTime,
-    //         ...data,
-    //     };
-    //     setcartList(passingData);
-    //     console.log(cartList);
-    // };
-
     const headerContent = () => {
         return (
             <View
@@ -541,22 +527,20 @@ const HomeScreen = ({ navigation }) => {
                                                             // addToCartList(item);
                                                             let currentTime =
                                                                 new Date().getTime();
-                                                            let newArray = [];
                                                             let data = item;
-                                                            console.log(item);
                                                             let passingData = {
                                                                 uniqueID:
                                                                     currentTime,
                                                                 ...data,
                                                             };
-                                                            cartList.push(
+                                                            CartList.cartList.push(
                                                                 passingData
                                                             );
                                                             console.log(
-                                                                "cartList"
+                                                                "cartList from bottom"
                                                             );
                                                             console.log(
-                                                                cartList
+                                                                CartList.cartList
                                                             );
 
                                                             // setcartList("kkal");
@@ -578,10 +562,6 @@ const HomeScreen = ({ navigation }) => {
                                                             // console.log(
                                                             //     cartList
                                                             // );
-                                                            navigation.navigate(
-                                                                "Cart",
-                                                                cartList
-                                                            );
                                                         }
                                                     }}
                                                 >
