@@ -25,7 +25,7 @@ const Stack = createStackNavigator();
 const AuthStack = () => {
     return (
         <Stack.Navigator
-            initialRouteName={"Onboarding"}
+            initialRouteName={"Tabs"}
             screenOptions={{ headerShown: false }}
         >
             <Stack.Screen name="Onboarding" component={Onboarding} />

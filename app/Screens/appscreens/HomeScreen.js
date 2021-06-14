@@ -1,6 +1,8 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
+    Alert,
     FlatList,
+    ActivityIndicator,
     Image,
     ScrollView,
     StatusBar,
@@ -17,8 +19,27 @@ import { COLORS, images, SIZES } from "../../constants";
 import { Ionicons } from "@expo/vector-icons";
 import { Entypo } from "@expo/vector-icons";
 import CartList from "../../../Storage/CartList";
+import axios from "axios";
+import { URL, APP_URL } from "../../../connection/API";
 
 const HomeScreen = ({ navigation }) => {
+    const [Slider, setSlider] = useState([]);
+    console.log("Logging from top!!!!");
+    console.log(Slider);
+
+    useEffect(() => {
+        getSliderData();
+    }, []);
+    const getSliderData = async () => {
+        try {
+            const response = await axios.get(APP_URL + "api/sliders");
+            // console.log(response.data);
+            setSlider(response.data.data);
+        } catch (error) {
+            // handle error
+            console.log("Error !!!!!", error);
+        }
+    };
     const headerContent = () => {
         return (
             <View
@@ -85,33 +106,36 @@ const HomeScreen = ({ navigation }) => {
             </View>
         );
     };
-    const BannerSlider = () => {
-        const sliderImages = [
-            {
-                id: 1,
-                image: images.banner,
-            },
-            {
-                id: 2,
-                image: images.banner2,
-            },
-            {
-                id: 3,
-                image: images.banner3,
-            },
-        ];
+    const Loader = () => {
+        // setTimeout(() => {
+        //     return (
+        //         <View
+        //             style={{
+        //                 flex: 1,
+        //                 justifyContent: "center",
+        //                 alignItems: "center",
+        //             }}
+        //         >
+        //             <ActivityIndicator size={"large"} color={COLORS.primary} />
+        //         </View>
+        //     );
+        // }, 3000);
+    };
 
+    const BannerSlider = () => {
         return (
             <ScrollView
                 horizontal
                 pagingEnabled
                 showsHorizontalScrollIndicator={false}
             >
-                {sliderImages.map((item, key) => {
+                {Slider.map((item, key) => {
                     return (
                         <View key={key} style={{}}>
                             <Image
-                                source={item.image}
+                                source={{
+                                    uri: APP_URL + item.image,
+                                }}
                                 // resizeMode={"contain"}
                                 style={{
                                     height: 120,
