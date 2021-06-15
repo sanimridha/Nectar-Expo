@@ -248,13 +248,17 @@ const HomeScreen = ({ navigation }) => {
                     showsHorizontalScrollIndicator={false}
                 >
                     {BestSellingData.map((item, key) => {
+                        // ________this for shorting the title_________
+                        let x = item.title;
+                        let useTitle = x.split(" ").slice(0, 2).join(" ");
+                        // _________________________________________________
                         return (
                             <View
                                 key={key}
                                 style={{
                                     borderRadius: 20,
                                     borderColor: COLORS.darkgray,
-                                    height: 200,
+                                    // height: 200,
                                     width: 150,
                                     borderWidth: 0.4,
                                     marginRight: 20,
@@ -292,14 +296,19 @@ const HomeScreen = ({ navigation }) => {
                                                 }}
                                             />
                                         </View>
-                                        <View style={{ padding: "4%" }}>
+                                        <View
+                                            style={{
+                                                paddingTop: "4%",
+                                                paddingLeft: "4%",
+                                            }}
+                                        >
                                             <Text
                                                 style={{
                                                     fontWeight: "bold",
                                                     fontSize: 16,
                                                 }}
                                             >
-                                                {item.title}
+                                                {useTitle}
                                             </Text>
                                             <Text
                                                 style={{
