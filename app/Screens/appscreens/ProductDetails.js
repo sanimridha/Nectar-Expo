@@ -128,7 +128,7 @@ const ProductDetails = ({ route, navigation }) => {
                     >
                         <Image
                             source={{ uri: image }}
-                            // resizeMode={"stretch"}
+                            resizeMode={"stretch"}
                             style={{ height: "100%", width: "90%" }}
                             fadeDuration={500}
                         />

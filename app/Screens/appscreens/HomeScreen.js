@@ -858,7 +858,7 @@ const HomeScreen = ({ navigation }) => {
                                         );
                                     }}
                                 >
-                                    <View>
+                                    <View style={{}}>
                                         <View
                                             style={{
                                                 justifyContent: "center",
