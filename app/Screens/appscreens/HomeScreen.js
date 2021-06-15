@@ -25,10 +25,12 @@ import { URL, APP_URL } from "../../../connection/API";
 const HomeScreen = ({ navigation }) => {
     const [Slider, setSlider] = useState([]);
     const [BestSellingData, setBestSellingData] = useState([]);
+    const [allData, setAllData] = useState([]);
 
     useEffect(() => {
         getSliderData();
         getBestSellingrData();
+        getAllProductData();
     }, []);
     const getSliderData = async () => {
         try {
@@ -44,13 +46,23 @@ const HomeScreen = ({ navigation }) => {
         try {
             const response = await axios.get(APP_URL + "api/best/selling");
             setBestSellingData(response.data.data.data);
-            console.log("response from best selling");
-            console.log(BestSellingData);
         } catch (error) {
             // handle error
             console.log("Error !!!!!", error);
         }
     };
+    const getAllProductData = async () => {
+        try {
+            const response = await axios.get(APP_URL + "api/products");
+            setAllData(response.data.data);
+        } catch (error) {
+            // handle error
+            console.log("Error !!!!!", error);
+        }
+    };
+    console.log("response from All selling");
+    console.log(allData);
+
     const headerContent = () => {
         return (
             <View
@@ -471,13 +483,16 @@ const HomeScreen = ({ navigation }) => {
                     showsHorizontalScrollIndicator={false}
                 >
                     {BestSellingData.map((item, key) => {
+                        // ________this for shorting the title_________
+                        let x = item.title;
+                        let useTitle = x.split(" ").slice(0, 2).join(" ");
+                        // _________________________________________________
                         return (
                             <View
                                 key={key}
                                 style={{
                                     borderRadius: 20,
                                     borderColor: COLORS.darkgray,
-                                    height: 200,
                                     width: 150,
                                     borderWidth: 0.4,
                                     marginRight: 20,
@@ -520,7 +535,7 @@ const HomeScreen = ({ navigation }) => {
                                                     fontSize: 16,
                                                 }}
                                             >
-                                                {item.title}
+                                                {useTitle}
                                             </Text>
                                             <Text
                                                 style={{
@@ -761,7 +776,7 @@ const HomeScreen = ({ navigation }) => {
                                     borderRadius: 20,
                                     // borderColor: COLORS.darkgray,
                                     backgroundColor: item.color,
-                                    height: 100,
+                                    // height: 100,
                                     width: 250,
                                     // borderWidth: 0.4,
                                     marginRight: 20,
@@ -813,14 +828,18 @@ const HomeScreen = ({ navigation }) => {
                     // pagingEnabled
                     showsHorizontalScrollIndicator={false}
                 >
-                    {ExclusiveOfferData.map((item, key) => {
+                    {allData.map((item, key) => {
+                        // ________this for shorting the title_________
+                        let x = item.title;
+                        let useTitle = x.split(" ").slice(0, 2).join(" ");
+                        // _________________________________________________
                         return (
                             <View
                                 key={key}
                                 style={{
                                     borderRadius: 20,
                                     borderColor: COLORS.darkgray,
-                                    height: 200,
+                                    // height: 200,
                                     width: 150,
                                     borderWidth: 0.4,
                                     marginRight: 20,
@@ -847,7 +866,7 @@ const HomeScreen = ({ navigation }) => {
                                             }}
                                         >
                                             <Image
-                                                source={item.image}
+                                                source={{ uri: item.image }}
                                                 resizeMode={"center"}
                                                 style={{
                                                     height: 90,
@@ -863,7 +882,7 @@ const HomeScreen = ({ navigation }) => {
                                                     fontSize: 16,
                                                 }}
                                             >
-                                                {item.name}
+                                                {useTitle}
                                             </Text>
                                             <Text
                                                 style={{
