@@ -12,17 +12,14 @@ import {
     ColorPropType,
     ViewPropTypes,
 } from "react-native";
-import { Ionicons } from "@expo/vector-icons";
 import { COLORS, images, SIZES } from "../../constants";
 import { Entypo } from "@expo/vector-icons";
-import TouchableNative from "../../components/TouchableNative";
 import { Feather } from "@expo/vector-icons";
 import { FontAwesome } from "@expo/vector-icons";
 import { CustomButton } from "../../components";
 
 const ProductDetails = ({ route, navigation }) => {
     const [count, setCount] = useState(1);
-    const [arrowNumber, setArrowNumber] = useState(1);
     const [arrow, setArrow] = useState("chevron-left");
     const [loved, setLoved] = useState("heart-o");
     const onShare = async () => {
@@ -45,16 +42,19 @@ const ProductDetails = ({ route, navigation }) => {
     };
 
     const {
-        id,
         image,
-        name,
+        title,
         quantity,
         price,
-        description,
-        nutritions,
-        rating,
+        long_description,
+        total_favourites,
     } = route.params;
-
+    let stringImage = '"' + image + '"';
+    console.log(stringImage);
+    // ________this for shorting the title_________
+    let x = title;
+    let useTitle = x.split(" ").slice(0, 2).join(" ");
+    // _________________________________________________
     const headerContent = () => {
         return (
             <View
@@ -62,7 +62,6 @@ const ProductDetails = ({ route, navigation }) => {
                     marginTop: StatusBar.currentHeight,
                     backgroundColor: COLORS.lightGray3,
                     justifyContent: "center",
-                    // alignItems: "center",
                     padding: "4%",
                 }}
             >
@@ -113,22 +112,27 @@ const ProductDetails = ({ route, navigation }) => {
     const Content = () => {
         return (
             <ScrollView style={{}}>
-                <View
-                    style={{
-                        backgroundColor: COLORS.lightGray3,
-                        justifyContent: "center",
-                        alignItems: "center",
-                        padding: "2%",
-                        borderBottomRightRadius: 35,
-                        borderBottomLeftRadius: 35,
-                        paddingBottom: "15%",
-                    }}
-                >
-                    <Image
-                        source={image}
-                        resizeMode={"stretch"}
-                        fadeDuration={500}
-                    />
+                <View>
+                    <View
+                        style={{
+                            backgroundColor: COLORS.lightGray3,
+                            justifyContent: "center",
+                            alignItems: "center",
+                            padding: "2%",
+                            borderBottomRightRadius: 35,
+                            borderBottomLeftRadius: 35,
+                            paddingBottom: "15%",
+                            height: SIZES.height / 3,
+                            // flex: 1,
+                        }}
+                    >
+                        <Image
+                            source={{ uri: image }}
+                            // resizeMode={"stretch"}
+                            style={{ height: "100%", width: "90%" }}
+                            fadeDuration={500}
+                        />
+                    </View>
                 </View>
                 <View style={{ padding: "4%" }}>
                     <View style={{ flexDirection: "column" }}>
@@ -144,7 +148,7 @@ const ProductDetails = ({ route, navigation }) => {
                                     fontSize: SIZES.h3,
                                 }}
                             >
-                                {name}
+                                {useTitle}
                             </Text>
                             <TouchableNativeFeedback
                                 background={TouchableNativeFeedback.Ripple(
@@ -349,7 +353,8 @@ const ProductDetails = ({ route, navigation }) => {
                                             fontSize: 13,
                                         }}
                                     >
-                                        {arrow == "chevron-down" && description}
+                                        {arrow == "chevron-down" &&
+                                            long_description}
                                     </Text>
                                     <View
                                         style={{
@@ -411,7 +416,7 @@ const ProductDetails = ({ route, navigation }) => {
                                                     color: COLORS.secondary,
                                                 }}
                                             >
-                                                {nutritions}
+                                                {total_favourites}
                                             </Text>
                                         </View>
 
