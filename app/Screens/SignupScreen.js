@@ -16,6 +16,14 @@ import { Entypo } from "@expo/vector-icons";
 import { CustomButton } from "../components";
 
 const SignupScreen = ({ navigation }) => {
+    const [name, setName] = useState(null);
+    const [email, setEmail] = useState(null);
+    const [password, setPassword] = useState(null);
+
+    // ________________EYE CONTROL___________________
+    const [eyeControl, setEyeControl] = useState("eye-with-line");
+    const [visible, setVisible] = useState(true);
+    // ______________________________________________
     return (
         <ScrollView style={{ flex: 1, backgroundColor: "#FDFDFD" }}>
             <ImageBackground
@@ -85,6 +93,9 @@ const SignupScreen = ({ navigation }) => {
                                         borderBottomColor: COLORS.secondary,
                                     }}
                                     placeholder={"Jhon"}
+                                    value={name}
+                                    onChangeText={setName}
+                                    focusable={1}
                                 />
                             </View>
                             <View style={{ marginTop: "10%" }}>
@@ -106,6 +117,8 @@ const SignupScreen = ({ navigation }) => {
                                     }}
                                     keyboardType={"email-address"}
                                     placeholder={"example@domain.com"}
+                                    value={email}
+                                    onChangeText={setEmail}
                                 />
                             </View>
                             <View style={{ marginTop: "10%" }}>
@@ -133,14 +146,30 @@ const SignupScreen = ({ navigation }) => {
                                             fontSize: 17,
                                             fontWeight: "bold",
                                         }}
-                                        secureTextEntry={true}
+                                        secureTextEntry={visible}
+                                        value={password}
+                                        onChangeText={setPassword}
                                     />
-                                    <Entypo
-                                        name="eye-with-line"
-                                        size={24}
-                                        color={COLORS.secondary}
-                                        style={{ padding: 5 }}
-                                    />
+                                    <TouchableOpacity
+                                        activeOpacity={0.5}
+                                        onPress={() => {
+                                            if (eyeControl == "eye") {
+                                                setEyeControl("eye-with-line");
+                                                setVisible(true);
+                                            }
+                                            if (eyeControl == "eye-with-line") {
+                                                setEyeControl("eye");
+                                                setVisible(false);
+                                            }
+                                        }}
+                                    >
+                                        <Entypo
+                                            name={eyeControl}
+                                            size={24}
+                                            color={COLORS.secondary}
+                                            style={{ padding: 5 }}
+                                        />
+                                    </TouchableOpacity>
                                 </View>
                                 <View
                                     style={{
@@ -188,6 +217,14 @@ const SignupScreen = ({ navigation }) => {
                                         }}
                                     >
                                         <CustomButton
+                                            onPress={() => {
+                                                console.log(
+                                                    "Credintials!!!!!!!!!!"
+                                                );
+                                                console.log(name);
+                                                console.log(email);
+                                                console.log(password);
+                                            }}
                                             color={COLORS.primary}
                                             btnTitle={"Log In"}
                                         />
