@@ -14,6 +14,8 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import { COLORS, images, SIZES } from "../constants";
 import { Entypo } from "@expo/vector-icons";
 import { CustomButton } from "../components";
+import axios from "axios";
+import { APP_URL } from "../../connection/API";
 
 const SignupScreen = ({ navigation }) => {
     const [name, setName] = useState(null);
@@ -218,12 +220,23 @@ const SignupScreen = ({ navigation }) => {
                                     >
                                         <CustomButton
                                             onPress={() => {
-                                                console.log(
-                                                    "Credintials!!!!!!!!!!"
-                                                );
-                                                console.log(name);
-                                                console.log(email);
-                                                console.log(password);
+                                                axios
+                                                    .post(
+                                                        APP_URL +
+                                                            "api/auth/register",
+                                                        {
+                                                            name: name,
+                                                            email: email,
+                                                            password: password,
+                                                            cpassword: password,
+                                                        }
+                                                    )
+                                                    .then(function (response) {
+                                                        console.log(response);
+                                                    })
+                                                    .catch(function (error) {
+                                                        console.log(error);
+                                                    });
                                             }}
                                             color={COLORS.primary}
                                             btnTitle={"Log In"}
