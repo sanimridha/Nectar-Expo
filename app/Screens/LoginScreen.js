@@ -14,6 +14,8 @@ import { COLORS, images, SIZES } from "../constants";
 import { Entypo } from "@expo/vector-icons";
 import { CustomButton } from "../components";
 const LoginScreen = ({ navigation }) => {
+    const [eyeControl, setEyeControl] = useState("eye-with-line");
+    const [visible, setVisible] = useState(true);
     return (
         <View style={{ flex: 1, backgroundColor: "#FDFDFD" }}>
             <ImageBackground
@@ -111,14 +113,28 @@ const LoginScreen = ({ navigation }) => {
                                             fontSize: 17,
                                             fontWeight: "bold",
                                         }}
-                                        secureTextEntry={true}
+                                        secureTextEntry={visible}
                                     />
-                                    <Entypo
-                                        name="eye-with-line"
-                                        size={24}
-                                        color={COLORS.secondary}
-                                        style={{ padding: 5 }}
-                                    />
+                                    <TouchableOpacity
+                                        activeOpacity={0.5}
+                                        onPress={() => {
+                                            if (eyeControl == "eye") {
+                                                setEyeControl("eye-with-line");
+                                                setVisible(true);
+                                            }
+                                            if (eyeControl == "eye-with-line") {
+                                                setEyeControl("eye");
+                                                setVisible(false);
+                                            }
+                                        }}
+                                    >
+                                        <Entypo
+                                            name={eyeControl}
+                                            size={24}
+                                            color={COLORS.secondary}
+                                            style={{ padding: 5 }}
+                                        />
+                                    </TouchableOpacity>
                                 </View>
                                 <View style={{ marginTop: "5%" }}>
                                     <Text
