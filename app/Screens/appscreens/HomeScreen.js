@@ -24,17 +24,28 @@ import { URL, APP_URL } from "../../../connection/API";
 
 const HomeScreen = ({ navigation }) => {
     const [Slider, setSlider] = useState([]);
-    console.log("Logging from top!!!!");
-    console.log(Slider);
+    const [BestSellingData, setBestSellingData] = useState([]);
 
     useEffect(() => {
         getSliderData();
+        getBestSellingrData();
     }, []);
     const getSliderData = async () => {
         try {
             const response = await axios.get(APP_URL + "api/sliders");
             // console.log(response.data);
             setSlider(response.data.data);
+        } catch (error) {
+            // handle error
+            console.log("Error !!!!!", error);
+        }
+    };
+    const getBestSellingrData = async () => {
+        try {
+            const response = await axios.get(APP_URL + "api/best/selling");
+            setBestSellingData(response.data.data.data);
+            console.log("response from best selling");
+            console.log(BestSellingData);
         } catch (error) {
             // handle error
             console.log("Error !!!!!", error);
@@ -236,7 +247,7 @@ const HomeScreen = ({ navigation }) => {
                     // pagingEnabled
                     showsHorizontalScrollIndicator={false}
                 >
-                    {ExclusiveOfferData.map((item, key) => {
+                    {BestSellingData.map((item, key) => {
                         return (
                             <View
                                 key={key}
@@ -270,7 +281,9 @@ const HomeScreen = ({ navigation }) => {
                                             }}
                                         >
                                             <Image
-                                                source={item.image}
+                                                source={{
+                                                    uri: item.image,
+                                                }}
                                                 resizeMode={"center"}
                                                 style={{
                                                     height: 90,
@@ -286,7 +299,7 @@ const HomeScreen = ({ navigation }) => {
                                                     fontSize: 16,
                                                 }}
                                             >
-                                                {item.name}
+                                                {item.title}
                                             </Text>
                                             <Text
                                                 style={{
@@ -310,7 +323,7 @@ const HomeScreen = ({ navigation }) => {
                                                     fontWeight: "bold",
                                                 }}
                                             >
-                                                {item.price}
+                                                ${item.price}
                                             </Text>
                                             <View
                                                 style={{
@@ -448,7 +461,7 @@ const HomeScreen = ({ navigation }) => {
                     // pagingEnabled
                     showsHorizontalScrollIndicator={false}
                 >
-                    {ExclusiveOfferData.map((item, key) => {
+                    {BestSellingData.map((item, key) => {
                         return (
                             <View
                                 key={key}
@@ -482,7 +495,7 @@ const HomeScreen = ({ navigation }) => {
                                             }}
                                         >
                                             <Image
-                                                source={item.image}
+                                                source={{ uri: item.image }}
                                                 resizeMode={"center"}
                                                 style={{
                                                     height: 90,
@@ -498,7 +511,7 @@ const HomeScreen = ({ navigation }) => {
                                                     fontSize: 16,
                                                 }}
                                             >
-                                                {item.name}
+                                                {item.title}
                                             </Text>
                                             <Text
                                                 style={{
