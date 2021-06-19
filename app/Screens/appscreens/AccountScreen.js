@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import {
     Image,
     ScrollView,
@@ -15,8 +15,30 @@ import { Entypo } from "@expo/vector-icons";
 import { Ionicons } from "@expo/vector-icons";
 import { AntDesign } from "@expo/vector-icons";
 import { MaterialIcons } from "@expo/vector-icons";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const AccountScreen = ({ navigation }) => {
+    const [user, setUser] = useState([]);
+    useEffect(() => {
+        getUserInfo();
+    }, []);
+    const getUserInfo = async () => {
+        try {
+            const value = await AsyncStorage.getItem("userinfo");
+            const data = JSON.parse(value);
+            if (data !== null) {
+                // We have data!!
+                setUser(data);
+                console.log("data from accout screen");
+                console.log(data);
+                console.log(user.data.data.name);
+            }
+        } catch (error) {
+            // Error retrieving data
+            console.log(error);
+        }
+    };
+
     const renderBody = () => {
         return (
             <ScrollView>
@@ -50,7 +72,7 @@ const AccountScreen = ({ navigation }) => {
                                 <Text
                                     style={{ fontSize: 18, fontWeight: "700" }}
                                 >
-                                    Mosh Hamedani
+                                    {user.data.data.name}
                                 </Text>
                                 <MaterialCommunityIcons
                                     name="pencil-outline"
@@ -65,7 +87,7 @@ const AccountScreen = ({ navigation }) => {
                                     color: COLORS.secondary,
                                 }}
                             >
-                                moshhamedani@gmail.com
+                                {user.data.data.email}
                             </Text>
                         </View>
                     </View>
