@@ -233,13 +233,20 @@ const SignupScreen = ({ navigation }) => {
                                                     )
                                                     .then(function (response) {
                                                         console.log(response);
+                                                        navigation.navigate(
+                                                            "LoginScreen"
+                                                        );
                                                     })
                                                     .catch(function (error) {
                                                         console.log(error);
                                                     });
+
+                                                setName(null);
+                                                setEmail(null);
+                                                setPassword(null);
                                             }}
                                             color={COLORS.primary}
-                                            btnTitle={"Log In"}
+                                            btnTitle={"Sign Up"}
                                         />
                                     </View>
                                     <View
@@ -258,13 +265,13 @@ const SignupScreen = ({ navigation }) => {
                                                 fontSize: 15,
                                             }}
                                         >
-                                            Don’t have an account?{" "}
+                                            have an account?{" "}
                                         </Text>
                                         <TouchableOpacity
                                             activeOpacity={0.5}
                                             onPress={() => {
                                                 navigation.navigate(
-                                                    "SignupScreen"
+                                                    "LoginScreen"
                                                 );
                                             }}
                                         >
@@ -276,7 +283,7 @@ const SignupScreen = ({ navigation }) => {
                                                 }}
                                             >
                                                 {" "}
-                                                Signin
+                                                Login
                                             </Text>
                                         </TouchableOpacity>
                                     </View>
