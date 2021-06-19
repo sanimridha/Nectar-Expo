@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from "react";
 import {
-    Alert,
-    FlatList,
     ActivityIndicator,
     Image,
     ScrollView,
@@ -9,12 +7,9 @@ import {
     StyleSheet,
     Text,
     TextInput,
-    TouchableHighlight,
     TouchableNativeFeedback,
-    TouchableOpacity,
     View,
 } from "react-native";
-import CustomScreen from "../../components/CustomScreen";
 import { COLORS, images, SIZES } from "../../constants";
 import { Ionicons } from "@expo/vector-icons";
 import { Entypo } from "@expo/vector-icons";
@@ -27,7 +22,8 @@ const HomeScreen = ({ navigation }) => {
     const [Slider, setSlider] = useState([]);
     const [BestSellingData, setBestSellingData] = useState([]);
     const [allData, setAllData] = useState([]);
-
+    const [isLoading, setIsLoading] = useState(true);
+    let cartlist = [];
     useEffect(() => {
         getSliderData();
         getBestSellingrData();
@@ -59,6 +55,7 @@ const HomeScreen = ({ navigation }) => {
         try {
             const response = await axios.get(APP_URL + "api/best/selling");
             setBestSellingData(response.data.data.data);
+            setIsLoading(false);
         } catch (error) {
             // handle error
             console.log("Error !!!!!", error);
@@ -971,9 +968,22 @@ const HomeScreen = ({ navigation }) => {
             </View>
         );
     };
+    const Indicator = () => {
+        return (
+            <View
+                style={{
+                    backgroundColor: COLORS.white,
+                    justifyContent: "center",
+                    alignItems: "center",
+                }}
+            >
+                <ActivityIndicator color={COLORS.primary} size={"large"} />
+            </View>
+        );
+    };
 
     return (
-        <>
+        <View>
             {headerContent()}
             <ScrollView
                 style={{
@@ -986,7 +996,7 @@ const HomeScreen = ({ navigation }) => {
                 {BestSelling()}
                 {Groceries()}
             </ScrollView>
-        </>
+        </View>
     );
 };
 

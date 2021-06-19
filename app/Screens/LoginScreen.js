@@ -18,21 +18,23 @@ import { APP_URL } from "../../connection/API";
 const LoginScreen = ({ navigation }) => {
     const [eyeControl, setEyeControl] = useState("eye-with-line");
     const [visible, setVisible] = useState(true);
-    const [email, setEmail] = useState(null);
-    const [password, setPassword] = useState(null);
+    const [email, setEmail] = useState();
+    const [password, setPassword] = useState();
     const [userData, setUserData] = useState([]);
     const [token, setToken] = useState();
     useEffect(() => {}, []);
-    const loginCredentials = () => {
+    const loginCredentials = async () => {
         try {
-            axios
+            await axios
                 .post(APP_URL + "api/auth/login", {
                     email: email,
                     password: password,
                 })
                 .then(function (response) {
                     setUserData(response);
-                    console.log(userData.data.data.name); //to get the name (userData.data.data.name)
+                    //console.log(userData.data.data.name); //to get the name (userData.data.data.name)
+                    setEmail(null);
+                    setPassword(null);
                 })
                 .catch(function (error) {
                     console.log(error);
@@ -214,8 +216,6 @@ const LoginScreen = ({ navigation }) => {
                                                 loginCredentials();
                                                 userCredentials();
                                                 getUserCredentials();
-                                                // setEmail(null);
-                                                // setPassword(null);
                                             }}
                                             color={COLORS.primary}
                                             btnTitle={"Log In"}

@@ -30,7 +30,7 @@ const CartScreen = ({ navigation }) => {
         setArray(array);
         console.log("array from cart screen!!!!");
         console.log(array);
-    }, [array]);
+    });
     const cartItems = [
         {
             id: 1,

@@ -72,7 +72,8 @@ const AccountScreen = ({ navigation }) => {
                                 <Text
                                     style={{ fontSize: 18, fontWeight: "700" }}
                                 >
-                                    {user.data.data.name}
+                                    {/* {user.data.data.name} */}
+                                    monty
                                 </Text>
                                 <MaterialCommunityIcons
                                     name="pencil-outline"
@@ -87,7 +88,8 @@ const AccountScreen = ({ navigation }) => {
                                     color: COLORS.secondary,
                                 }}
                             >
-                                {user.data.data.email}
+                                {/* {user.data.data.email} */}
+                                monty@gmmail.com
                             </Text>
                         </View>
                     </View>
