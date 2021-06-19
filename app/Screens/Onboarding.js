@@ -88,7 +88,7 @@ const Onboarding = ({ navigation }) => {
                         <View style={{ alignItems: "center" }}>
                             <TouchableOpacity
                                 onPress={() => {
-                                    navigation.navigate("SigninScreen");
+                                    navigation.navigate("LoginScreen");
                                 }}
                                 activeOpacity={0.5}
                                 style={{
