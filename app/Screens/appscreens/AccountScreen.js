@@ -482,7 +482,7 @@ const AccountScreen = ({ navigation }) => {
                             true
                         )}
                         onPress={() => {
-                            navigation.navigate("SigninScreen");
+                            navigation.navigate("Onboarding");
                         }}
                     >
                         <View
