@@ -21,6 +21,7 @@ import { Entypo } from "@expo/vector-icons";
 import CartList from "../../../Storage/CartList";
 import axios from "axios";
 import { URL, APP_URL } from "../../../connection/API";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const HomeScreen = ({ navigation }) => {
     const [Slider, setSlider] = useState([]);
@@ -31,6 +32,18 @@ const HomeScreen = ({ navigation }) => {
         getSliderData();
         getBestSellingrData();
         getAllProductData();
+
+        const storeData = async () => {
+            try {
+                await AsyncStorage.setItem(
+                    "asyncItem",
+                    "I like to save my name Sani."
+                );
+            } catch (error) {
+                // Error saving data
+            }
+        };
+        storeData();
     }, []);
     const getSliderData = async () => {
         try {

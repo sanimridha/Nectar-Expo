@@ -5,7 +5,6 @@ import {
     StyleSheet,
     Text,
     TextInput,
-    TouchableHighlight,
     TouchableOpacity,
     View,
 } from "react-native";
@@ -13,9 +12,60 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import { COLORS, images, SIZES } from "../constants";
 import { Entypo } from "@expo/vector-icons";
 import { CustomButton } from "../components";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import axios from "axios";
+import { APP_URL } from "../../connection/API";
 const LoginScreen = ({ navigation }) => {
     const [eyeControl, setEyeControl] = useState("eye-with-line");
     const [visible, setVisible] = useState(true);
+    const [email, setEmail] = useState(null);
+    const [password, setPassword] = useState(null);
+    const [userData, setUserData] = useState([]);
+    const [token, setToken] = useState();
+    useEffect(() => {}, []);
+    const loginCredentials = () => {
+        try {
+            axios
+                .post(APP_URL + "api/auth/login", {
+                    email: email,
+                    password: password,
+                })
+                .then(function (response) {
+                    setUserData(response);
+                    console.log(userData.data.data.name); //to get the name (userData.data.data.name)
+                })
+                .catch(function (error) {
+                    console.log(error);
+                });
+        } catch (error) {
+            console.log(error);
+        }
+    };
+    const userCredentials = async () => {
+        try {
+            const data = JSON.stringify(userData);
+            await AsyncStorage.setItem("userinfo", data);
+        } catch (error) {
+            // Error saving data
+            console.log(error);
+        }
+    };
+    const getUserCredentials = async () => {
+        try {
+            const value = await AsyncStorage.getItem("userinfo");
+            const data = JSON.parse(value);
+            if (data) {
+                setToken(data.data.token);
+                navigation.navigate("Tabs");
+            }
+        } catch (error) {
+            // Error retrieving data
+            console.log(
+                "This error from token issue means invalid email or password !" +
+                    error
+            );
+        }
+    };
     return (
         <View style={{ flex: 1, backgroundColor: "#FDFDFD" }}>
             <ImageBackground
@@ -86,6 +136,8 @@ const LoginScreen = ({ navigation }) => {
                                     }}
                                     keyboardType={"email-address"}
                                     placeholder={"example@domain.com"}
+                                    value={email}
+                                    onChangeText={setEmail}
                                 />
                             </View>
                             <View style={{ marginTop: "10%" }}>
@@ -114,6 +166,8 @@ const LoginScreen = ({ navigation }) => {
                                             fontWeight: "bold",
                                         }}
                                         secureTextEntry={visible}
+                                        value={password}
+                                        onChangeText={setPassword}
                                     />
                                     <TouchableOpacity
                                         activeOpacity={0.5}
@@ -156,7 +210,12 @@ const LoginScreen = ({ navigation }) => {
                                     >
                                         <CustomButton
                                             onPress={() => {
-                                                navigation.navigate("Tabs");
+                                                // navigation.navigate("Tabs")
+                                                loginCredentials();
+                                                userCredentials();
+                                                getUserCredentials();
+                                                // setEmail(null);
+                                                // setPassword(null);
                                             }}
                                             color={COLORS.primary}
                                             btnTitle={"Log In"}
