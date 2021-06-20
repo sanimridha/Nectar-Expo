@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
     Image,
     StatusBar,
@@ -17,11 +17,16 @@ import { Entypo } from "@expo/vector-icons";
 import { Feather } from "@expo/vector-icons";
 import { FontAwesome } from "@expo/vector-icons";
 import { CustomButton } from "../../components";
+import axios from "axios";
+import { APP_URL } from "../../../connection/API";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const ProductDetails = ({ route, navigation }) => {
     const [count, setCount] = useState(1);
     const [arrow, setArrow] = useState("chevron-left");
     const [loved, setLoved] = useState("heart-o");
+
+    const [userId, setUserId] = useState();
     const onShare = async () => {
         try {
             const result = await Share.share({
@@ -40,6 +45,24 @@ const ProductDetails = ({ route, navigation }) => {
             alert(error.message);
         }
     };
+    useEffect(() => {
+        getUserInfo();
+    }, []);
+    const getUserInfo = async () => {
+        try {
+            const value = await AsyncStorage.getItem("userinfo");
+            const data = JSON.parse(value);
+            if (data !== null) {
+                // We have data!!
+                console.log("data from Product Details  screen");
+                setUserId(data.data.data.id);
+                console.log(data.data.token);
+            }
+        } catch (error) {
+            // Error retrieving data
+            console.log(error);
+        }
+    };
 
     const {
         image,
@@ -48,9 +71,9 @@ const ProductDetails = ({ route, navigation }) => {
         price,
         long_description,
         total_favourites,
+        id,
     } = route.params;
-    let stringImage = '"' + image + '"';
-    console.log(stringImage);
+    console.log("logging from product details::", id);
     // ________this for shorting the title_________
     let x = title;
     let useTitle = x.split(" ").slice(0, 2).join(" ");
@@ -162,6 +185,17 @@ const ProductDetails = ({ route, navigation }) => {
                                     if (loved == "heart") {
                                         setLoved("heart-o");
                                     }
+                                    axios
+                                        .post(APP_URL + "api/wishlist", {
+                                            user_id: userId,
+                                            product_id: id,
+                                        })
+                                        .then(function (response) {
+                                            console.log(response);
+                                        })
+                                        .catch(function (error) {
+                                            console.log(error);
+                                        });
                                 }}
                             >
                                 <View
