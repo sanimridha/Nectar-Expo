@@ -177,30 +177,31 @@ const ProductDetails = ({ route, navigation }) => {
                                 onPress={() => {
                                     if (loved == "heart-o") {
                                         setLoved("heart");
+
+                                        const config = {
+                                            headers: {
+                                                Authorization: `Bearer ${token}`,
+                                            },
+                                        };
+                                        axios
+                                            .post(
+                                                APP_URL + "api/wishlist",
+                                                {
+                                                    user_id: userId,
+                                                    product_id: id,
+                                                },
+                                                config //here we're passing the Authorization header to the server
+                                            )
+                                            .then(function (response) {
+                                                console.log(response);
+                                            })
+                                            .catch(function (error) {
+                                                console.log(error);
+                                            });
                                     }
                                     if (loved == "heart") {
                                         setLoved("heart-o");
                                     }
-                                    const config = {
-                                        headers: {
-                                            Authorization: `Bearer ${token}`,
-                                        },
-                                    };
-                                    axios
-                                        .post(
-                                            APP_URL + "api/wishlist",
-                                            {
-                                                user_id: userId,
-                                                product_id: id,
-                                            },
-                                            config
-                                        )
-                                        .then(function (response) {
-                                            console.log(response);
-                                        })
-                                        .catch(function (error) {
-                                            console.log(error);
-                                        });
                                 }}
                             >
                                 <View
