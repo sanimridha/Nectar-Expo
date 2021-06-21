@@ -201,6 +201,27 @@ const ProductDetails = ({ route, navigation }) => {
                                     }
                                     if (loved == "heart") {
                                         setLoved("heart-o");
+
+                                        const config = {
+                                            headers: {
+                                                Authorization: `Bearer ${token}`,
+                                            },
+                                        };
+                                        axios
+                                            .delete(
+                                                APP_URL + "api/wishlist",
+                                                {
+                                                    user_id: userId,
+                                                    product_id: id,
+                                                },
+                                                config //here we're passing the Authorization header to the server
+                                            )
+                                            .then(function (response) {
+                                                console.log(response);
+                                            })
+                                            .catch(function (error) {
+                                                console.log(error);
+                                            });
                                     }
                                 }}
                             >
