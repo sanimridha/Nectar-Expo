@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import {
-    FlatList,
     Image,
     ScrollView,
     StatusBar,
@@ -11,7 +10,6 @@ import {
 } from "react-native";
 import { COLORS, images, SIZES } from "../../constants";
 import { CustomButton } from "../../components";
-
 import { Entypo } from "@expo/vector-icons";
 import { Feather } from "@expo/vector-icons";
 import axios from "axios";
@@ -21,6 +19,7 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 const FavouriteScreen = ({ navigation }) => {
     const [userId, setUserId] = useState();
     const [token, setToken] = useState();
+    const [FavList, setFavList] = useState([]);
     useEffect(() => {
         getUserInfo();
         fetchFavouriteItem();
@@ -32,6 +31,8 @@ const FavouriteScreen = ({ navigation }) => {
             if (data) {
                 setUserId(data.data.data.id);
                 setToken(data.data.token);
+                console.log(data.data.data.id);
+                console.log(data.data.token);
             }
         } catch (error) {
             // Error retrieving data
@@ -51,7 +52,9 @@ const FavouriteScreen = ({ navigation }) => {
                 config //here we're passing the Authorization header to the server
             )
             .then(function (response) {
-                console.log(response);
+                setFavList(response.data.data);
+                console.log("response.data.data from API");
+                console.log(FavList);
             })
             .catch(function (error) {
                 console.log(error);
@@ -153,7 +156,11 @@ const FavouriteScreen = ({ navigation }) => {
         return (
             <ScrollView style={{ flex: 1 }}>
                 {/* <FlatList data={favouriteItems} renderItem={renderItem} /> */}
-                {favouriteItems.map((item, key) => {
+                {FavList.map((item, key) => {
+                    // ________this for shorting the title_________
+                    let x = item.product.title;
+                    let useTitle = x.split(" ").slice(0, 2).join(" ");
+                    // _________________________________________________
                     return (
                         <View
                             key={key}
@@ -178,7 +185,9 @@ const FavouriteScreen = ({ navigation }) => {
                                     >
                                         <View style={{ flexDirection: "row" }}>
                                             <Image
-                                                source={item.image}
+                                                source={{
+                                                    uri: item.product.image,
+                                                }}
                                                 resizeMode={"contain"}
                                                 style={{
                                                     height: 50,
@@ -197,14 +206,14 @@ const FavouriteScreen = ({ navigation }) => {
                                                         fontWeight: "700",
                                                     }}
                                                 >
-                                                    {item.name}
+                                                    {useTitle}
                                                 </Text>
                                                 <Text
                                                     style={{
                                                         color: COLORS.secondary,
                                                     }}
                                                 >
-                                                    {item.quantity}
+                                                    {item.product.handling_time}
                                                 </Text>
                                             </View>
                                         </View>
@@ -216,7 +225,7 @@ const FavouriteScreen = ({ navigation }) => {
                                                     paddingRight: 5,
                                                 }}
                                             >
-                                                ${item.price}
+                                                ${item.product.price}
                                             </Text>
                                             <Entypo
                                                 name="chevron-right"
@@ -291,7 +300,6 @@ const FavouriteScreen = ({ navigation }) => {
         <View style={{ flex: 1, backgroundColor: COLORS.white }}>
             {renderHeader()}
             {renderBody()}
-            {/* {NoItemFound()} */}
         </View>
     );
 };
