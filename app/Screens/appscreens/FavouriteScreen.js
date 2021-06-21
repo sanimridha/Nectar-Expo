@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import {
     FlatList,
     Image,
@@ -14,8 +14,49 @@ import { CustomButton } from "../../components";
 
 import { Entypo } from "@expo/vector-icons";
 import { Feather } from "@expo/vector-icons";
+import axios from "axios";
+import { APP_URL } from "../../../connection/API";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const FavouriteScreen = ({ navigation }) => {
+    const [userId, setUserId] = useState();
+    const [token, setToken] = useState();
+    useEffect(() => {
+        getUserInfo();
+        fetchFavouriteItem();
+    }, []);
+    const getUserInfo = async () => {
+        try {
+            const value = await AsyncStorage.getItem("userinfo");
+            const data = JSON.parse(value);
+            if (data) {
+                setUserId(data.data.data.id);
+                setToken(data.data.token);
+            }
+        } catch (error) {
+            // Error retrieving data
+            console.log("This error from fav screen" + error);
+        }
+    };
+    const fetchFavouriteItem = () => {
+        const config = {
+            headers: {
+                Authorization: `Bearer ${token}`,
+            },
+        };
+        axios
+            .get(
+                APP_URL + "api/wishlist/products/" + userId,
+
+                config //here we're passing the Authorization header to the server
+            )
+            .then(function (response) {
+                console.log(response);
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
+    };
     const favouriteItems = [
         {
             id: 1,
