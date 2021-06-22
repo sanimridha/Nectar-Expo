@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import {
     FlatList,
     Image,
@@ -18,6 +18,19 @@ import { Entypo } from "@expo/vector-icons";
 import useColorScheme from "react-native/Libraries/Utilities/useColorScheme";
 
 const ExploreScreen = ({ navigation }) => {
+    useEffect(() => {}, []);
+
+    const fetchCategories = async () => {
+        try {
+            const response = await axios.get(APP_URL + "api/best/selling");
+            setBestSellingData(response.data.data.data);
+            setIsLoading(false);
+        } catch (error) {
+            // handle error
+            console.log("Error !!!!!", error);
+        }
+    };
+
     const headerContent = () => {
         return (
             <View
@@ -147,7 +160,6 @@ const ExploreScreen = ({ navigation }) => {
             // ________this for Random COlor_________
             let random = Math.floor(Math.random() * 16777).toString(16);
             let randomColor = `#${random}`;
-            // ____________________________
             let border_random = Math.floor(Math.random() * 16777215).toString(
                 16
             );
