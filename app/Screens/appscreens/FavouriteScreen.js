@@ -161,6 +161,7 @@ const FavouriteScreen = ({ navigation }) => {
                     let x = item.product.title;
                     let useTitle = x.split(" ").slice(0, 2).join(" ");
                     // _________________________________________________
+
                     return (
                         <View
                             key={key}

@@ -144,6 +144,14 @@ const ExploreScreen = ({ navigation }) => {
             },
         ];
         const renderItem = ({ item }) => {
+            // ________this for Random COlor_________
+            let random = Math.floor(Math.random() * 167772).toString(16);
+            let randomColor = `#${random}`;
+            // ____________________________
+            let border_random = Math.floor(Math.random() * 167772).toString(16);
+            let Border_randomColor = `#${border_random}`;
+            //_______________________________________
+
             return (
                 <View
                     key={item.id}
@@ -152,10 +160,11 @@ const ExploreScreen = ({ navigation }) => {
                         margin: "3%",
                         height: SIZES.height / 4,
                         width: SIZES.width / 2.5,
-                        backgroundColor: item.color,
+                        // backgroundColor: item.color,
+                        backgroundColor: randomColor,
                         borderRadius: 15,
                         borderWidth: 1,
-                        borderColor: item.borderColor,
+                        borderColor: Border_randomColor,
                         justifyContent: "center",
                         alignSelf: "center",
                         alignItems: "center",
@@ -221,9 +230,6 @@ const ExploreScreen = ({ navigation }) => {
             >
                 <FlatList
                     data={AllCategories}
-                    // keyExtractor={item => {
-                    //     item.id;
-                    // }}
                     showsVerticalScrollIndicator={false}
                     renderItem={renderItem}
                     numColumns={2}
