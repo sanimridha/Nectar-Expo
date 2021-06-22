@@ -145,10 +145,12 @@ const ExploreScreen = ({ navigation }) => {
         ];
         const renderItem = ({ item }) => {
             // ________this for Random COlor_________
-            let random = Math.floor(Math.random() * 167772).toString(16);
+            let random = Math.floor(Math.random() * 16777).toString(16);
             let randomColor = `#${random}`;
             // ____________________________
-            let border_random = Math.floor(Math.random() * 167772).toString(16);
+            let border_random = Math.floor(Math.random() * 16777215).toString(
+                16
+            );
             let Border_randomColor = `#${border_random}`;
             //_______________________________________
 
