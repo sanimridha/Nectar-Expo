@@ -2,22 +2,18 @@ import React, { useEffect, useState } from "react";
 import {
     FlatList,
     Image,
-    ScrollView,
     StatusBar,
     StyleSheet,
     Text,
     TextInput,
-    Touchable,
     TouchableNativeFeedback,
     View,
     ActivityIndicator,
 } from "react-native";
-import CustomScreen from "../../components/CustomScreen";
 import { COLORS, images, SIZES } from "../../constants";
 import { Ionicons, Entypo } from "@expo/vector-icons";
 import { APP_URL } from "../../../connection/API";
 import axios from "axios";
-import { load } from "protobufjs";
 
 const ExploreScreen = ({ navigation }) => {
     const [allCategories, setAllCategories] = useState();
@@ -221,7 +217,7 @@ const ExploreScreen = ({ navigation }) => {
                             }}
                         >
                             <Image
-                                source={item.image}
+                                source={{ uri: item.image }}
                                 resizeMode={"center"}
                                 style={{
                                     height: 90,
@@ -262,7 +258,7 @@ const ExploreScreen = ({ navigation }) => {
                 }}
             >
                 <FlatList
-                    data={AllCategories}
+                    data={allCategories}
                     showsVerticalScrollIndicator={false}
                     renderItem={renderItem}
                     numColumns={2}
