@@ -39,7 +39,7 @@ const HomeScreen = ({ navigation }) => {
             }
         };
         storeData();
-    });
+    }, []);
     const getSliderData = async () => {
         try {
             const response = await axios.get(APP_URL + "api/sliders");

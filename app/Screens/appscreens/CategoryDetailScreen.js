@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import {
     FlatList,
     Image,
@@ -12,8 +12,27 @@ import {
 import { COLORS, images, SIZES } from "../../constants";
 import { Entypo } from "@expo/vector-icons";
 import { FontAwesome } from "@expo/vector-icons";
+import axios from "axios";
+import { APP_URL } from "../../../connection/API";
 
-const CategoryDetailScreen = ({ navigation }) => {
+const CategoryDetailScreen = ({ navigation, route }) => {
+    const { slug } = route.params;
+    const [products, setProducts] = useState([]);
+    useEffect(() => {
+        getProducts();
+    }, []);
+    const getProducts = async () => {
+        try {
+            const response = await axios.get(
+                APP_URL + "api/category/" + slug + "/products"
+            );
+            setProducts(response.data.data.data);
+        } catch (error) {
+            // handle error
+            console.log("Error !!!!!", error);
+        }
+    };
+    console.log(products);
     const menu = [
         {
             id: 1,
@@ -137,10 +156,15 @@ const CategoryDetailScreen = ({ navigation }) => {
             <View style={{ flex: 1, paddingLeft: "4%", paddingRight: "4%" }}>
                 {/* {menu.map((item, key) => { */}
                 <FlatList
-                    data={menu}
-                    numColumns={menu.length / 4}
+                    data={products}
+                    numColumns={2}
                     showsVerticalScrollIndicator={false}
                     renderItem={({ item }) => {
+                        // ________this for shorting the title_________
+                        let x = item.title;
+                        let useTitle = x.split(" ").slice(0, 2).join(" ");
+                        console.log(useTitle);
+                        // _________________________________________________
                         return (
                             <View
                                 key={item.index}
@@ -167,14 +191,7 @@ const CategoryDetailScreen = ({ navigation }) => {
                                     //     navigation.navigate("ProductDetails");
                                     // }}
                                 >
-                                    <View
-                                        style={
-                                            {
-                                                // height: "100%",
-                                                // width: "100%",
-                                            }
-                                        }
-                                    >
+                                    <View style={{}}>
                                         <View
                                             style={{
                                                 justifyContent: "center",
@@ -182,7 +199,7 @@ const CategoryDetailScreen = ({ navigation }) => {
                                             }}
                                         >
                                             <Image
-                                                source={item.image}
+                                                source={{ uri: item.image }}
                                                 resizeMode={"contain"}
                                                 style={{
                                                     height: 70,
@@ -202,14 +219,14 @@ const CategoryDetailScreen = ({ navigation }) => {
                                                     fontSize: 16,
                                                 }}
                                             >
-                                                {item.name}
+                                                {useTitle}
                                             </Text>
                                             <Text
                                                 style={{
                                                     color: COLORS.secondary,
                                                 }}
                                             >
-                                                {item.quantity}
+                                                {item.total_favourites}
                                             </Text>
                                         </View>
                                         <View
@@ -229,12 +246,6 @@ const CategoryDetailScreen = ({ navigation }) => {
                                                 {item.price}
                                             </Text>
                                             <View
-                                                // activeOpacity={0.5}
-                                                // onPress={() => {
-                                                //     console.log(
-                                                //         item.name + " pressed"
-                                                //     );
-                                                // }}
                                                 style={{
                                                     backgroundColor:
                                                         COLORS.primary,
@@ -276,8 +287,6 @@ const CategoryDetailScreen = ({ navigation }) => {
                         );
                     }}
                 />
-
-                {/* })} */}
             </View>
         );
     };

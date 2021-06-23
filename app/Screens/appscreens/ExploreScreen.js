@@ -19,21 +19,24 @@ const ExploreScreen = ({ navigation }) => {
     const [allCategories, setAllCategories] = useState();
     const [isLoading, setIsLoading] = useState(true);
     useEffect(() => {
-        fetchCategories();
-    }, []);
+        fetch(APP_URL + "api/categories")
+            .then(response => response.json())
+            .then(json => setAllCategories(json.data.data))
+            .catch(error => console.log(error))
+            .finally(() => setIsLoading(false));
+    }, [true]);
 
-    const fetchCategories = async () => {
-        try {
-            const response = await axios.get(APP_URL + "api/categories");
-            setAllCategories(response.data.data.data);
-            console.log(response.data.data.data);
-            setIsLoading(false);
-        } catch (error) {
-            // handle error
-            console.log("Error !!!!!", error);
-        }
-    };
-
+    // const fetchCategories = async () => {
+    //     try {
+    //         const response = await axios.get(APP_URL + "api/categories");
+    //         setAllCategories(response.data.data.data);
+    //         console.log(response.data.data.data);
+    //         setIsLoading(false);
+    //     } catch (error) {
+    //         // handle error
+    //         console.log("Error !!!!!", error);
+    //     }
+    // };
     const headerContent = () => {
         return (
             <View
