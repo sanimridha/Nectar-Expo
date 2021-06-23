@@ -28,10 +28,6 @@ const HomeScreen = ({ navigation }) => {
         getSliderData();
         getBestSellingrData();
         getAllProductData();
-        console.log(
-            "Slider data from server !!!!!!!@@@@@@@@@@@@@@!!!!!!!!!!!$$$$$%%%%%%%%%%%"
-        );
-        console.log(Slider);
         const storeData = async () => {
             try {
                 await AsyncStorage.setItem(
@@ -43,7 +39,7 @@ const HomeScreen = ({ navigation }) => {
             }
         };
         storeData();
-    }, [3]);
+    });
     const getSliderData = async () => {
         try {
             const response = await axios.get(APP_URL + "api/sliders");
@@ -187,52 +183,6 @@ const HomeScreen = ({ navigation }) => {
         );
     };
     const ExclusiveOffer = () => {
-        const ExclusiveOfferData = [
-            {
-                id: 1,
-                image: images.banana,
-                name: "Organic Bananas",
-                quantity: "7pcs, Priceg",
-                price: "$4.99",
-                description:
-                    "Bananas are nutritious. Bananas may be good for weight loss. Bananas may be good for your heart. As part of a healtful and varied diet.",
-                nutritions: "100gr",
-                rating: 5,
-            },
-            {
-                id: 2,
-                image: images.apple,
-                name: "Red Apple",
-                quantity: "1kg, Priceg",
-                price: "$3.99",
-                description:
-                    "Apples are nutritious. Apples may be good for weight loss. Apples may be good for your heart. As part of a healtful and varied diet.",
-                nutritions: "100gr",
-                rating: 5,
-            },
-            {
-                id: 3,
-                image: images.Cupsicum,
-                name: "Bell Pepper Red",
-                quantity: "1kg, Priceg",
-                price: "$5.99",
-                description:
-                    "Cupsicums are nutritious. Cupsicums may be good for weight loss. Cupsicums may be good for your heart. As part of a healtful and varied diet.",
-                nutritions: "100gr",
-                rating: 5,
-            },
-            {
-                id: 4,
-                image: images.Beef,
-                name: "Beef Bone",
-                quantity: "1kg, Priceg",
-                price: "$8.99",
-                description:
-                    "Meat is animal flesh that is eaten as food. Humans have hunted and killed animals for meat since prehistoric times. The advent of civilization allowed the domestication of animals such as chickens,",
-                nutritions: "500gr",
-                rating: 5,
-            },
-        ];
         return (
             <View style={{ padding: "4%" }}>
                 <View
@@ -268,11 +218,7 @@ const HomeScreen = ({ navigation }) => {
                         </View>
                     </TouchableNativeFeedback>
                 </View>
-                <ScrollView
-                    horizontal
-                    // pagingEnabled
-                    showsHorizontalScrollIndicator={false}
-                >
+                <ScrollView horizontal showsHorizontalScrollIndicator={false}>
                     {BestSellingData.map((item, key) => {
                         // ________this for shorting the title_________
                         let x = item.title;

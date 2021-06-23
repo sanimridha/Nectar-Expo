@@ -28,8 +28,8 @@ const AppStack = () => {
             initialRouteName={"Tabs"}
             screenOptions={{ headerShown: false }}
         >
-            <Stack.Screen name="Onboarding" component={Onboarding} />
             <Stack.Screen name="Tabs" component={Tabs} />
+            <Stack.Screen name="Onboarding" component={Onboarding} />
             <Stack.Screen name="SigninScreen" component={SigninScreen} />
             <Stack.Screen name="LoginScreen" component={LoginScreen} />
             <Stack.Screen name="SignupScreen" component={SignupScreen} />
