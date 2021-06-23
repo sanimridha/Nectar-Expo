@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import {
     FlatList,
     Image,
@@ -10,20 +10,27 @@ import {
     Touchable,
     TouchableNativeFeedback,
     View,
+    ActivityIndicator,
 } from "react-native";
 import CustomScreen from "../../components/CustomScreen";
 import { COLORS, images, SIZES } from "../../constants";
-import { Ionicons } from "@expo/vector-icons";
-import { Entypo } from "@expo/vector-icons";
-import useColorScheme from "react-native/Libraries/Utilities/useColorScheme";
+import { Ionicons, Entypo } from "@expo/vector-icons";
+import { APP_URL } from "../../../connection/API";
+import axios from "axios";
+import { load } from "protobufjs";
 
 const ExploreScreen = ({ navigation }) => {
-    useEffect(() => {}, []);
+    const [allCategories, setAllCategories] = useState();
+    const [isLoading, setIsLoading] = useState(true);
+    useEffect(() => {
+        fetchCategories();
+    }, []);
 
     const fetchCategories = async () => {
         try {
-            const response = await axios.get(APP_URL + "api/best/selling");
-            setBestSellingData(response.data.data.data);
+            const response = await axios.get(APP_URL + "api/categories");
+            setAllCategories(response.data.data.data);
+            console.log(response.data.data.data);
             setIsLoading(false);
         } catch (error) {
             // handle error
@@ -83,6 +90,18 @@ const ExploreScreen = ({ navigation }) => {
             </View>
         );
     };
+    const loading = () => (
+        <View
+            style={{
+                flex: 1,
+                justifyContent: "center",
+                alignItems: "center",
+            }}
+        >
+            <ActivityIndicator color={COLORS.primary} size={"large"} />
+        </View>
+    );
+
     const renderAllCategories = () => {
         const AllCategories = [
             {
@@ -260,7 +279,8 @@ const ExploreScreen = ({ navigation }) => {
             }}
         >
             {headerContent()}
-            {renderAllCategories()}
+            {isLoading ? loading() : renderAllCategories()}
+            {/* {loading()} */}
         </View>
     );
 };

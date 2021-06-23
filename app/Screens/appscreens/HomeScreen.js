@@ -28,7 +28,10 @@ const HomeScreen = ({ navigation }) => {
         getSliderData();
         getBestSellingrData();
         getAllProductData();
-
+        console.log(
+            "Slider data from server !!!!!!!@@@@@@@@@@@@@@!!!!!!!!!!!$$$$$%%%%%%%%%%%"
+        );
+        console.log(Slider);
         const storeData = async () => {
             try {
                 await AsyncStorage.setItem(
@@ -167,9 +170,10 @@ const HomeScreen = ({ navigation }) => {
                         <View key={key} style={{}}>
                             <Image
                                 source={{
-                                    uri: APP_URL + item.image,
+                                    // uri: APP_URL + item.image,   //when admins will provide banner from the server database.
+                                    uri: item.image,
                                 }}
-                                // resizeMode={"contain"}
+                                // resizeMode={"stretch"}
                                 style={{
                                     height: 120,
                                     width: SIZES.width,
