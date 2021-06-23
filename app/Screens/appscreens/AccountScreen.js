@@ -16,9 +16,12 @@ import { Ionicons } from "@expo/vector-icons";
 import { AntDesign } from "@expo/vector-icons";
 import { MaterialIcons } from "@expo/vector-icons";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import axios from "axios";
+import { APP_URL } from "../../../connection/API";
 
 const AccountScreen = ({ navigation }) => {
     const [user, setUser] = useState([]);
+    const [token, setToken] = useState();
     useEffect(() => {
         getUserInfo();
     }, []);
@@ -29,12 +32,22 @@ const AccountScreen = ({ navigation }) => {
             if (data !== null) {
                 // We have data!!
                 setUser(data);
+                setToken(data.data.token);
                 console.log("data from accout screen");
-                console.log(data);
+                console.log(data.data.token);
                 // console.log(user.data.data.name);
             }
         } catch (error) {
             // Error retrieving data
+            console.log(error);
+        }
+    };
+    const userCredentials = async () => {
+        try {
+            const data = JSON.stringify(" ");
+            await AsyncStorage.setItem("userinfo", data);
+        } catch (error) {
+            // Error saving data
             console.log(error);
         }
     };
@@ -506,6 +519,23 @@ const AccountScreen = ({ navigation }) => {
                             true
                         )}
                         onPress={() => {
+                            const config = {
+                                headers: {
+                                    Authorization: `Bearer ${token}`,
+                                },
+                            };
+                            axios
+                                .post(
+                                    APP_URL + "api/auth/logout",
+                                    config //here we're passing the Authorization header to the server
+                                )
+                                .then(function (response) {
+                                    console.log(response);
+                                    userCredentials();
+                                })
+                                .catch(function (error) {
+                                    console.log(error);
+                                });
                             navigation.navigate("Onboarding");
                         }}
                     >
