@@ -52,7 +52,7 @@ const FavouriteScreen = ({ navigation }) => {
                 config //here we're passing the Authorization header to the server
             )
             .then(function (response) {
-                setFavList(response.data.data);
+                // setFavList(response.data.data);
                 console.log("response.data.data from API");
                 console.log(FavList);
             })
@@ -300,7 +300,7 @@ const FavouriteScreen = ({ navigation }) => {
     return (
         <View style={{ flex: 1, backgroundColor: COLORS.white }}>
             {renderHeader()}
-            {renderBody()}
+            {FavList ? renderBody() : NoItemFound()}
         </View>
     );
 };

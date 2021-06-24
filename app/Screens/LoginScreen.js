@@ -68,6 +68,8 @@ const LoginScreen = ({ navigation }) => {
             );
         }
     };
+    console.log("token from login screen >>>>>>>>>>>>>");
+    console.log(token);
     return (
         <View style={{ flex: 1, backgroundColor: "#FDFDFD" }}>
             <ImageBackground

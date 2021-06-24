@@ -230,7 +230,7 @@ const HomeScreen = ({ navigation }) => {
                                 style={{
                                     borderRadius: 20,
                                     borderColor: COLORS.darkgray,
-                                    // height: 200,
+                                    height: 200,
                                     width: 150,
                                     borderWidth: 0.4,
                                     marginRight: 20,
@@ -355,53 +355,6 @@ const HomeScreen = ({ navigation }) => {
         );
     };
     const BestSelling = () => {
-        const ExclusiveOfferData = [
-            {
-                id: 1,
-                image: images.Beef,
-                name: "Beef Bone",
-                quantity: "1kg, Priceg",
-                price: "$8.99",
-                description:
-                    "Meat is animal flesh that is eaten as food. Humans have hunted and killed animals for meat since prehistoric times. The advent of civilization allowed the domestication of animals such as chickens,",
-                nutritions: "500gr",
-                rating: 5,
-            },
-            {
-                id: 2,
-                image: images.Cupsicum,
-                name: "Bell Pepper Red",
-                quantity: "1kg, Priceg",
-                price: "$5.99",
-                description:
-                    "Cupsicums are nutritious. Cupsicums may be good for weight loss. Cupsicums may be good for your heart. As part of a healtful and varied diet.",
-                nutritions: "100gr",
-                rating: 5,
-            },
-            {
-                id: 3,
-                image: images.apple,
-                name: "Red Apple",
-                quantity: "1kg, Priceg",
-                price: "$3.99",
-                description:
-                    "Apples are nutritious. Apples may be good for weight loss. Apples may be good for your heart. As part of a healtful and varied diet.",
-                nutritions: "100gr",
-                rating: 5,
-            },
-
-            {
-                id: 4,
-                image: images.banana,
-                name: "Organic Bananas",
-                quantity: "7pcs, Priceg",
-                price: "$4.99",
-                description:
-                    "Bananas are nutritious. Bananas may be good for weight loss. Bananas may be good for your heart. As part of a healtful and varied diet.",
-                nutritions: "100gr",
-                rating: 5,
-            },
-        ];
         return (
             <View style={{ padding: "4%" }}>
                 <View
@@ -453,6 +406,7 @@ const HomeScreen = ({ navigation }) => {
                                 style={{
                                     borderRadius: 20,
                                     borderColor: COLORS.darkgray,
+                                    height: 200,
                                     width: 150,
                                     borderWidth: 0.4,
                                     marginRight: 20,
@@ -522,12 +476,6 @@ const HomeScreen = ({ navigation }) => {
                                                 {item.price}
                                             </Text>
                                             <View
-                                                // activeOpacity={0.5}
-                                                // onPress={() => {
-                                                //     console.log(
-                                                //         item.name + " pressed"
-                                                //     );
-                                                // }}
                                                 style={{
                                                     backgroundColor:
                                                         COLORS.primary,
@@ -615,53 +563,6 @@ const HomeScreen = ({ navigation }) => {
         );
     };
     const Groceries = () => {
-        const ExclusiveOfferData = [
-            {
-                id: 1,
-                image: images.apple,
-                name: "Red Apple",
-                quantity: "1kg, Priceg",
-                price: "$3.99",
-                description:
-                    "Apples are nutritious. Apples may be good for weight loss. Apples may be good for your heart. As part of a healtful and varied diet.",
-                nutritions: "100gr",
-                rating: 5,
-            },
-            {
-                id: 2,
-                image: images.banana,
-                name: "Organic Bananas",
-                quantity: "7pcs, Priceg",
-                price: "$4.99",
-                description:
-                    "Bananas are nutritious. Bananas may be good for weight loss. Bananas may be good for your heart. As part of a healtful and varied diet.",
-                nutritions: "100gr",
-                rating: 5,
-            },
-
-            {
-                id: 3,
-                image: images.Cupsicum,
-                name: "Bell Pepper Red",
-                quantity: "1kg, Priceg",
-                price: "$5.99",
-                description:
-                    "Cupsicums are nutritious. Cupsicums may be good for weight loss. Cupsicums may be good for your heart. As part of a healtful and varied diet.",
-                nutritions: "100gr",
-                rating: 5,
-            },
-            {
-                id: 4,
-                image: images.Beef,
-                name: "Beef Bone",
-                quantity: "1kg, Priceg",
-                price: "$8.99",
-                description:
-                    "Meat is animal flesh that is eaten as food. Humans have hunted and killed animals for meat since prehistoric times. The advent of civilization allowed the domestication of animals such as chickens,",
-                nutritions: "500gr",
-                rating: 5,
-            },
-        ];
         const GroceriesItems = [
             {
                 id: 1,
@@ -799,7 +700,7 @@ const HomeScreen = ({ navigation }) => {
                                 style={{
                                     borderRadius: 20,
                                     borderColor: COLORS.darkgray,
-                                    // height: 200,
+                                    height: 200,
                                     width: 150,
                                     borderWidth: 0.4,
                                     marginRight: 20,

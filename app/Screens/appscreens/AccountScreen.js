@@ -48,10 +48,8 @@ const AccountScreen = ({ navigation }) => {
             await AsyncStorage.setItem("userinfo", data);
         } catch (error) {
             // Error saving data
-            console.log(error);
         }
     };
-
     const renderBody = () => {
         return (
             <ScrollView>
@@ -533,10 +531,12 @@ const AccountScreen = ({ navigation }) => {
                                     console.log(response);
                                     userCredentials();
                                 })
+                                .then(() => {
+                                    navigation.navigate("Onboarding");
+                                })
                                 .catch(function (error) {
                                     console.log(error);
                                 });
-                            navigation.navigate("Onboarding");
                         }}
                     >
                         <View
