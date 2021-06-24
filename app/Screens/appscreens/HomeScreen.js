@@ -62,7 +62,11 @@ const HomeScreen = ({ navigation }) => {
     };
     const getAllProductData = async () => {
         try {
-            const response = await axios.get(APP_URL + "api/products");
+            const response = await axios
+                .get(APP_URL + "api/products")
+                .then(() => {
+                    setIsLoading(false);
+                });
             setAllData(response.data.data);
         } catch (error) {
             // handle error
@@ -816,38 +820,46 @@ const HomeScreen = ({ navigation }) => {
                         );
                     })}
                 </ScrollView>
-                <View style={{ height: 200 }}></View>
+                <View style={{ height: 400 }}></View>
             </View>
         );
     };
-    // const Indicator = () => {
-    //     return (
-    //         <View
-    //             style={{
-    //                 backgroundColor: COLORS.white,
-    //                 justifyContent: "center",
-    //                 alignItems: "center",
-    //             }}
-    //         >
-    //             <ActivityIndicator color={COLORS.primary} size={"large"} />
-    //         </View>
-    //     );
-    // };
-
-    return (
-        <View>
-            {headerContent()}
-            <ScrollView
+    const Indicator = () => {
+        return (
+            <View
                 style={{
-                    // marginTop: StatusBar.currentHeight,
                     backgroundColor: COLORS.white,
+                    justifyContent: "center",
+                    alignItems: "center",
+                    flex: 1,
+                    // marginTop: 500,
                 }}
             >
-                {BannerSlider()}
-                {ExclusiveOffer()}
-                {BestSelling()}
-                {Groceries()}
-            </ScrollView>
+                <ActivityIndicator color={COLORS.primary} size={"large"} />
+            </View>
+        );
+    };
+
+    return (
+        <View style={{ flex: 1 }}>
+            {isLoading ? (
+                Indicator()
+            ) : (
+                <View>
+                    {headerContent()}
+                    <ScrollView
+                        style={{
+                            // marginTop: StatusBar.currentHeight,
+                            backgroundColor: COLORS.white,
+                        }}
+                    >
+                        {BannerSlider()}
+                        {ExclusiveOffer()}
+                        {BestSelling()}
+                        {Groceries()}
+                    </ScrollView>
+                </View>
+            )}
         </View>
     );
 };
