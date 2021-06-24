@@ -35,7 +35,7 @@ const CustomButton = ({
                     color={iconColor}
                 />
             </View>
-            <View style={{ padding: 25 }}>
+            <View style={{}}>
                 <Text
                     style={{
                         fontSize: 20,
