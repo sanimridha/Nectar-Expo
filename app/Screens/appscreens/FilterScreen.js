@@ -9,6 +9,7 @@ import {
     TouchableNativeFeedback,
     View,
     CheckBox,
+    ScrollView,
 } from "react-native";
 import { COLORS, SIZES } from "../../constants";
 import { CustomButton } from "../../components";
@@ -116,235 +117,238 @@ const FilterScreen = ({ navigation }) => {
                                     borderTopLeftRadius: 30,
                                 }}
                             >
-                                <View style={{ padding: "5%" }}>
-                                    <Text
-                                        style={{
-                                            fontSize: 25,
-                                            fontWeight: "bold",
-                                        }}
-                                    >
-                                        Categories
-                                    </Text>
-                                    <View
-                                        style={{
-                                            flexDirection: "row",
-                                            // justifyContent: "center",
-                                            alignItems: "center",
-                                            paddingTop: "4%",
-                                        }}
-                                    >
-                                        <CheckBox
-                                            value={isSelected}
-                                            onValueChange={setSelection}
-                                            style={{
-                                                color: COLORS.primary,
-                                            }}
-                                        />
+                                <ScrollView>
+                                    <View style={{ padding: "5%" }}>
                                         <Text
                                             style={{
-                                                fontSize: 17,
-                                                color: isSelected
-                                                    ? "#2F9082"
-                                                    : "black",
+                                                fontSize: 25,
+                                                fontWeight: "bold",
                                             }}
                                         >
-                                            Eggs
+                                            Categories
                                         </Text>
-                                    </View>
-                                    <View
-                                        style={{
-                                            flexDirection: "row",
-                                            // justifyContent: "center",
-                                            alignItems: "center",
-                                            paddingTop: "4%",
-                                        }}
-                                    >
-                                        <CheckBox
-                                            value={isSelected}
-                                            onValueChange={setSelection}
+                                        <View
                                             style={{
-                                                color: COLORS.primary,
+                                                flexDirection: "row",
+                                                // justifyContent: "center",
+                                                alignItems: "center",
+                                                paddingTop: "4%",
                                             }}
-                                        />
+                                        >
+                                            <CheckBox
+                                                value={isSelected}
+                                                onValueChange={setSelection}
+                                                style={{
+                                                    color: COLORS.primary,
+                                                }}
+                                            />
+                                            <Text
+                                                style={{
+                                                    fontSize: 17,
+                                                    color: isSelected
+                                                        ? "#2F9082"
+                                                        : "black",
+                                                }}
+                                            >
+                                                Eggs
+                                            </Text>
+                                        </View>
+                                        <View
+                                            style={{
+                                                flexDirection: "row",
+                                                // justifyContent: "center",
+                                                alignItems: "center",
+                                                paddingTop: "4%",
+                                            }}
+                                        >
+                                            <CheckBox
+                                                value={isSelected}
+                                                onValueChange={setSelection}
+                                                style={{
+                                                    color: COLORS.primary,
+                                                }}
+                                            />
+                                            <Text
+                                                style={{
+                                                    fontSize: 17,
+                                                    color: isSelected
+                                                        ? "#2F9082"
+                                                        : "black",
+                                                }}
+                                            >
+                                                Noodles & Pasta
+                                            </Text>
+                                        </View>
+                                        <View
+                                            style={{
+                                                flexDirection: "row",
+                                                // justifyContent: "center",
+                                                alignItems: "center",
+                                                paddingTop: "4%",
+                                            }}
+                                        >
+                                            <CheckBox
+                                                value={isSelected}
+                                                onValueChange={setSelection}
+                                                style={{
+                                                    color: COLORS.primary,
+                                                }}
+                                            />
+                                            <Text
+                                                style={{
+                                                    fontSize: 17,
+                                                    color: isSelected
+                                                        ? "#2F9082"
+                                                        : "black",
+                                                }}
+                                            >
+                                                Chips & Crisps
+                                            </Text>
+                                        </View>
+                                        <View
+                                            style={{
+                                                flexDirection: "row",
+                                                // justifyContent: "center",
+                                                alignItems: "center",
+                                                paddingTop: "4%",
+                                            }}
+                                        >
+                                            <CheckBox
+                                                value={isSelected}
+                                                onValueChange={setSelection}
+                                                style={{
+                                                    color: COLORS.primary,
+                                                }}
+                                            />
+                                            <Text
+                                                style={{
+                                                    fontSize: 17,
+                                                    color: isSelected
+                                                        ? "#2F9082"
+                                                        : "black",
+                                                }}
+                                            >
+                                                Fast Food
+                                            </Text>
+                                        </View>
+                                    </View>
+                                    {/* brand */}
+                                    <View style={{ padding: "5%" }}>
                                         <Text
                                             style={{
-                                                fontSize: 17,
-                                                color: isSelected
-                                                    ? "#2F9082"
-                                                    : "black",
+                                                fontSize: 25,
+                                                fontWeight: "bold",
                                             }}
                                         >
-                                            Noodles & Pasta
+                                            Brand
                                         </Text>
-                                    </View>
-                                    <View
-                                        style={{
-                                            flexDirection: "row",
-                                            // justifyContent: "center",
-                                            alignItems: "center",
-                                            paddingTop: "4%",
-                                        }}
-                                    >
-                                        <CheckBox
-                                            value={isSelected}
-                                            onValueChange={setSelection}
+                                        <View
                                             style={{
-                                                color: COLORS.primary,
-                                            }}
-                                        />
-                                        <Text
-                                            style={{
-                                                fontSize: 17,
-                                                color: isSelected
-                                                    ? "#2F9082"
-                                                    : "black",
+                                                flexDirection: "row",
+                                                // justifyContent: "center",
+                                                alignItems: "center",
+                                                paddingTop: "4%",
                                             }}
                                         >
-                                            Chips & Crisps
-                                        </Text>
-                                    </View>
-                                    <View
-                                        style={{
-                                            flexDirection: "row",
-                                            // justifyContent: "center",
-                                            alignItems: "center",
-                                            paddingTop: "4%",
-                                        }}
-                                    >
-                                        <CheckBox
-                                            value={isSelected}
-                                            onValueChange={setSelection}
+                                            <CheckBox
+                                                value={isSelected}
+                                                onValueChange={setSelection}
+                                                style={{
+                                                    color: COLORS.primary,
+                                                }}
+                                            />
+                                            <Text
+                                                style={{
+                                                    fontSize: 17,
+                                                    color: isSelected
+                                                        ? "#2F9082"
+                                                        : "black",
+                                                }}
+                                            >
+                                                Individual Callection
+                                            </Text>
+                                        </View>
+                                        <View
                                             style={{
-                                                color: COLORS.primary,
-                                            }}
-                                        />
-                                        <Text
-                                            style={{
-                                                fontSize: 17,
-                                                color: isSelected
-                                                    ? "#2F9082"
-                                                    : "black",
-                                            }}
-                                        >
-                                            Fast Food
-                                        </Text>
-                                    </View>
-                                </View>
-                                {/* brand */}
-                                <View style={{ padding: "5%" }}>
-                                    <Text
-                                        style={{
-                                            fontSize: 25,
-                                            fontWeight: "bold",
-                                        }}
-                                    >
-                                        Brand
-                                    </Text>
-                                    <View
-                                        style={{
-                                            flexDirection: "row",
-                                            // justifyContent: "center",
-                                            alignItems: "center",
-                                            paddingTop: "4%",
-                                        }}
-                                    >
-                                        <CheckBox
-                                            value={isSelected}
-                                            onValueChange={setSelection}
-                                            style={{
-                                                color: COLORS.primary,
-                                            }}
-                                        />
-                                        <Text
-                                            style={{
-                                                fontSize: 17,
-                                                color: isSelected
-                                                    ? "#2F9082"
-                                                    : "black",
+                                                flexDirection: "row",
+                                                // justifyContent: "center",
+                                                alignItems: "center",
+                                                paddingTop: "4%",
                                             }}
                                         >
-                                            Individual Callection
-                                        </Text>
-                                    </View>
-                                    <View
-                                        style={{
-                                            flexDirection: "row",
-                                            // justifyContent: "center",
-                                            alignItems: "center",
-                                            paddingTop: "4%",
-                                        }}
-                                    >
-                                        <CheckBox
-                                            value={isSelected}
-                                            onValueChange={setSelection}
+                                            <CheckBox
+                                                value={isSelected}
+                                                onValueChange={setSelection}
+                                                style={{
+                                                    color: COLORS.primary,
+                                                }}
+                                            />
+                                            <Text
+                                                style={{
+                                                    fontSize: 17,
+                                                    color: isSelected
+                                                        ? "#2F9082"
+                                                        : "black",
+                                                }}
+                                            >
+                                                Cocola
+                                            </Text>
+                                        </View>
+                                        <View
                                             style={{
-                                                color: COLORS.primary,
-                                            }}
-                                        />
-                                        <Text
-                                            style={{
-                                                fontSize: 17,
-                                                color: isSelected
-                                                    ? "#2F9082"
-                                                    : "black",
-                                            }}
-                                        >
-                                            Cocola
-                                        </Text>
-                                    </View>
-                                    <View
-                                        style={{
-                                            flexDirection: "row",
-                                            // justifyContent: "center",
-                                            alignItems: "center",
-                                            paddingTop: "4%",
-                                        }}
-                                    >
-                                        <CheckBox
-                                            value={isSelected}
-                                            onValueChange={setSelection}
-                                            style={{
-                                                color: COLORS.primary,
-                                            }}
-                                        />
-                                        <Text
-                                            style={{
-                                                fontSize: 17,
-                                                color: isSelected
-                                                    ? "#2F9082"
-                                                    : "black",
+                                                flexDirection: "row",
+                                                // justifyContent: "center",
+                                                alignItems: "center",
+                                                paddingTop: "4%",
                                             }}
                                         >
-                                            Ifad
-                                        </Text>
-                                    </View>
-                                    <View
-                                        style={{
-                                            flexDirection: "row",
-                                            // justifyContent: "center",
-                                            alignItems: "center",
-                                            paddingTop: "4%",
-                                        }}
-                                    >
-                                        <CheckBox
-                                            value={isSelected}
-                                            onValueChange={setSelection}
+                                            <CheckBox
+                                                value={isSelected}
+                                                onValueChange={setSelection}
+                                                style={{
+                                                    color: COLORS.primary,
+                                                }}
+                                            />
+                                            <Text
+                                                style={{
+                                                    fontSize: 17,
+                                                    color: isSelected
+                                                        ? "#2F9082"
+                                                        : "black",
+                                                }}
+                                            >
+                                                Ifad
+                                            </Text>
+                                        </View>
+                                        <View
                                             style={{
-                                                color: COLORS.primary,
-                                            }}
-                                        />
-                                        <Text
-                                            style={{
-                                                fontSize: 17,
-                                                color: isSelected
-                                                    ? "#2F9082"
-                                                    : "black",
+                                                flexDirection: "row",
+                                                // justifyContent: "center",
+                                                alignItems: "center",
+                                                paddingTop: "4%",
                                             }}
                                         >
-                                            Kazi Farmas
-                                        </Text>
+                                            <CheckBox
+                                                value={isSelected}
+                                                onValueChange={setSelection}
+                                                style={{
+                                                    color: COLORS.primary,
+                                                }}
+                                            />
+                                            <Text
+                                                style={{
+                                                    fontSize: 17,
+                                                    color: isSelected
+                                                        ? "#2F9082"
+                                                        : "black",
+                                                }}
+                                            >
+                                                Kazi Farmas
+                                            </Text>
+                                        </View>
+                                        <View style={{ height: 100 }}></View>
                                     </View>
-                                </View>
+                                </ScrollView>
                                 <View
                                     style={{
                                         width: SIZES.width,

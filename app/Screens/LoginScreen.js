@@ -7,6 +7,7 @@ import {
     TextInput,
     TouchableOpacity,
     View,
+    ScrollView,
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { COLORS, images, SIZES } from "../constants";
@@ -71,7 +72,7 @@ const LoginScreen = ({ navigation }) => {
     console.log("token from login screen >>>>>>>>>>>>>");
     console.log(token);
     return (
-        <View style={{ flex: 1, backgroundColor: "#FDFDFD" }}>
+        <ScrollView style={{ flex: 1, backgroundColor: "#FDFDFD" }}>
             <ImageBackground
                 source={images.topBlur}
                 style={{ width: "100%", height: "25%", flex: 1 }}
@@ -267,7 +268,7 @@ const LoginScreen = ({ navigation }) => {
                     </View>
                 </SafeAreaView>
             </ImageBackground>
-        </View>
+        </ScrollView>
     );
 };
 
