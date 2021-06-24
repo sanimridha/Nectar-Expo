@@ -83,7 +83,7 @@ const HomeScreen = ({ navigation }) => {
 
                     justifyContent: "center",
                     alignItems: "center",
-                    padding: "4%",
+                    padding: "3%",
                 }}
             >
                 <Image
@@ -816,6 +816,7 @@ const HomeScreen = ({ navigation }) => {
                         );
                     })}
                 </ScrollView>
+                <View style={{ height: 200 }}></View>
             </View>
         );
     };
