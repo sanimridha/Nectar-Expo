@@ -23,6 +23,7 @@ const Onboarding = ({ navigation }) => {
     return (
         <ImageBackground
             source={images.Onboarding}
+            resizeMode={"stretch"}
             style={{ height: "100%", width: "100%" }}
         >
             <SafeAreaView style={{ flex: 1 }}>
